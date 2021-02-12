@@ -1,0 +1,29 @@
+.div{
+    width: 30%;
+    border-radius: 10px;
+
+    /*-------------------------------| Sombra |-------------------------------*/
+    -webkit-box-shadow: 8px 8px 17px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow:    8px 8px 17px 0px rgba(0, 0, 0, 1);
+    box-shadow:         8px 8px 17px 0px rgba(0, 0, 0, 1);
+    /*------------------------------------------------------------------------*/
+}
+
+.div_nome{
+    padding: 10px 0px 0px 10px ;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+}
+
+.div_desc{
+    padding: 5px 0px 10px 10px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+}
+
+.div_preco{
+    padding: 20px 10px 10px 10px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+    
+}
