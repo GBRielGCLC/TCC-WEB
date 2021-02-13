@@ -1,7 +1,10 @@
 <html>
+    
+
     <head>
         <meta charset="UTF-8">
         <script src="js\cardapio.js"></script>
+        <title>Cardápio</title>
 
         <!------------------------------------------------| Campo monetário |------------------------------------------------>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -72,9 +75,15 @@
                                 $desc = $_POST["desc"];
                                 $preco = str_replace(",",".",$_POST["preco"]);
                                 
+                                $i=0;
+                                foreach ($_POST["idPizza[]"] as $i) {
+                                    $tam[$i] = $_POST["idPizza[$i]"];
+                                    $i++;
+                                }
+                                
                                 include "php\conexaoBD.php";    
 
-                                $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade) VALUES('$nome','$desc','0','')";
+                                $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade) VALUES('$nome','$desc','0','$tam')";
                                 
                                 
                                 if (mysqli_query($conn, $sql)) {
@@ -105,7 +114,7 @@
                     </form>
             </div>
 
-            <!----------------------------------------  Tamanho  ---------------------------------------->
+            <!--------------------------------------------------------------------------------  Tamanho  -------------------------------------------------------------------------------->
             <div class="cadastro_sabor">
                 <h1>Cadastro de Tamanho</h1>
                 
@@ -130,7 +139,7 @@
 
                             include "php\conexaoBD.php"; 
 
-                            $sql = "INSERT INTO `tamanho`(`nome`, `preco`) VALUES ('$tamanho',$preco)";
+                            $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`status`) VALUES ('$tamanho',$preco,'on')";
 
                             if (mysqli_query($conn, $sql)) {
                                 echo  "

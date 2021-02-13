@@ -21,7 +21,7 @@
 
                         <ul class='dropdown-menu' aria-labelledby='dropdownMenuLink' style='background-color: #8B0000;'>
                             <li><a href='Cardapio.php' class='dropdown-item' style='color:white;' >Cardápio</a></li>
-                            <li><a href='#' class='dropdown-item' style='color: white;'>Ativar/Inativar Produto</a></li>
+                            <li><a href='Status.php' class='dropdown-item' style='color: white;'>Ativar/Inativar Produto</a></li>
                             
                         </ul>
                         </div>
