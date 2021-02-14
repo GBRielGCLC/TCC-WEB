@@ -19,7 +19,7 @@
         <thead>
             <tr>
                 <th> Nome</th>
-                <th> Valor</th>
+                <th> Valor R$</th>
                 <th> Status</th>
             </tr>
         </thead>
@@ -34,7 +34,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $nome_tamanho = $row["nome"];
-                    $preco = $row["preco"];
+                    $preco = str_replace(".",",",$row["preco"]);
                     $idPizza = $row["idPizza"];
                     $status = $row["status"];
 
@@ -48,7 +48,7 @@
                     echo "
                         <tr>
                             <td> $nome_tamanho </td>
-                            <td>$preco</td>
+                            <td> R$ $preco </td>
                             <td>
                                 <div class='form-check form-switch'>
                                     <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>

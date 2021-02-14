@@ -26,7 +26,9 @@
             <!--Para Cadastrar -->
             <div class="cadastro_sabor">
                 <h1>Cadastro de Sabores</h1>
-                    <form method="POST" class=campos_cadastro>
+                    <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-sabor.php">
+                        <a id="cad-sabor"></a>
+
                         <label> Sabor </label> <input type="text" name="sabor">
                         <label> Valor Adicional </label> <input class="money" id="input" size="9" type="text" name="preco"><br>
                         <label> Descrição </label> <input type="text" name="desc" size="51"> 
@@ -58,54 +60,34 @@
 
                         </div>
       
-                        <?php
-//|-------------------------------------| ESTÁ APARECENDO O ERRO ASSIM Q CARREGA A PAGINA |-------------------------------------|//          
+                        <?php     
                             echo"<br><br>";
-                            if(empty($_POST["sabor"])){// Verificar se o campo está vazio
-                                echo"
-                                    <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
-                                        <strong>Preencha todos os campos!</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
-                                ";
-                            }
-                            else{
-                                unset($nome,$desc,$preco);
-                                $nome = $_POST["sabor"];
-                                $desc = $_POST["desc"];
-                                $preco = str_replace(",",".",$_POST["preco"]);
-                                
-                                $i=0;
-                                foreach ($_POST["idPizza[]"] as $i) {
-                                    $tam[$i] = $_POST["idPizza[$i]"];
-                                    $i++;
-                                }
-                                
-                                include "php\conexaoBD.php";    
-
-                                $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade) VALUES('$nome','$desc','0','$tam')";
-                                
-                                
-                                if (mysqli_query($conn, $sql)) {
-                                    echo  "
-                                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                        <strong> Cadastro Realizado com Sucesso!!</strong>.
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                            if(isset($_SESSION["cad-sabor"])){
+                                if($_SESSION["cad-sabor"]=="vazio"){
+                                    echo"
+                                        <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
+                                            <strong>Preencha todos os campos!</strong>
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                        </div>
                                     ";
-                                } else {
-                                    $teste = explode(" ",mysqli_error($conn));
-                                    
-                                    if($teste[0]=="Duplicate"){// Testar se ja estar duplicado
-                                        echo"
+                                }
+                                if($_SESSION["cad-sabor"]=="sucesso"){
+                                    echo"
+                                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                            <strong> Cadastro Realizado com Sucesso!!</strong>.
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                        </div>
+                                    ";
+                                }
+                                if($_SESSION["cad-sabor"]=="duplicado"){
+                                    echo"
                                         <div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                             <strong>Já está cadastrado !</strong>
                                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                                         </div>
-                                        ";
-                                    }
+                                    ";
                                 }
-                                $conn->close();
+                                session_destroy();
                             }
                             
                         ?>
@@ -118,50 +100,40 @@
             <div class="cadastro_sabor">
                 <h1>Cadastro de Tamanho</h1>
                 
-                <form method="POST" class=campos_cadastro>
+                <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-tamanho.php">
+                    <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
+
                     <label> Tamanho </label> <input type="text" name="tamanho">
                     <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
                     
                     <?php
-                        
-                        if(empty($_POST["tamanho"])){// Verificar se o campo está vazio
-                            echo"
-                                <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
-                                    <strong>Preencha todos os campos!</strong>
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>
-                            ";
-                        }
-                        
-                        else{
-                            $tamanho = $_POST["tamanho"];
-                            $preco = str_replace(",",".",$_POST["preco"]);
 
-                            include "php\conexaoBD.php"; 
-
-                            $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`status`) VALUES ('$tamanho',$preco,'on')";
-
-                            if (mysqli_query($conn, $sql)) {
-                                echo  "
-                                <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                    <strong> Cadastro Realizado com Sucesso!!</strong>.
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>
+                        if(isset($_SESSION["cad-tamanho"])){
+                            if($_SESSION["cad-tamanho"]=="vazio"){
+                                echo"
+                                    <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
+                                        <strong>Preencha todos os campos!</strong>
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
                                 ";
-                            } else {
-                                $teste = explode(" ",mysqli_error($conn));
-                                
-                                if($teste[0]=="Duplicate"){// Testar se ja estar duplicado
-                                    echo"
+                            }
+                            if($_SESSION["cad-tamanho"]=="sucesso"){
+                                echo"
+                                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                        <strong> Cadastro Realizado com Sucesso!!</strong>.
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
+                                ";
+                            }
+                            if($_SESSION["cad-tamanho"]=="duplicado"){
+                                echo"
                                     <div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                         <strong>Já está cadastrado !</strong>
                                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                                     </div>
-                                    ";
-                             }
+                                ";
                             }
-                            
-                            $conn->close();
+                            session_destroy();
                         }
                     ?>
 
