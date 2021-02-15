@@ -8,7 +8,7 @@
     <nav class = "menu">
         <ul class="links_menu">
             <li> <a href="index.php">Home</a> <li>
-            <li> <button type="button" id="pedir" data-bs-toggle="modal" data-bs-target="#exampleModal"> Peça Online </button> <li>
+            <li> <button type="button" id="pedir" data-bs-toggle="modal" data-bs-target="#pedido"> Peça Online </button> <li>
             <li> <a href="index.php">Promoções</a> <li>
             <li> <a href="#">Cardápio</a> <li>
             <li> <a href="#onde_encontrar">Onde Nos encontrar</a> <li> 
@@ -26,8 +26,8 @@
                                     </a>
 
                                     <ul class='dropdown-menu' aria-labelledby='cardapio' style='background-color: #8B0000;'>
-                                        <li><a href='Cardapio.php' class='dropdown-item' style='color:white;' >Cardápio</a></li>
-                                        <li><a href='Status.php' class='dropdown-item' style='color: white;'>Ativar/Inativar Produto</a></li>
+                                        <li><a href='gerencia-cardapio.php' class='dropdown-item' style='color: white;'> Gerenciar </a></li>
+                                        <li><a href='cadastro-cardapio.php' class='dropdown-item' style='color:white;'> Cadastrar </a></li>
                                         
                                     </ul>
                                 </div>
@@ -62,7 +62,7 @@
             
     </nav>
     <!--------------------------------------------------------------------------| Modal |-------------------------------------------------------------------------->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="pedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

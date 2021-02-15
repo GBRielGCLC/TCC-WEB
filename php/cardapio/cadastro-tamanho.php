@@ -26,5 +26,5 @@
         
         $conn->close();
     }
-    header("Location: ../../Cardapio.php#cad-tamanho");
+    header("Location: ../../cadastro-cardapio.php#cad-tamanho");
 ?>

@@ -33,6 +33,6 @@
         }
         $conn->close();
     }
-    header("Location: ../../Cardapio.php#cad-sabor");
+    header("Location: ../../cadastro-cardapio.php#cad-sabor");
     
 ?>
