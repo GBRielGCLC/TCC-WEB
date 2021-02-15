@@ -12,3 +12,11 @@
 td{
     text-align: left;
 }
+
+.form-check-input{
+    background-color: #dc3444;
+    color: white;
+}
+.form-check-input:checked{
+    background-color: #1c8454;
+}

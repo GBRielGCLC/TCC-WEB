@@ -21,6 +21,7 @@
                 <th> Nome</th>
                 <th> Valor R$</th>
                 <th> Status</th>
+                <th>  </th>
             </tr>
         </thead>
         <tbody>
@@ -36,13 +37,15 @@
                     $nome_tamanho = $row["nome"];
                     $preco = str_replace(".",",",$row["preco"]);
                     $idPizza = $row["idPizza"];
-                    $status = $row["status"];
+                    $statusBD = $row["status"];
 
-                    if($status=="on"){
+                    if($statusBD=="on"){
                         $check = "checked";
+                        $status = "Ativo";
                     }
                     else{
                         $check = "";
+                        $status = "Inativo";
                     }
             
                     echo "
@@ -52,8 +55,12 @@
                             <td>
                                 <div class='form-check form-switch'>
                                     <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                    <label class='form-check-label' for='flexSwitchCheckDefault'> Ativo ou inativo </label>
+                                    <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
                                 </div>
+                            </td>
+                            <td style='width:20%'>
+                                <button type='button' class='btn btn-danger btr-sm'> Excluir </button>
+                                <button type='button' class='btn btn-warning btr-sm'> Editar </button>
                             </td>
                         </tr>
                     ";
@@ -62,16 +69,9 @@
             }
 
         ?>
-
+        
         </tbody>
         </table>
-
-    
-        
-        
-        
-
-
 
     </div>
 
