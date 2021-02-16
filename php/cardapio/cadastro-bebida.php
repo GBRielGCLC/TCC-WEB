@@ -3,7 +3,6 @@
     if(empty($_POST["nomeBebida"])){// Verificar se o campo está vazio
         $_SESSION["cad-bebida"] = "vazio";
     }
-
     else{
         $nome = $_POST["nomeBebida"];
         $preco = str_replace(",",".",$_POST["preco"]);

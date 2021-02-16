@@ -34,5 +34,4 @@
         $conn->close();
     }
     header("Location: ../../cadastro-cardapio.php#cad-sabor");
-    
 ?>

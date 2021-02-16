@@ -17,7 +17,6 @@
         <link rel="stylesheet" type="text/css" href="css/cadastro-cardapio.css">
     </head>
 
-    
     <body>
         <div class="principal">  
             <?php

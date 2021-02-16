@@ -3,7 +3,6 @@
     if(empty($_POST["tamanho"])){// Verificar se o campo está vazio
         $_SESSION["cad-tamanho"] = "vazio";
     }
-
     else{
         $tamanho = $_POST["tamanho"];
         $preco = str_replace(",",".",$_POST["preco"]);
