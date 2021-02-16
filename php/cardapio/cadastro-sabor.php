@@ -15,7 +15,7 @@
             $i++;
         }
         
-        include "php\conexaoBD.php";    
+        include "../conexaoBD.php";    
 
         $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade) VALUES('$nome','$desc','0','$tam')";
         

@@ -101,7 +101,7 @@
                 <h1>Cadastro de Tamanho</h1>
                 
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-tamanho.php">
-                    <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
+                    <a id="tamanho"><!-- Trazer de volta para aqui --></a>
 
                     <label> Tamanho </label> <input type="text" name="tamanho">
                     <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
@@ -140,10 +140,65 @@
                     <input type="submit" value="Cadastrar" class="btn_cadastrar">
                 </form>
             </div>
+
+            <div class="cadastro_sabor">
+                <h1>Bebida</h1>
+                <a href=""></a>
+                <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-bebida.php">
+                    <a id="cad-bebida"><!-- Trazer de volta para aqui --></a>
+
+                    <label> Nome </label> <input type="text" name="nomeBebida">
+                    <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
+                    
+                    <?php
+                        //alterar
+                        if(isset($_SESSION["cad-bebida"])){
+                            if($_SESSION["cad-bebida"]=="vazio"){
+                                echo"
+                                    <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
+                                        <strong>Preencha todos os campos!</strong>
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
+                                ";
+                            }
+                            if($_SESSION["cad-bebida"]=="sucesso"){
+                                echo"
+                                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                        <strong> Cadastro Realizado com Sucesso!!</strong>.
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
+                                ";
+                            }
+                            if($_SESSION["cad-bebida"]=="duplicado"){
+                                echo"
+                                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <strong>Já está cadastrado !</strong>
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
+                                ";
+                            }
+                            session_destroy();
+                        }
+                    ?>
+
+                    <input type="submit" value="Cadastrar" class="btn_cadastrar">
+                </form>
+            </div>
+
         </div> <!-- div GERAL -->
     </body>
 
-    <
+    <script>
+        $(document).ready(function(){
+            $('.money').mask('000.000.000.000.000,00', {reverse: true});
+        
+        $(".money").change(function(){
+            $("#value").html($(this).val().replace(/\D/g,''))
+        })
+        
+        });
+    </script>
+
 </html>
 
 

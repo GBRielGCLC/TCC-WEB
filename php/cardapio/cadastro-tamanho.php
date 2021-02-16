@@ -8,7 +8,7 @@
         $tamanho = $_POST["tamanho"];
         $preco = str_replace(",",".",$_POST["preco"]);
 
-        include "php\conexaoBD.php"; 
+        include "../conexaoBD.php"; 
 
         $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`status`) VALUES ('$tamanho',$preco,'on')";
 
