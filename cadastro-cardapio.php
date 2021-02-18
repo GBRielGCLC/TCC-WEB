@@ -9,6 +9,7 @@
         <!------------------------------------------------| Campo monetário |------------------------------------------------>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+        <script src="js/money.js"></script>
         <!------------------------------------------------------------------------------------------------------------------->
         <!------------------------------------------------| Bootstrap |------------------------------------------------>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -187,16 +188,7 @@
         </div> <!-- div GERAL -->
     </body>
 
-    <script>
-        $(document).ready(function(){
-            $('.money').mask('000.000.000.000.000,00', {reverse: true});
-        
-        $(".money").change(function(){
-            $("#value").html($(this).val().replace(/\D/g,''))
-        })
-        
-        });
-    </script>
+    
 
 </html>
 
