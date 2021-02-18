@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Ativar/Inativa Produto</title>
+    <!------------------------------------------------| Sweet Alert |------------------------------------------------>
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+    <!---------------------------------------------------------------------------------------------------------------->
     <!------------------------------------------------| Campo monetário |------------------------------------------------>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
@@ -10,7 +15,7 @@
     <!------------------------------------------------| Bootstrap |------------------------------------------------>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <!----------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------------>
     <link rel="stylesheet" href="css/gerencia-cardapio.css">
 </head>
 <body>
@@ -53,6 +58,7 @@
                     
                     // ----------------------| Mostrar a tabela com as informações |----------------------------
                     echo "
+
                         <tr>
                             <td> $nome_tamanho </td>
                             <td> R$ $preco </td>
@@ -64,7 +70,7 @@
                             </td>
                             <td style='width:20%'>
                                 <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#$nome_tamanho'> Editar </button>
-                                <button type='button' class='btn btn-danger btr-sm'> Excluir </button>
+                                <button type='button' class='btn btn-danger btr-sm' id='excluir'> Excluir </button>
                             </td>
                         </tr>
                     ";
