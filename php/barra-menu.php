@@ -31,7 +31,7 @@
                                         
                                     </ul>
                                 </div>
-                            <li>
+                            </li>
                             
                             <li><a style='float:right' href='php/logout.php'> Sair </a></li>
                         ";
@@ -47,19 +47,6 @@
             ?>
 
             </ul>
-            
-            <!--<div class='dropdown'>
-                <a href='#' role='button' id='gerencia-cardapio' data-bs-toggle='dropdown' aria-expanded='false'>
-                    Cardápio <i class='seta direita'></i>
-                </a>
-
-                <ul class='dropdown-menu' aria-labelledby='gerencia-cardapio' style='background-color: #8B0000;'>
-                    <li><a href='Cardapio.php' class='dropdown-item' style='color:white;' > Sabor </a></li>
-                    
-                </ul>
-            </div>-->
-            
-            
     </nav>
     <!--------------------------------------------------------------------------| Modal |-------------------------------------------------------------------------->
     <div class="modal fade" id="pedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -6,11 +6,11 @@
     else{
         $tamanho = $_POST["tamanho"];
         $preco = str_replace(",",".",$_POST["preco"]);
+        $qtdeSabor = $_POST["qtdeSabor"];
 
         include "../conexaoBD.php"; 
 
-        $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`status`) VALUES ('$tamanho',$preco,'on')";
-
+        $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`qtdeSabor`,`status`) VALUES ('$tamanho',$preco,$qtdeSabor,'on')";
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-tamanho"] = "sucesso";
             

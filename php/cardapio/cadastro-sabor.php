@@ -7,17 +7,20 @@
     else{
         $nome = $_POST["sabor"];
         $desc = $_POST["desc"];
-        $preco = str_replace(",",".",$_POST["preco"]);
-        
-        $i=0;
-        foreach ($_POST["idPizza[]"] as $i) {
-            $tam[$i] = $_POST["idPizza[$i]"];
-            $i++;
+        if(empty($_POST["add"])){
+            $add=0;  
         }
-        
+        else{
+            $add = str_replace(",",".",$_POST["add"]);
+        }
+        if(isset($_POST["tamanho"])){
+        foreach ($_POST["tamanho"] as $tamanho) {
+            $tam = $tam.",".$tamanho;
+        }}
+
         include "../conexaoBD.php";    
 
-        $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade) VALUES('$nome','$desc','0','$tam')";
+        $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade,precoAdd) VALUES('$nome','$desc','on','$tam','$add')";
         
         
         if (mysqli_query($conn, $sql)) {
@@ -33,5 +36,5 @@
         }
         $conn->close();
     }
-    header("Location: ../../cadastro-cardapio.php#cad-sabor");
+   header("Location: ../../cadastro-cardapio.php#cad-sabor");
 ?>

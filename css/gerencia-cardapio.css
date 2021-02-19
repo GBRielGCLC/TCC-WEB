@@ -6,17 +6,20 @@
     margin-left: auto;
     margin-right: auto;
     border-spacing: 3px;
-    margin-top: 5%;
     width: 90%;
 }
 td{
     text-align: left;
+
 }
 
-.form-check-input{
+.form-check-input{  
     background-color: #dc3444;
     color: white;
 }
 .form-check-input:checked{
     background-color: #1c8454;
+}
+.btn-danger{
+    margin: 3%;
 }

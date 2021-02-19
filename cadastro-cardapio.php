@@ -30,7 +30,7 @@
                         <a id="cad-sabor"></a>
 
                         <label> Sabor </label> <input type="text" name="sabor">
-                        <label> Valor Adicional </label> <input class="money" id="input" size="9" type="text" name="preco"><br>
+                        <label> Valor Adicional </label> <input class="money" id="input" size="9" type="text" name="add"><br>
                         <label> Descrição </label> <input type="text" name="desc" size="51"> 
                         <hr>
                         <h2 class="texto-tamanho"> Tamanho que o sabor está disponível </h2> 
@@ -49,8 +49,7 @@
                                         $nome_tamanho = $row["nome"];
                                         $idPizza = $row["idPizza"];
                                         
-                                        
-                                        echo "<label> $nome_tamanho </label> <input type='checkbox' name='idPizza[]' value='$idPizza'>";
+                                        echo "<label> $nome_tamanho </label> <input type='checkbox' name='tamanho[]' value='$idPizza'>";
                                     }
                                     echo "<label></label>";
 
@@ -101,9 +100,10 @@
                 <h1>Cadastro de Tamanho</h1>
                 
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-tamanho.php">
-                    <a id="tamanho"><!-- Trazer de volta para aqui --></a>
+                    <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
 
                     <label> Tamanho </label> <input type="text" name="tamanho">
+                    <label> Quantidade de Sabores </label> <input type="number" name="qtdeSabor">
                     <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
                     
                     <?php
