@@ -5,13 +5,12 @@
     <title>Ativar/Inativa Produto</title>
     <!------------------------------------------------| Sweet Alert |------------------------------------------------>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="js/sweet-alert.js"></script>
     <!---------------------------------------------------------------------------------------------------------------->
     <!------------------------------------------------| Campo monetário |------------------------------------------------>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
-        <script src="js/money.js"></script>
-        <!------------------------------------------------------------------------------------------------------------------->
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+    <script src="js/money.js"></script>
+    <!------------------------------------------------------------------------------------------------------------------->
     <!------------------------------------------------| Bootstrap |------------------------------------------------>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
@@ -34,10 +33,11 @@
         </thead>
         <tbody>
         <?php
+            
 
             include "php\conexaoBD.php";
 
-            $sql = "SELECT nome,preco,idPizza,status FROM `tamanho` ORDER BY preco ASC";
+            $sql = "SELECT * FROM `tamanho` ORDER BY preco ASC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -70,7 +70,7 @@
                             </td>
                             <td style='width:20%'>
                                 <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#$nome_tamanho'> Editar </button>
-                                <button type='button' class='btn btn-danger btr-sm' onclick='excluir()'> Excluir </button>
+                                <button type='submit' class='btn btn-danger btr-sm' onclick='reply_click(this.id)' id='$idPizza'> Excluir </button>
                             </td>
                         </tr>
                     ";
@@ -87,7 +87,6 @@
                                     <center>
                                         <label> Tamanho </label> <input type='text' name='tamanho' value='$nome_tamanho'> <br>
                                         <label> Preço </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'>
-                                        
                                     </center>
                                 </div>
                                 <div class='modal-footer'>
@@ -99,12 +98,13 @@
                     </div>
                     ";
                     // |-----------------------------------------------------------------------------------------------------------|
+
+
                 }
                 echo "<label></label>";
             }
 
         ?>
-        <form action="edit-tamanho"></form>
         
         </tbody>
         </table>
@@ -137,3 +137,4 @@
 </body>
 </html>
 
+<script src="js/sweet-alert.js"></script>

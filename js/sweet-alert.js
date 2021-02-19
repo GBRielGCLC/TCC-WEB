@@ -1,4 +1,4 @@
-function excluir() {  
+function reply_click(clicked_id) {  
     const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success',
@@ -8,28 +8,22 @@ function excluir() {
     })
 
     swalWithBootstrapButtons.fire({
-    title: 'Tem certeza?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Sim',
-    cancelButtonText: 'Não',
-    reverseButtons: true
-    }).then((result) => {
-    if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-        'Excluido!',
-        '',
-        'success'
-        )
-    } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-    ) {
-        swalWithBootstrapButtons.fire(
-        'Cancelado!',
-        '',
-        'error'
-        )
-    }
+        title: 'Tem certeza?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não',
+        reverseButtons: true
+        },
+        
+        ).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+            'Excluido!',
+            '',
+            'success',
+            window.location.href = 'php/cardapio/exc-tamanho.php?idPizza='+clicked_id,
+            )
+        }
     })
 }
