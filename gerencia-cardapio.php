@@ -36,7 +36,7 @@
         </thead>
         <tbody>
         <?php
-            
+            $i=0;
 
             include "php\conexaoBD.php";
 
@@ -44,12 +44,18 @@
             $result = $conn->query($sql);   
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
+                    $i++;
                     $nome_tamanho = $row["nome"];
                     $preco = str_replace(".",",",$row["preco"]);
                     $idPizza = $row["idPizza"];
                     $statusBD = $row["status"];
                     $qtdeSabor = $row["qtdeSabor"];
-
+                    // ajeitar
+                    if(isset($nome_tamanho)){
+                        $tamanho[$i] = $nome_tamanho;
+                        $Pizza[$i] = $idPizza;
+                        
+                    }
                     if($statusBD=="on"){
                         $check = "checked";
                         $status = "Ativo";
@@ -110,7 +116,7 @@
                 }
                 echo "<label></label>";
             }
-
+            
         ?>
 
         
@@ -151,6 +157,10 @@
                         $check = "";
                         $status = "Inativo";
                     }
+
+                    
+                    $dispo = explode(",", $disponibilidade);
+                    
                     
                     // ----------------------| Mostrar a tabela com as informações |----------------------------
                     echo "
@@ -184,9 +194,9 @@
                                         <center>
                                             <label> Tamanho </label> <input type='text' name='tamanho' value='$nome_sabor'> <br>
                                             <label> Descrição </label> <input type='text' name='tamanho' value='$descricao'> <br>
-                                            <label> Disponibilidade </label> <input type='text' name='tamanho' value=''> <br>
-                                            <label> Adicional </label> <input class='money' id='input' size='9' type='text' name='preco' value='$add'>
-                                        </center>
+                                            <label> Adicional </label> <input class='money' id='input' size='9' type='text' name='preco' value='$add'><br>";
+// |------------------------------------------------------------| Fim do primeiro echo |------------------------------------------------------------------------------------------|                 
+                                       echo" </center>
                                     </div>
                                     <div class='modal-footer'>
                                         <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>

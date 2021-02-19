@@ -86,7 +86,7 @@
                                         </div>
                                     ";
                                 }
-                                session_destroy();
+                                unset($_SESSION["cad-sabor"]);
                             }
                             
                         ?>
@@ -133,7 +133,7 @@
                                     </div>
                                 ";
                             }
-                            session_destroy();
+                            unset($_SESSION["cad-tamanho"]);
                         }
                     ?>
 
@@ -177,7 +177,7 @@
                                     </div>
                                 ";
                             }
-                            session_destroy();
+                            unset($_SESSION["cad-bebida"]);
                         }
                     ?>
 
