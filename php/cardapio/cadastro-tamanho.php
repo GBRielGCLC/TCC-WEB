@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(empty($_POST["tamanho"])){// Verificar se o campo está vazio
+    if(empty($_POST["tamanho"]) || empty($_POST["preco"])){// Verificar se o campo está vazio
         $_SESSION["cad-tamanho"] = "vazio";
     }
     else{

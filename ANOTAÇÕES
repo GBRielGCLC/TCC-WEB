@@ -1,8 +1,4 @@
-Botão excluir:
-ao clicar no botão chama a função no arquivo sweet-alert.js que pega o id e joga no url, 
-com isso o arquivo de excluir pega o id e faz o q tem que fazer
-
-
 |------------------------------------------| A Fazer |------------------------------------------|
 -Pegar tamanhos disponiveis para o sabor
+-Switch button alterar Status na pagina(provavelmente com ajax) e no BD
 -Pedido

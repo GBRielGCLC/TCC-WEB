@@ -2,13 +2,20 @@
     font-size:14px;
     font-family: 'Times New Roman', Times, serif;
 }
+body{
+    background-color: #78B678;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 .table{
     margin-left: auto;
     margin-right: auto;
     border-spacing: 3px;
     width: 90%;
 }
-td{
+td,th{
     text-align: left;
 
 }
@@ -22,4 +29,15 @@ td{
 }
 .btn-danger{
     margin: 3%;
+}
+input[type=number]{
+    width: 50px;
+}
+.geral{
+    text-align: center;
+    margin-top: 50px;
+    background-color: white;
+    width: 90%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }

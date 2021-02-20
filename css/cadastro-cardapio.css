@@ -21,9 +21,10 @@ body{
 }
 
 .principal{
+    margin-top: auto;
     background-color: white;
-    height: 100%;
     width: 90%;
+    height: 1200px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -71,7 +72,7 @@ h1{
 }
 label{
     display: inline-block;
-    width: 150px;
+    width: 80px;
     margin-top: 15px;
 }
 
@@ -89,13 +90,6 @@ label{
     font-size: 20px;
 }
 
-/* -------      Gerencia do Cardápio ------- */
-
-.gerenciar{
-    background-color: white;
-    border: 1px solid rgb(94, 92, 92);
-    width: 80%;
-    height: auto;
-    margin-top: 10%;
-    margin-bottom: 10%;  
+input[type=number]{
+    width: 50px;
 }

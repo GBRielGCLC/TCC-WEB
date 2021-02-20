@@ -23,202 +23,324 @@
 
     <div class="geral">
         
-        <h1> Tamanhos </h1>
-        <table class="table">
-        <thead>
-            <tr>
-                <th> Nome</th>
-                <th> Valor</th>
-                <th> Quantidade de Sabores</th>
-                <th> Status</th>
-                <th>  </th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-            $i=0;
-
-            include "php\conexaoBD.php";
-
-            $sql = "SELECT * FROM `tamanho` ORDER BY preco ASC";
-            $result = $conn->query($sql);   
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    $i++;
-                    $nome_tamanho = $row["nome"];
-                    $preco = str_replace(".",",",$row["preco"]);
-                    $idPizza = $row["idPizza"];
-                    $statusBD = $row["status"];
-                    $qtdeSabor = $row["qtdeSabor"];
-                    // ajeitar
-                    if(isset($nome_tamanho)){
-                        $tamanho[$i] = $nome_tamanho;
-                        $Pizza[$i] = $idPizza;
-                        
-                    }
-                    if($statusBD=="on"){
-                        $check = "checked";
-                        $status = "Ativo";
-                    }
-                    else{
-                        $check = "";
-                        $status = "Inativo";
-                    }
-                    
-                    // |------------------------------------------| Mostrar a tabela com as informações |------------------------------------------------|
-                    echo "
-
-                        <tr>
-                            <td> $nome_tamanho </td>
-                            <td> R$ $preco </td>
-                            <td> $qtdeSabor </td>
-                            <td>
-                                <div class='form-check form-switch'>
-                                    <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                    <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
-                                </div>
-                            </td>
-                            <td style='width:20%'>
-                                <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#$nome_tamanho'> Editar </button>
-                                <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Excluir </button>
-                            </td>
-                        </tr>
-                    ";
-                    // |--------------------------------------------------------------------------------------------------------------------------------|
-                    // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
-                    echo "
-                    <div class='modal fade' id='$nome_tamanho' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog modal-dialog-centered'>
-                            <div class='modal-content'>
-                                <div class='modal-header'>
-                                    <h5 class='modal-title' id='exampleModalLabel'> Alterar o tamanho $nome_tamanho </h5>
-                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                </div>  
-                                <form action='alt-tamanho'>
-                                    <div class='modal-body'>
-                                        <center>
-                                            <label> Tamanho </label> <input type='text' name='tamanho' value='$nome_tamanho'> <br>
-                                            <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'>
-                                        </center>
-                                    </div>
-                                    <div class='modal-footer'>
-                                        <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
-                                        <button type='submit' class='btn btn-success'> Confirmar </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    ";
-                    // |-----------------------------------------------------------------------------------------------------------|
-
-
-                }
-                echo "<label></label>";
-            }
-            
-        ?>
-
-        
-        </tbody>
-        </table>
-            <h1>Sabores</h1>    
+        <h1>Sabores</h1>    
+        <!--------------------------------------------------| Início da table sabor |-------------------------------------------------->
         <table class="table">
             <thead>
                 <tr>
                     <th> Nome</th>
                     <th> Adicional </th>
+                    <th> Descrição </th>
                     <th> Status</th>
                     <th>  </th>
                 </tr>
             </thead>
-        <tbody>
-        <?php
-            
+            <tbody>
+            <?php
+                
 
-            include "php\conexaoBD.php";
+                include "php\conexaoBD.php";
 
-            $sql = "SELECT * FROM `sabor` ORDER BY nome ASC";
-            $result = $conn->query($sql);   
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    $nome_sabor = $row["nome"];
-                    $descricao = $row["descricao"];
-                    $disponibilidade = $row["disponibilidade"];
-                    $idSabor = $row["idSabor"];
-                    $statusBD = $row["status"];
-                    $add = $row["precoAdd"];
+                $sql = "SELECT * FROM `sabor` ORDER BY nome ASC";
+                $result = $conn->query($sql);   
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $nome_sabor = $row["nome"];
+                        $descricao = $row["descricao"];
+                        $disponibilidade = $row["disponibilidade"];
+                        $idSabor = $row["idSabor"];
+                        $statusBD = $row["status"];
+                        $add = $row["precoAdd"];
 
-                    if($statusBD=="on"){
-                        $check = "checked";
-                        $status = "Ativo";
-                    }
-                    else{
-                        $check = "";
-                        $status = "Inativo";
-                    }
+                        if($statusBD=="on"){
+                            $check = "checked";
+                            $status = "Ativo";
+                        }
+                        else{
+                            $check = "";
+                            $status = "Inativo";
+                        }
 
-                    
-                    $dispo = explode(",", $disponibilidade);
-                    
-                    
-                    // ----------------------| Mostrar a tabela com as informações |----------------------------
-                    echo "
+                        
+                        $dispo = explode(",", $disponibilidade);
+                        
+                        
+                        // ----------------------| Mostrar a tabela com as informações |----------------------------
+                        echo "
 
-                        <tr>
-                            <td> $nome_sabor </td>
-                            <td> R$ $add </td>
-                            <td>
-                                <div class='form-check form-switch'>
-                                    <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                    <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                            <tr>
+                                <td> $nome_sabor </td>
+                                <td> R$ $add </td>
+                                <td> $descricao </td>
+                                <td>
+                                    <div class='form-check form-switch'>
+                                        <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
+                                        <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                                    </div>
+                                </td>
+                                <td style='width:20%'>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#s$idSabor'> Editar </button>
+                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_sabor(this.id)' id='$idSabor'> Excluir </button>
+                                </td>
+                            </tr>
+                        ";
+                        echo "
+                        <div class='modal fade' id='s$idSabor' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Editar o tamanho $nome_sabor </h5>
+                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                    </div>  
+                                    <form action='php/cardapio/edit-sabor?idSabor=$idSabor' method='POST'>
+                                        <div class='modal-body'>
+                                            <center>
+                                                <label> Tamanho </label> <input type='text' name='nome' value='$nome_sabor'> <br>
+                                                <label> Valor </label> <input class='money' id='input' size='9' type='text' name='add' value='$add'> <br>
+                                                <label> Descrição </label> <input type='text' name='descricao' value='$descricao'> <br>
+                                            </center>
+                                        </div>
+                                        <div class='modal-footer'>
+                                            <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
+                                            <button type='submit' class='btn btn-success'> Confirmar </button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </td>
-                            <td style='width:20%'>
-                                <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#$nome_sabor'> Editar </button>
-                                <button type='submit' class='btn btn-danger btr-sm' onclick='exc_sabor(this.id)' id='$idSabor'> Excluir </button>
-                            </td>
-                        </tr>
-                    ";
-                    // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
-                    echo "
-                    <div class='modal fade' id='$nome_sabor' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog modal-dialog-centered'>
-                            <div class='modal-content'>
-                                <div class='modal-header'>
-                                    <h5 class='modal-title' id='exampleModalLabel'> Alterar o sabor $nome_sabor </h5>
-                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                </div>  
-                                <form action='alt-sabor'>
-                                    <div class='modal-body'>
-                                        <center>
-                                            <label> Tamanho </label> <input type='text' name='tamanho' value='$nome_sabor'> <br>
-                                            <label> Descrição </label> <input type='text' name='tamanho' value='$descricao'> <br>
-                                            <label> Adicional </label> <input class='money' id='input' size='9' type='text' name='preco' value='$add'><br>";
-// |------------------------------------------------------------| Fim do primeiro echo |------------------------------------------------------------------------------------------|                 
-                                       echo" </center>
-                                    </div>
-                                    <div class='modal-footer'>
-                                        <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
-                                        <button type='submit' class='btn btn-success'> Confirmar </button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
-                    </div>
-                    ";
-                    // |-----------------------------------------------------------------------------------------------------------|
+                        ";
+                        // |-----------------------------------------------------------------------------------------------------------|
 
 
+                    }
                 }
-                echo "<label></label>";
-            }
 
-        ?>
-
-        
-        </tbody>
+            ?>
+            
+            </tbody>
         </table>
+        <!----------------------------------------------------| Fim da table sabor |---------------------------------------------------->
+
+        <h1> Tamanhos </h1>
+        <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Nome</th>
+                    <th> Valor</th>
+                    <th> Quantidade de Sabores</th>
+                    <th> Status</th>
+                    <th>  </th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+
+                include "php\conexaoBD.php";
+
+                $sql = "SELECT * FROM `tamanho` ORDER BY preco ASC";
+                $result = $conn->query($sql);   
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $tamanho = $row["nome"];
+                        $preco = str_replace(".",",",$row["preco"]);
+                        $idPizza = $row["idPizza"];
+                        $statusBD = $row["status"];
+                        $qtdeSabor = $row["qtdeSabor"];
+                        /* ajeitar
+                        if(isset($tamanho)){
+                            $tamanho[$i] = $tamanho;
+                            $Pizza[$i] = $idPizza;
+                            
+                        }*/
+                        if($statusBD=="on"){
+                            $check = "checked";
+                            $status = "Ativo";
+                        }
+                        else{
+                            $check = "";
+                            $status = "Inativo";
+                        }
+                        
+                        // |------------------------------------------| Mostrar a tabela com as informações |------------------------------------------------|
+                        echo "
+
+                            <tr>
+                                <td> $tamanho </td>
+                                <td> R$ $preco </td>
+                                <td> $qtdeSabor </td>
+                                <td>
+                                    <div class='form-check form-switch'>
+                                        <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
+                                        <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                                    </div>
+                                </td>
+                                <td style='width:20%'>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#t$idPizza'> Editar </button>
+                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Excluir </button>
+                                </td>
+                            </tr>
+                        ";
+                        // |--------------------------------------------------------------------------------------------------------------------------------|
+                        // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
+                        echo "
+                        <div class='modal fade' id='t$idPizza' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Editar o tamanho $tamanho </h5>
+                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                    </div>  
+                                    <form action='php/cardapio/edit-tamanho?idPizza=$idPizza' method='POST'>
+                                        <div class='modal-body'>
+                                            <center>
+                                                <label> Tamanho </label> <input type='text' name='tamanho' value='$tamanho'> <br>
+                                                <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
+                                                <label> Quantidade de sabores <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1'>
+                                            </center>
+                                        </div>
+                                        <div class='modal-footer'>
+                                            <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
+                                            <button type='submit' class='btn btn-success'> Confirmar </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        ";
+                        // |-----------------------------------------------------------------------------------------------------------|
+
+
+                    }
+                }
+            ?>
+            
+            </tbody>
+        </table>
+        <!--------------------------------------------------| Fim da table tamanho |-------------------------------------------------->
+            
+        <h1> Bebidas </h1>
+        <!--------------------------------------------------| Início da table bebida |-------------------------------------------------->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Nome</th>
+                    <th> Valor </th>
+                    <th> Status</th>
+                    <th>  </th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+                
+
+                include "php\conexaoBD.php";
+
+                $sql = "SELECT * FROM `bebida` ORDER BY nome ASC";
+                $result = $conn->query($sql);   
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $nome_bebida = $row["nome"];
+                        $preco = $row["preco"];
+                        $idBebida = $row["idBebida"];
+                        $statusBD = $row["status"];
+
+                        if($statusBD=="on"){
+                            $check = "checked";
+                            $status = "Ativo";
+                        }
+                        else{
+                            $check = "";
+                            $status = "Inativo";
+                        }
+                        
+                        
+                        // ----------------------| Mostrar a tabela com as informações |----------------------------
+                        echo "
+                            $idBebida   
+                            <tr>
+                                <td> $nome_bebida </td>
+                                <td> R$ $preco </td>
+                                <td>
+                                    <div class='form-check form-switch'>
+                                        <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
+                                        <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                                    </div>
+                                </td>
+                                <td style='width:20%'>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#b$idBebida'> Editar </button>
+                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_bebida(this.id)' id='$idBebida'> Excluir </button>
+                                </td>
+                            </tr>
+                        ";
+                        // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
+                        echo "
+                        <div class='modal fade' id='b$idBebida' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Editar a bebida $nome_bebida </h5>
+                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                    </div>  
+                                    <form action='php/cardapio/edit-bebida?idBebida=$idBebida' method='POST'>   
+                                        <div class='modal-body'>
+                                            <center>
+                                                <label> Nome </label> <input type='text' name='nome_bebida' value='$nome_bebida'> <br>
+                                                <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'><br>
+                                            </center>
+                                        </div>
+                                        <div class='modal-footer'>
+                                            <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
+                                            <button type='submit' class='btn btn-success'> Confirmar </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        ";
+                        // |-----------------------------------------------------------------------------------------------------------|
+
+
+                    }
+                }
+
+            ?>
+            
+            </tbody>
+        </table>
+        <!----------------------------------------------------| Fim da table bebida |---------------------------------------------------->
+
+        <?php
+            if(isset($_SESSION["edit"])){
+                if($_SESSION["edit"]=="sucesso"){
+                    echo"
+                    <script>
+                    Swal.fire(
+                        'Alterado com sucesso',
+                        '',
+                        'success'
+                    )
+                    </script>
+                    ";
+                    
+                }
+                unset($_SESSION["edit"]);
+            }
+            if (isset($_SESSION["exc"])) {
+                if ($_SESSION["exc"]=="sucesso") {
+                    echo"
+                    <script>
+                    Swal.fire(
+                        'Excluido!', 
+                        '',
+                        'success',
+                    )
+                    </script>
+                    ";
+                }
+                unset($_SESSION["exc"]);
+            }
+        ?>
     </div>
 </body>
 </html>

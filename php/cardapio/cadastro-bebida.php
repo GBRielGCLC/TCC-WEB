@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(empty($_POST["nomeBebida"])){// Verificar se o campo está vazio
+    if(empty($_POST["nomeBebida"]) || empty($_POST["preco"])){// Verificar se o campo está vazio
         $_SESSION["cad-bebida"] = "vazio";
     }
     else{

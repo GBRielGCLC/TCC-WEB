@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(empty($_POST["sabor"])){// Verificar se o campo está vazio
+    if(empty($_POST["sabor"]) || empty($_POST["desc"])){// Verificar se o campo está vazio
         $_SESSION["cad-sabor"] = "vazio";
 
     }
@@ -35,6 +35,7 @@
             }
         }
         $conn->close();
+        echo $sql;
     }
-   header("Location: ../../cadastro-cardapio.php#cad-sabor");
+    header("Location: ../../cadastro-cardapio.php#cad-sabor");
 ?>

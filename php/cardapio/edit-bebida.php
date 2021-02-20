@@ -1,19 +1,18 @@
 <?php
 
     session_start();
-    if(empty($_POST["nome"]) || empty($_POST["descricao"])){// Verificar se o campo está vazio
-        $_SESSION["edit"] = "vazio";
+    if(empty($_POST["nome_bebida"]) || empty($_POST["preco"])){// Verificar se o campo está vazio
+        $_SESSION["edit"] = "vazio";   
     }
     else{
-        $nome_sabor = $_POST["nome"];
-        $descricao = $_POST["descricao"];
-        $add = str_replace(",",".",$_POST["add"]);
-        $idSabor = $_GET["idSabor"];
+        $nome_bebida = $_POST["nome_bebida"];
+        $preco = str_replace(",",".",$_POST["preco"]);
+        $idBebida = $_GET["idBebida"];
 
 
         include "../conexaoBD.php"; 
 
-        $sql = "UPDATE sabor SET nome='$nome_sabor',precoAdd=$add, descricao='$descricao' WHERE idSabor=$idSabor";
+        $sql = "UPDATE bebida SET nome='$nome_bebida',preco=$preco WHERE idBebida=$idBebida";
         if (mysqli_query($conn, $sql)) {
             $_SESSION["edit"] = "sucesso";
             
