@@ -29,5 +29,5 @@
         $conn->close();
     }
     echo $sql;
-    header("Location: ../../gerencia-cardapio.php");
+    header("Location: ../../gerencia-cardapio.php#sabor");
 ?>

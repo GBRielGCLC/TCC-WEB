@@ -26,6 +26,7 @@
         <h1>Sabores</h1>    
         <!--------------------------------------------------| Início da table sabor |-------------------------------------------------->
         <table class="table">
+            <a id="sabor"></a>
             <thead>
                 <tr>
                     <th> Nome</th>
@@ -124,6 +125,7 @@
         <h1> Tamanhos </h1>
         <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
         <table class="table">
+            <a id="tamanho"></a>
             <thead>
                 <tr>
                     <th> Nome</th>
@@ -222,6 +224,7 @@
         <h1> Bebidas </h1>
         <!--------------------------------------------------| Início da table bebida |-------------------------------------------------->
         <table class="table">
+            <a id="bebida"></a>
             <thead>
                 <tr>
                     <th> Nome</th>
@@ -256,8 +259,7 @@
                         
                         
                         // ----------------------| Mostrar a tabela com as informações |----------------------------
-                        echo "
-                            $idBebida   
+                        echo "  
                             <tr>
                                 <td> $nome_bebida </td>
                                 <td> R$ $preco </td>

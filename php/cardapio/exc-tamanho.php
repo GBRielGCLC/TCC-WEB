@@ -11,4 +11,4 @@ if (mysqli_query($conn, $sql)) {
 }
 $conn->close();
 
-header("Location: ../../gerencia-cardapio.php");
+header("Location: ../../gerencia-cardapio.php#tamanho");
