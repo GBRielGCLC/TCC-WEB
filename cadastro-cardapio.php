@@ -43,6 +43,7 @@
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
+                                    echo "<label> Todas as Opções </label> <input type='checkbox' id='select-all'> </label>";
                                     while($row = $result->fetch_assoc()) {
                                         $nome_tamanho = $row["nome"];
                                         $idPizza = $row["idPizza"];
@@ -184,6 +185,16 @@
             </div>
 
         </div> <!-- div GERAL -->
+                        
+                <script>
+                
+                document.getElementById('select-all').onclick = function() {
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    for (var checkbox of checkboxes) {
+                    checkbox.checked = this.checked;
+                    }
+                }
+                </script>
     </body>
 
     

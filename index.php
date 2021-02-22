@@ -18,7 +18,7 @@
     
     <div id="geral">
         <div id="topo">
-            <img src="imagens/Banner.png" class="logo"/>
+           <!-- <img src="imagens/Banner.png" class="logo"/> -->
         </div>
         
         <?php

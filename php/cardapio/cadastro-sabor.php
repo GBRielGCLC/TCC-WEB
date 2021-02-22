@@ -21,7 +21,6 @@
         include "../conexaoBD.php";    
 
         $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade,precoAdd) VALUES('$nome','$desc','on','$tam','$add')";
-        echo $sql;
         
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-sabor"] = "sucesso";
@@ -37,5 +36,5 @@
         $conn->close();
         
     }
-    //header("Location: ../../cadastro-cardapio.php#cad-sabor");
+    header("Location: ../../cadastro-cardapio.php#cad-sabor");
 ?>

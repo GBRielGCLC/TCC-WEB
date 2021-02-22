@@ -96,9 +96,10 @@
                                     <form action='php/cardapio/edit-sabor?idSabor=$idSabor' method='POST'>
                                         <div class='modal-body'>
                                             <center>
-                                                <label> Tamanho </label> <input type='text' name='nome' value='$nome_sabor'> <br>
-                                                <label> Adicional </label> <input class='money' id='input' size='9' type='text' name='add' value='$add'> <br>
-                                                <label> Descrição </label> <input type='text' name='descricao' value='$descricao'> <br>
+                                                <label> Tamanho </label> <br> <input type='text' name='nome' value='$nome_sabor'> <br>
+                                                <label> Descrição </label> <br> <input type='text' name='descricao' size='45' value='$descricao'> <br>
+                                                <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$add'> <br>
+                                                
                                             </center>
                                         </div>
                                         <div class='modal-footer'>
@@ -196,9 +197,9 @@
                                     <form action='php/cardapio/edit-tamanho?idPizza=$idPizza' method='POST'>
                                         <div class='modal-body'>
 
-                                            <label> Tamanho </label> <input type='text' name='tamanho' value='$tamanho'> <br>
-                                            <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
-                                            <label> Quantidade de sabores <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
+                                            <label> Tamanho </label> <br> <input type='text' name='tamanho' value='$tamanho'> <br>
+                                            <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
+                                            <label> Quantidade de sabores </label> <br> <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
 
                                         </div>
                                         <div class='modal-footer'>
@@ -287,8 +288,8 @@
                                     <form action='php/cardapio/edit-bebida?idBebida=$idBebida' method='POST'>   
                                         <div class='modal-body'>
                                             <center>
-                                                <label> Nome </label> <input type='text' name='nome_bebida' value='$nome_bebida'> <br>
-                                                <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'><br>
+                                                <label> Nome </label> <br> <input type='text' name='nome_bebida' value='$nome_bebida'> <br>
+                                                <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'><br>
                                             </center>
                                         </div>
                                         <div class='modal-footer'>

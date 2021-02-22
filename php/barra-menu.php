@@ -11,7 +11,7 @@
             <li> <button type="button" id="pedir" data-bs-toggle="modal" data-bs-target="#pedido"> Peça Online </button> <li>
             <li> <a href="index.php">Promoções</a> <li>
             <li> <a href="cardapio.php">Cardápio</a> <li>
-            <li> <a href="#onde_encontrar">Onde Nos encontrar</a> <li> 
+            <li> <a href="index.php#onde_encontrar">Onde Nos encontrar</a> <li> 
             
             <?php
                 session_start();
