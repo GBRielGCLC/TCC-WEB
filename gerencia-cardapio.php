@@ -89,7 +89,7 @@
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
-                                        <h5 class='modal-title' id='exampleModalLabel'> Editar o tamanho $nome_sabor </h5>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Editar o sabor $nome_sabor </h5>
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                     </div>  
                                     <form action='php/cardapio/edit-sabor?idSabor=$idSabor' method='POST'>
@@ -120,7 +120,7 @@
             </tbody>
         </table>
         <!----------------------------------------------------| Fim da table sabor |---------------------------------------------------->
-
+                
         <h1> Tamanhos </h1>
         <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
         <table class="table">
@@ -193,11 +193,11 @@
                                     </div>  
                                     <form action='php/cardapio/edit-tamanho?idPizza=$idPizza' method='POST'>
                                         <div class='modal-body'>
-                                            <center>
-                                                <label> Tamanho </label> <input type='text' name='tamanho' value='$tamanho'> <br>
-                                                <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
-                                                <label> Quantidade de sabores <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1'>
-                                            </center>
+
+                                            <label> Tamanho </label> <input type='text' name='tamanho' value='$tamanho'> <br>
+                                            <label> Valor </label> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
+                                            <label> Quantidade de sabores <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
+
                                         </div>
                                         <div class='modal-footer'>
                                             <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>

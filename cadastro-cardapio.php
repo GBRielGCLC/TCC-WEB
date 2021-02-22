@@ -101,7 +101,7 @@
                     <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
 
                     <label> Tamanho </label> <input type="text" name="tamanho">
-                    <label> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1">
+                    <label> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1" max='6'>
                     <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
                     
                     <?php
