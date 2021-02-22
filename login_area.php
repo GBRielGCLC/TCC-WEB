@@ -37,7 +37,7 @@
                 </div>
 
                 <input type="submit" value="Logar" id="btn"><br>
-                <a id="recu-senha" href="#">Esqueceu a senha ?</a>
+                <a id="recu-senha" href="recusenha.php">Esqueceu a senha ?</a>
                 
                 <?php
                     if(isset($_SESSION["logou"]) && $_SESSION["logou"]==2){

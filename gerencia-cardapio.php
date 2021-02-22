@@ -97,7 +97,7 @@
                                         <div class='modal-body'>
                                             <center>
                                                 <label> Tamanho </label> <input type='text' name='nome' value='$nome_sabor'> <br>
-                                                <label> Valor </label> <input class='money' id='input' size='9' type='text' name='add' value='$add'> <br>
+                                                <label> Adicional </label> <input class='money' id='input' size='9' type='text' name='add' value='$add'> <br>
                                                 <label> Descrição </label> <input type='text' name='descricao' value='$descricao'> <br>
                                             </center>
                                         </div>
@@ -128,11 +128,11 @@
             <a id="tamanho"></a>
             <thead>
                 <tr>
-                    <th> Nome</th>
-                    <th> Valor</th>
-                    <th> Quantidade de Sabores</th>
-                    <th> Status</th>
-                    <th>  </th>
+                    <th class="col"> Nome</th>
+                    <th class="col"> Valor</th>
+                    <th class="col"> Quantidade de Sabores</th>
+                    <th class="col"> Status</th>
+                    <th class="col">  </th>
                 </tr>
             </thead>
             <tbody>

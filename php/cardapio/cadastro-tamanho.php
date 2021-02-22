@@ -11,6 +11,7 @@
         include "../conexaoBD.php"; 
 
         $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`qtdeSabor`,`status`) VALUES ('$tamanho',$preco,$qtdeSabor,'on')";
+        
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-tamanho"] = "sucesso";
             

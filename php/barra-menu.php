@@ -17,7 +17,13 @@
                 session_start();
                 if(isset($_SESSION["logou"])){
                     if($_SESSION["logou"]==1){
-                        echo "<li><a href=''> Relatorios </a></li>";
+
+                        //echo "<script> alert($_SESSION['adm'])</script>"; 
+                        
+                        if($_SESSION["adm"]==true){
+                        
+                            echo "<li><a href=''> Relatorios </a></li>";
+                        }
                         echo "
                             <li>
                                 <div class='dropdown'>
