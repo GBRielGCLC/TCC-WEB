@@ -19,6 +19,9 @@ body{
 hr{
     color: black;
 }
+.td{
+    text-align: right;
+}
 
 .form-check-input{  
     background-color: #dc3444;

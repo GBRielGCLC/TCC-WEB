@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/barra-menu.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
 
@@ -9,10 +10,9 @@
         <ul class="links_menu">
             <li> <a href="index.php">Home</a> <li>
             <li> <button type="button" id="pedir" data-bs-toggle="modal" data-bs-target="#pedido"> Peça Online </button> <li>
-            <li> <a href="index.php">Promoções</a> <li>
             <li> <a href="cardapio.php">Cardápio</a> <li>
-            <li> <a href="index.php#onde_encontrar">Onde Nos encontrar</a> <li> 
-            
+            <li> <a href="index.php#onde_encontrar">Onde Nos encontrar</a> <li>
+
             <?php
                 session_start();
                 if(isset($_SESSION["logou"])){
@@ -23,6 +23,7 @@
                         if($_SESSION["adm"]==true){
                         
                             echo "<li><a href=''> Relatorios </a></li>";
+                            echo "<li><a href='atendente.php'> Incluir Atendente </a></li>";
                         }
                         echo "
                             <li>
@@ -32,8 +33,8 @@
                                     </a>
 
                                     <ul class='dropdown-menu' aria-labelledby='cardapio' style='background-color: #8B0000;'>
-                                        <li><a href='gerencia-cardapio.php' class='dropdown-item' style='color: white;'> Gerenciar </a></li>
-                                        <li><a href='cadastro-cardapio.php' class='dropdown-item' style='color:white;'> Cadastrar </a></li>
+                                        <li><a href='gerencia-cardapio.php' class='dropdown-item' style='color: white;'> Atualizar Cardápio </a></li>
+                                        <li><a href='cadastro-cardapio.php' class='dropdown-item' style='color:white;'> Incluir Item </a></li>
                                         
                                     </ul>
                                 </div>
@@ -45,13 +46,9 @@
                         echo "<a style='float:right' href='login_area.php'> Iniciar </a>";
                     }
                 }
-                else{
-                    echo "<a style='float:right' href='login_area.php'> Iniciar </a>";
-                }
                 
                 
             ?>
-
             </ul>
     </nav>
     <!--------------------------------------------------------------------------| Modal |-------------------------------------------------------------------------->
@@ -75,5 +72,6 @@
         </div>
     </div>
     <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 </body>
 </html>

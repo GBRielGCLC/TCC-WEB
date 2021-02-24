@@ -80,8 +80,8 @@
                                     </div>
                                 </td>
                                 <td style='width:20%'>
-                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#s$idSabor'> Editar </button>
-                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_sabor(this.id)' id='$idSabor'> Excluir </button>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#s$idSabor'> Alterar </button>
+                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_sabor(this.id)' id='$idSabor'> Desativar </button>
                                 </td>
                             </tr>
                         ";
@@ -90,13 +90,13 @@
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
-                                        <h5 class='modal-title' id='exampleModalLabel'> Editar o sabor $nome_sabor </h5>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Alterar o sabor $nome_sabor </h5>
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                     </div>  
                                     <form action='php/cardapio/edit-sabor?idSabor=$idSabor' method='POST'>
                                         <div class='modal-body'>
                                             <center>
-                                                <label> Tamanho </label> <br> <input type='text' name='nome' value='$nome_sabor'> <br>
+                                                <label> Nome </label> <br> <input type='text' name='nome' value='$nome_sabor'> <br>
                                                 <label> Descrição </label> <br> <input type='text' name='descricao' size='45' value='$descricao'> <br>
                                                 <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$add'> <br>
                                                 
@@ -129,7 +129,7 @@
             <a id="tamanho"></a>
             <thead>
                 <tr>
-                    <th class="col"> Nome</th>
+                    <th class="col"> Descrição </th>
                     <th class="col"> Valor</th>
                     <th class="col"> Quantidade de Sabores</th>
                     <th class="col"> Status</th>
@@ -179,8 +179,8 @@
                                     </div>
                                 </td>
                                 <td style='width:20%'>
-                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#t$idPizza'> Editar </button>
-                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Excluir </button>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#t$idPizza'> Alterar </button>
+                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Desativar </button>
                                 </td>
                             </tr>
                         ";
@@ -191,13 +191,13 @@
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
-                                        <h5 class='modal-title' id='exampleModalLabel'> Editar o tamanho $tamanho </h5>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Alterar o tamanho $tamanho </h5>
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                     </div>  
                                     <form action='php/cardapio/edit-tamanho?idPizza=$idPizza' method='POST'>
                                         <div class='modal-body'>
 
-                                            <label> Tamanho </label> <br> <input type='text' name='tamanho' value='$tamanho'> <br>
+                                            <label> Descrição </label> <br> <input type='text' name='tamanho' value='$tamanho'> <br>
                                             <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
                                             <label> Quantidade de sabores </label> <br> <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
 
@@ -228,10 +228,10 @@
             <a id="bebida"></a>
             <thead>
                 <tr>
-                    <th> Nome</th>
-                    <th> Valor </th>
-                    <th> Status</th>
-                    <th>  </th>
+                    <th class="col-3"> Descrição </th>
+                    <th class="col-1"> Valor </th>
+                    <th class="col-2"> Status</th>
+                    <th class="col-2">  </th>
                 </tr>
             </thead>
             <tbody>
@@ -262,8 +262,8 @@
                         // ----------------------| Mostrar a tabela com as informações |----------------------------
                         echo "  
                             <tr>
-                                <td> $nome_bebida </td>
-                                <td> R$ $preco </td>
+                                <td style='text-align: left;'> $nome_bebida </td>
+                                <td class='td'> R$ $preco </td>
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
                                         <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
@@ -271,8 +271,8 @@
                                     </div>
                                 </td>
                                 <td style='width:20%'>
-                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#b$idBebida'> Editar </button>
-                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_bebida(this.id)' id='$idBebida'> Excluir </button>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#b$idBebida'> Alterar </button>
+                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_bebida(this.id)' id='$idBebida'> Desativar </button>
                                 </td>
                             </tr>
                         ";
@@ -282,13 +282,13 @@
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
-                                        <h5 class='modal-title' id='exampleModalLabel'> Editar a bebida $nome_bebida </h5>
+                                        <h5 class='modal-title' id='exampleModalLabel'> Alterar a bebida $nome_bebida </h5>
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                     </div>  
                                     <form action='php/cardapio/edit-bebida?idBebida=$idBebida' method='POST'>   
                                         <div class='modal-body'>
                                             <center>
-                                                <label> Nome </label> <br> <input type='text' name='nome_bebida' value='$nome_bebida'> <br>
+                                                <label> Descrição </label> <br> <input type='text' name='nome_bebida' value='$nome_bebida'> <br>
                                                 <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'><br>
                                             </center>
                                         </div>
