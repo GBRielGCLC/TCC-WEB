@@ -15,6 +15,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <!----------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------| Sweet Alert |------------------------------------------------>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <!---------------------------------------------------------------------------------------------------------------->
         <link rel="stylesheet" type="text/css" href="css/cadastro-cardapio.css">
     </head>
 
@@ -63,18 +66,24 @@
                             if(isset($_SESSION["cad-sabor"])){
                                 if($_SESSION["cad-sabor"]=="vazio"){
                                     echo"
-                                        <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
-                                            <strong>Preencha todos os campos!</strong>
-                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                        </div>
+                                    <script>
+                                    Swal.fire(
+                                        'Preencha Todos os Campos',
+                                        '',
+                                        'warning'
+                                    )
+                                    </script>
                                     ";
                                 }
                                 if($_SESSION["cad-sabor"]=="sucesso"){
                                     echo"
-                                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                            <strong> Cadastro Realizado com Sucesso!!</strong>.
-                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                        </div>
+                                    <script>
+                                    Swal.fire(
+                                        'Cadastrado com sucesso',
+                                        '',
+                                        'success'
+                                    )
+                                    </script>
                                     ";
                                 }
                                 if($_SESSION["cad-sabor"]=="duplicado"){
@@ -110,20 +119,27 @@
                         if(isset($_SESSION["cad-tamanho"])){
                             if($_SESSION["cad-tamanho"]=="vazio"){
                                 echo"
-                                    <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
-                                        <strong>Preencha todos os campos!</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                <script>
+                                Swal.fire(
+                                    'Preencha Todos os Campos',
+                                    '',
+                                    'warning'
+                                )
+                                </script>
                                 ";
                             }
                             if($_SESSION["cad-tamanho"]=="sucesso"){
                                 echo"
-                                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                        <strong> Cadastro Realizado com Sucesso!!</strong>.
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                <script>
+                                Swal.fire(
+                                    'Cadastrado com sucesso',
+                                    '',
+                                    'success'
+                                )
+                                </script>
                                 ";
                             }
+                            // ajeitar para verificar se já existe cadastraddo
                             if($_SESSION["cad-tamanho"]=="duplicado"){
                                 echo"
                                     <div class='alert alert-danger alert-dismissible fade show' role='alert'>
@@ -154,20 +170,28 @@
                         if(isset($_SESSION["cad-bebida"])){
                             if($_SESSION["cad-bebida"]=="vazio"){
                                 echo"
-                                    <div class='alert alert-warning alert-dismissible fade show' role='alert' style=' background-color: #8B000;'>
-                                        <strong>Preencha todos os campos!</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                <script>
+                                Swal.fire(
+                                    'Preencha Todos os Campos',
+                                    '',
+                                    'warning'
+                                )
+                                </script>
                                 ";
                             }
                             if($_SESSION["cad-bebida"]=="sucesso"){
                                 echo"
-                                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                        <strong> Cadastro Realizado com Sucesso!!</strong>.
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                <script>
+                                Swal.fire(
+                                    'Cadastrado com sucesso',
+                                    '',
+                                    'success'
+                                )
+                                </script>
                                 ";
                             }
+                            
+                            // ajeitar
                             if($_SESSION["cad-bebida"]=="duplicado"){
                                 echo"
                                     <div class='alert alert-danger alert-dismissible fade show' role='alert'>

@@ -265,7 +265,7 @@
                                 <td> $nome_bebida </td>
                                 <td> R$ $preco </td>
                                 <td>
-                                    <div class='form-check form-switch'>
+                                    <div style='align-items: center;' class='form-check form-switch'>
                                         <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
                                         <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
                                     </div>
@@ -348,4 +348,4 @@
 </body>
 </html>
 
-<script src="js/sweet-alert.js"></script>
+        <script src="js/sweet-alert.js"></script>
