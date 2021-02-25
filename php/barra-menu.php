@@ -15,12 +15,14 @@
 
             <?php
                 session_start();
-                if(isset($_SESSION["logou"])){
-                    if($_SESSION["logou"]==1){
+                if(isset($_SESSION["logou"]) && isset($_SESSION["nome"])){
+                    if($_SESSION["logou"]=="sim"){
 
-                        //echo "<script> alert($_SESSION['adm'])</script>"; 
+                       // echo "<script> alert($_SESSION['adm'])</script>"; 
                         
                         if($_SESSION["adm"]==true){
+                        
+                            $nome = $_SESSION["nome"];
                         
                             echo "<li><a href=''> Relatorios </a></li>";
                             echo "<li><a href='atendente.php'> Incluir Atendente </a></li>";
@@ -40,17 +42,32 @@
                                 </div>
                             </li>
                             
-                            <li><a style='float:right' href='php/logout.php'> Sair </a></li>
+                            
+                            <li> 
+                                <div class='dropdown'>
+                                    <a style='float:right;' href='#' role='button' id='perfil' data-bs-toggle='dropdown' aria-expanded='false'>
+                                        $nome <i class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i> </i>
+                                    </a>
+
+                                    <ul class='dropdown-menu' aria-labelledby='perfil' style='background-color: #8B0000; min-width:0px; padding:0;'>
+                                        <li><a href='/tcc-web/php/logout.php' class='dropdown-item' style='color: white; text-align: right;'> Sair </a>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
                         ";
                     }else{
                         echo "<a style='float:right' href='login_area.php'> Iniciar </a>";
                     }
                 }
-                
+                else{
+                    echo "<a style='float:right' href='login_area.php'> Iniciar </a>";
+                }
                 
             ?>
             </ul>
     </nav>
+    
     <!--------------------------------------------------------------------------| Modal |-------------------------------------------------------------------------->
     <div class="modal fade" id="pedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

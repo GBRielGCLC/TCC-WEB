@@ -32,7 +32,7 @@
                     <th> Nome</th>
                     <th> Adicional </th>
                     <th> Descrição </th>
-                    <th> Status</th>
+                    <th> Cardápio </th>
                     <th>  </th>
                 </tr>
             </thead>

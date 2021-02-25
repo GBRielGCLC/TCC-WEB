@@ -27,7 +27,7 @@
         <h1 style="margin-top:30px;">Entrar</h1>
             
             <form method="post" action="php/checar_login.php">
-    
+
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="login">
                     <label for="floatingInput">Email</label>
@@ -42,17 +42,31 @@
                 <a id="recu-senha" href="recusenha.php">Esqueceu a senha ?</a>
                 
                 <?php
-                    if(isset($_SESSION["logou"]) && $_SESSION["logou"]==2){
-                        echo"
-                        <script>
-                        Swal.fire(
-                            'Email ou senha incorretos!',
-                            '',
-                            'error'
-                        )
-                        </script>
-                        ";
+                    if(isset($_SESSION["check"])){
+                        if($_SESSION["check"]=="vazio"){
+                            echo"
+                            <script>
+                            Swal.fire(
+                                'Preencha Todos os Campos',
+                                '',
+                                'warning'
+                            )
+                            </script>
+                            ";
+                        }
+                        if($_SESSION["check"]=="nao"){
+                            echo"
+                                <script>
+                                Swal.fire(
+                                    'Email ou senha incorretos!',
+                                    '',
+                                    'error'
+                                )
+                                </script>
+                            ";
+                        }
                     }
+                    unset($_SESSION["check"]);
                 ?>
                
             </form>
