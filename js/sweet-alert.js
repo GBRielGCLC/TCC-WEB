@@ -20,7 +20,7 @@ function exc_tamanho(clicked_id) {
         ).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
-                'Excluido!', 
+                'Desativado!', 
                 '',
                 'success',
                 window.location.href = 'php/cardapio/exc-tamanho.php?idPizza='+clicked_id,
@@ -51,7 +51,7 @@ function exc_sabor(clicked_id) {
         ).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
-                'Excluido!', 
+                'Desativado!', 
                 '',
                 'success',
                 window.location.href = 'php/cardapio/exc-sabor.php?idSabor='+clicked_id,
@@ -82,7 +82,7 @@ function exc_bebida(clicked_id) {
         ).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
-                'Excluido!', 
+                'Desativado!', 
                 '',
                 'success',
                 window.location.href = 'php/cardapio/exc-bebida.php?idBebida='+clicked_id,
