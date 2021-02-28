@@ -8,6 +8,7 @@
 
     <nav class = "menu">
         <ul class="links_menu">
+            
             <li> <a href="index.php">Home</a> <li>
             <li> <button type="button" id="pedir" data-bs-toggle="modal" data-bs-target="#pedido"> Peça Online </button> <li>
             <li> <a href="cardapio.php">Cardápio</a> <li>

@@ -1,0 +1,20 @@
+.footer {  
+    background-color: #3a3f46;
+    color: white;
+    height: 150px;
+
+ }
+
+ .logo{
+     height: 50px;
+ }
+ .text{
+     float: right;
+     margin-right: 50%;
+     margin-top: 2%;
+     
+    }
+h1{
+    color: white;
+    font-size: 20px;
+}

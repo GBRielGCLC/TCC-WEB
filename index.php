@@ -42,7 +42,7 @@
 
     </div><!--Fim da DIV geral -->
     
-
+    <?php include("php/rodape.php"); ?>
 
 </body>
 </html>
