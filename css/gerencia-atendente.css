@@ -1,7 +1,8 @@
-*{
-    font-size: 18px;
-    
+body{
+    background: #78B678;
 }
+
+
 .geral{
     
     width: 100vw;
@@ -11,34 +12,18 @@
     justify-content: center;
     align-items: center;
     background-color:  #78B678;
+    text-align: center;
+    align-items: center;
     
 }
-
-.login, .atendente{
-    width: 400px;
-    justify-content: center;
-    align-items: center;
-
-/*    Efeito de Sombra      */
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: center;
-}
-
 .form-floating{
     width:80%;
     transform: translate(-50%);
     margin-left: 50%;
 }
-
+#senha{
+    margin-bottom: 5%;
+}
 #btn{
     background-color: red;
     width: 150px;
@@ -56,14 +41,24 @@
     color: #fff;
     transition: 1s;
 }
-#alerta{
-    width: 100%;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+
+
+.login{
+
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+
+/*    Efeito de Sombra      */
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
 }
-#senha{
-    margin-top: 5% ;
-}
-
-
-

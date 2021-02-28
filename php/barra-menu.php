@@ -16,14 +16,14 @@
             <?php
                 session_start();
                 if(isset($_SESSION["logou"]) && isset($_SESSION["nome"])){
+                    
                     if($_SESSION["logou"]=="sim"){
-
+                        $nome = $_SESSION["nome"];
                        // echo "<script> alert($_SESSION['adm'])</script>"; 
                         
                         if($_SESSION["adm"]==true){
-                        
-                            $nome = $_SESSION["nome"];
-                        
+                            
+                            
                             echo "<li><a href=''> Relatorios </a></li>";
                             echo "<li><a href='atendente.php'> Incluir Atendente </a></li>";
                         }
@@ -50,7 +50,8 @@
                                     </a>
 
                                     <ul class='dropdown-menu' aria-labelledby='perfil' style='background-color: #8B0000; min-width:0px; padding:0;'>
-                                        <li><a href='/tcc-web/php/logout.php' class='dropdown-item' style='color: white; text-align: right;'> Sair </a>
+                                    <li><a href='gerencia-atendente' class='dropdown-item' style='color: white; text-align: right;'> Minha Conta </a>
+                                    <li><a href='/tcc-web/php/logout.php' class='dropdown-item' style='color: white; text-align: right;'> Sair </a>
                                         
                                     </ul>
                                 </div>

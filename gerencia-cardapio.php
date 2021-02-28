@@ -70,6 +70,11 @@
 
                             
                             $dispo = explode(",", $disponibilidade);
+                            //Transformando em REAL BRASILEIRO
+                            $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                            $brl = $formatter->formatCurrency($add, 'BRL');
+
+                            
                             
                             
                             // ----------------------| Mostrar a tabela com as informações |----------------------------
@@ -77,7 +82,7 @@
 
                                 <tr>
                                     <td> $nome_sabor </td>
-                                    <td> R$ $add </td>
+                                    <td> $brl </td>
                                     <td> $descricao </td>
                                     <td>
                                         <div class='form-check form-switch'>
@@ -104,7 +109,7 @@
                                                 <center>
                                                     <label> Nome </label> <br> <input type='text' name='nome' value='$nome_sabor'> <br>
                                                     <label> Descrição </label> <br> <input type='text' name='descricao' size='45' value='$descricao'> <br>
-                                                    <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$add'> <br>
+                                                    <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$brl'> <br>
                                                     
                                                 </center>
                                             </div>
@@ -170,13 +175,17 @@
                             $check = "";
                             $status = "Inativo";
                         }
+
+                        //Transformando em REAL BRASILEIRO
+                        $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                        $brl = $formatter->formatCurrency($preco, 'BRL');
                         
                         // |------------------------------------------| Mostrar a tabela com as informações |------------------------------------------------|
                         echo "
 
                             <tr>
                                 <td> $tamanho </td>
-                                <td> R$ $preco </td>
+                                <td> $brl </td>
                                 <td> $qtdeSabor </td>
                                 <td>
                                     <div class='form-check form-switch'>
@@ -204,7 +213,7 @@
                                         <div class='modal-body'>
 
                                             <label> Descrição </label> <br> <input type='text' name='tamanho' value='$tamanho'> <br>
-                                            <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'> <br>
+                                            <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$brl'> <br>
                                             <label> Quantidade de sabores </label> <br> <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
 
                                         </div>
@@ -263,13 +272,16 @@
                             $check = "";
                             $status = "Inativo";
                         }
+                        //Transformando em REAL BRASILEIRO
+                        $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                        $brl = $formatter->formatCurrency($preco, 'BRL');
                         
                         
                         // ----------------------| Mostrar a tabela com as informações |----------------------------
                         echo "  
                             <tr>
                                 <td style='text-align: left;'> $nome_bebida </td>
-                                <td class='td'> R$ $preco </td>
+                                <td class='td'> $brl </td>
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
                                         <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
@@ -295,7 +307,7 @@
                                         <div class='modal-body'>
                                             <center>
                                                 <label> Descrição </label> <br> <input type='text' name='nome_bebida' value='$nome_bebida'> <br>
-                                                <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$preco'><br>
+                                                <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$brl'><br>
                                             </center>
                                         </div>
                                         <div class='modal-footer'>
@@ -308,8 +320,8 @@
                         </div>
                         ";
                         // |-----------------------------------------------------------------------------------------------------------|
-
-
+                          
+                        
                     }
                 }
 
