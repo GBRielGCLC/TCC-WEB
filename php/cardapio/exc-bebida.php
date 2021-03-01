@@ -3,7 +3,8 @@ $idBebida = $_GET["idBebida"];
 
 include "../conexaoBD.php";
 
-$sql = "DELETE FROM `bebida` WHERE idBebida=$idBebida";
+$sql = "UPDATE `bebida` SET `status`='off' WHERE `idBebida` = $idBebida";
+
 $result = $conn->query($sql);
 if (mysqli_query($conn, $sql)) {
     session_start();

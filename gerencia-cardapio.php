@@ -56,21 +56,23 @@
                             $descricao = $row["descricao"];
                             $disponibilidade = $row["disponibilidade"];
                             $idSabor = $row["idSabor"];
-                            $statusBD = $row["status"];
+                            $cardapioBD = $row["cardapio"];
                             $add = $row["precoAdd"];
+                            $status = $row["status"];
 
-                            if($statusBD=="on"){
+                            if($cardapioBD=="on"){
                                 $check = "checked";
-                                $status = "Ativo";
+                                $cardapio = "Visível";
                             }
                             else{
                                 $check = "";
-                                $status = "Inativo";
+                                $cardapio = "Oculto";
                             }
 
                             
                             $dispo = explode(",", $disponibilidade);
                             //Transformando em REAL BRASILEIRO
+                            if($status=="on"){
                             $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                             $brl = $formatter->formatCurrency($add, 'BRL');
 
@@ -88,7 +90,7 @@
                                         <div class='form-check form-switch'>
                                             <label class='form-check-label' for='flexSwitchCheckDefault'>
                                             <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                            $status </label>
+                                            $cardapio </label>
                                         </div>
                                     </td>
                                     <td style='width:20%'>
@@ -128,6 +130,7 @@
 
                         }
                     }
+                    }
 
                 ?>
             
@@ -160,23 +163,26 @@
                         $tamanho = $row["nome"];
                         $preco = str_replace(".",",",$row["preco"]);
                         $idPizza = $row["idPizza"];
-                        $statusBD = $row["status"];
+                        $cardapioBD = $row["cardapio"];
                         $qtdeSabor = $row["qtdeSabor"];
+                        $status = $row["status"];
                         /* ajeitar
                         if(isset($tamanho)){
                             $tamanho[$i] = $tamanho;
                             $Pizza[$i] = $idPizza;
                             
                         }*/
-                        if($statusBD=="on"){
+                        if($cardapioBD=="on"){
                             $check = "checked";
-                            $status = "Ativo";
+                            $cardapio = "Visível";
                         }
                         else{
                             $check = "";
-                            $status = "Inativo";
+                            $cardapio = "Oculto";
                         }
 
+                        //////////////// testte para verificar se foi excluido /////////////////
+                        if($status=="on"){
                         //Transformando em REAL BRASILEIRO
                         $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                         $brl = $formatter->formatCurrency($preco, 'BRL');
@@ -192,7 +198,7 @@
                                     <div class='form-check form-switch'>
                                         <label class='form-check-label' for='flexSwitchCheckDefault'>
                                         <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                         $status </label>
+                                         $cardapio </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
@@ -232,7 +238,7 @@
 
 
                     }
-                }
+                }}
             ?>
             
             </tbody>
@@ -264,16 +270,18 @@
                         $nome_bebida = $row["nome"];
                         $preco = $row["preco"];
                         $idBebida = $row["idBebida"];
-                        $statusBD = $row["status"];
+                        $cardapioBD = $row["cardapio"];
+                        $status = $row["status"];
 
-                        if($statusBD=="on"){
+                        if($cardapioBD=="on"){
                             $check = "checked";
-                            $status = "Ativo";
+                            $cardapio = "Visível";
                         }
                         else{
                             $check = "";
-                            $status = "Inativo";
+                            $cardapio = "Oculto";
                         }
+                        if($status=="on"){
                         //Transformando em REAL BRASILEIRO
                         $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                         $brl = $formatter->formatCurrency($preco, 'BRL');
@@ -288,7 +296,7 @@
                                     <div style='align-items: center;' class='form-check form-switch'>
                                     <label class='form-check-label' for='flexSwitchCheckDefault'>    
                                     <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                    $status </label>
+                                    $cardapio </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
@@ -326,7 +334,7 @@
                           
                         
                     }
-                }
+                }}
 
             ?>
             
