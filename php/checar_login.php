@@ -19,8 +19,10 @@ else{
         $email = $row["e-mail"];
         $senha = $row["senha"];
         $_SESSION["adm"] = $row["adm"];
-
+        
+        $_SESSION["idPerfil"] = $row["idPerfil"];
         $_SESSION["nome"] = $row["nome"];
+        $_SESSION["e-mail"] = $email;
         $_SESSION["logou"] = "sim";
 
         header("Location: ../index.php");

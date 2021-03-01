@@ -28,8 +28,8 @@
     <?php include "php/barra-menu.php"; ?>
 
     <div class="geral">
-        
-        <h1>Sabores</h1>    
+        <div class="tabelas">
+        <h1>Sabores de Pizzas</h1>    
         <!--------------------------------------------------| Início da table sabor |-------------------------------------------------->
         <a id="sabor"></a>
         <table class="tabela">
@@ -82,12 +82,13 @@
 
                                 <tr>
                                     <td> $nome_sabor </td>
-                                    <td> $brl </td>
+                                    <td clas='preco'> $brl </td>
                                     <td> $descricao </td>
                                     <td>
                                         <div class='form-check form-switch'>
+                                            <label class='form-check-label' for='flexSwitchCheckDefault'>
                                             <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                            <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                                            $status </label>
                                         </div>
                                     </td>
                                     <td style='width:20%'>
@@ -134,17 +135,17 @@
         </table>
         <!----------------------------------------------------| Fim da table sabor |---------------------------------------------------->
 
-        <h1> Tamanhos </h1>
+        <h1> Tamanhos de Pizzas</h1>
         <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
         <table class="tabela">
             <a id="tamanho"></a>
             <thead>
                 <tr>
-                    <th class="col"> Descrição </th>
-                    <th class="col"> Valor</th>
-                    <th class="col"> Quantidade de Sabores</th>
-                    <th class="col"> Status</th>
-                    <th class="col">  </th>
+                    <th class="col-3"> Descrição </th>
+                    <th class="col-1"> Valor</th>
+                    <th class="col-2"> Quantidade de Sabores</th>
+                    <th class="col-2"> Status</th>
+                    <th class="col-3">  </th>
                 </tr>
             </thead>
             <tbody>
@@ -185,12 +186,13 @@
 
                             <tr>
                                 <td> $tamanho </td>
-                                <td> $brl </td>
+                                <td class='preco'> $brl </td>
                                 <td> $qtdeSabor </td>
                                 <td>
                                     <div class='form-check form-switch'>
+                                        <label class='form-check-label' for='flexSwitchCheckDefault'>
                                         <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                        <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                                         $status </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
@@ -243,10 +245,10 @@
             <a id="bebida"></a>
             <thead>
                 <tr>
-                    <th class="col-3"> Descrição </th>
+                    <th class="col-2"> Descrição </th>
                     <th class="col-1"> Valor </th>
                     <th class="col-2"> Status</th>
-                    <th class="col-2">  </th>
+                    <th class="col-3">  </th>
                 </tr>
             </thead>
             <tbody>
@@ -281,11 +283,12 @@
                         echo "  
                             <tr>
                                 <td style='text-align: left;'> $nome_bebida </td>
-                                <td class='td'> $brl </td>
+                                <td class='preco'> $brl </td>
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
-                                        <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                        <label class='form-check-label' for='flexSwitchCheckDefault'> $status </label>
+                                    <label class='form-check-label' for='flexSwitchCheckDefault'>    
+                                    <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
+                                    $status </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
@@ -362,6 +365,7 @@
                 unset($_SESSION["exc"]);
             }
         ?>
+        </div>
     </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -27,28 +27,23 @@
     <div class="geral">
     
             <div class="login">
-            <h1 style="margin-top:30px;">Atualizar Senha</h1><br>  
+            <h1 style="margin-top:30px;"> Atualizar dados </h1><br>  
             
-               <form method="post" action="php/atendente/atualizar-atendente.php">
+               <form method="post" action="php/atendente/atualizar-conta-atendente.php">
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                <input type="text" class="form-control" id="floatingInput" value="<?=$_SESSION['nome']; ?>" placeholder name="nome">
+                    <label for="floatingInput">Nome</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" value="<?=$_SESSION['e-mail']; ?>" placeholder="name@example.com" name="email">
                     <label for="floatingInput">Email</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" id="senha" class="form-control" id="floatingPassword" placeholder="Password" name="senhaAtual">
-                    <label for="floatingPassword">Senha Atual</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" id="senha" class="form-control" id="floatingPassword" placeholder="Password" name="novaSenha">
-                    <label for="floatingPassword">Nova Senha</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" id="senha" class="form-control" id="floatingPassword" placeholder="Password" name="repeteSenha">
-                    <label for="floatingPassword">Repita a Nova Senha</label>
                 </div>
 
                 <input type="submit" value="Atualizar" id="btn"><br>
+                
+
                 
                 <?php
                     if (isset($_SESSION["cad-atendente"])) {
@@ -63,39 +58,20 @@
                             </script>
                             ";
                         }
-                        if($_SESSION["cad-atendente"] == "diferente"){
-                            echo"
-                            <script>
-                            Swal.fire(
-                                'As Senhas Estão Diferentes!',
-                                '',
-                                'danger'
-                            )
-                            </script>
-                            ";
-                        }
+
                         if($_SESSION["cad-atendente"] == "sucesso"){
                             echo"
                             <script>
                             Swal.fire(
-                                'Cadastrado !', 
+                                'Atualizado !', 
                                 '',
                                 'success',
                             )
                             </script>
                             ";
                         }
-                        if($_SESSION["cad-atendente"] == "SenhaAtualErrada"){
-                            echo"
-                            <script>
-                            Swal.fire(
-                                'Senha Atual Errada !', 
-                                '',
-                                'danger',
-                            )
-                            </script>
-                            ";
-                        }
+
+            
     
                     }
                     unset($_SESSION["cad-atendente"]);
