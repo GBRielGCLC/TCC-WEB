@@ -14,7 +14,7 @@
               
         
            <div class="container">
-              <h1>Tamanhos</h1>
+              <h1>Sabores</h1>
                 <?php
                     
                     include "php\conexaoBD.php";
@@ -35,16 +35,17 @@
 
                             echo"
                             
-                          <div class='card' style='width: 18rem;'>
+                          <div class='card' style='width: 18rem; margin-left: 3%; margin-top: 3%; float: left;'>
                             <img src='imagens/pizza' class='card-img-top' alt='...'>
                             <div class='card-body'>
                               <h5 class='card-title'>$nome</h5>
-                              <p class='card-text'>$desc.</p>
+                              <hr>
+                              <p class='card-text'>$desc</p>
                               <a href='#' class='btn btn-primary'>Go somewhere</a>
                             </div>
                           </div>";
                         
-                     /* ------------------ FIM DO TAMANHO ---------------------*/ 
+                     /* ------------------ FIM DO Sabpres ---------------------*/ 
 
 
                     }

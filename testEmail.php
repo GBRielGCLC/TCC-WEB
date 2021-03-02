@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>email</title>
+    <title>teste Filtro gg</title>
 </head>
 <body>
 
-  <!--  
-    
-    $destinatario = "gabriel.gclc@gmail.com";
-    $assunto = "teste";
-    $mensagem = " <h1> teste </h1>
-                <p> ainda testando </p>";
-    $cabecalho = "
-                  MIME-Version: 1.0\r\n
-                  Content-type: text/html; charset=iso-8859-1\r\n";
-    mail ($destinatario, $assunto, $mensagem, $cabecalho);
-    echo "e-mail enviado com sucesso";
-    
--->
+    <label> <input type="checkbox"  id="a"> a </label>
+    <label> <input type="checkbox"  id="b"> b </label>
+    <label> <input type="checkbox"  id="c"> c </label>      
 
-        <?php
-        // the message
-        $msg = "First line of text\nSecond line of text";
 
-        // use wordwrap() if lines are longer than 70 characters
-        $msg = wordwrap($msg,70);
+                <div class='card' style='width: 18rem; margin-left: 3%;background-color: grey; margin-top: 3%; float: left;'>
+                            <img src='' class='card-img-top' alt='...'>
+                            <div class='card-body'>
+                              <h5 class='card-title'>1</h5>
+                              <hr>
+                              <p class='card-text'>desc.</p>
+                              <a href='#' class='btn btn-primary'>Go somewhere</a>
+                            </div>
+                          </div>
 
-        // send email
-        mail("lucas1.stoly@gmail.com","My subject",$msg);
-        ?> 
-    
 </body>
+
+  <script>
+
+  document.getElementById('select-all').onclick = function() {
+
+
+  </script>
+
+
 </html>
