@@ -31,10 +31,6 @@
             
                <form method="post" action="php/atendente/atualizar-senha-atendente.php">
 
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-                    <label for="floatingInput">Email</label>
-                </div>
                 <div class="form-floating">
                     <input type="password" id="senha" class="form-control" id="floatingPassword" placeholder="Password" name="senhaAtual">
                     <label for="floatingPassword">Senha Atual</label>
@@ -69,7 +65,7 @@
                             Swal.fire(
                                 'As Senhas Estão Diferentes!',
                                 '',
-                                'danger'
+                                'error',
                             )
                             </script>
                             ";
@@ -78,7 +74,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'Cadastrado !', 
+                                'Atualizado !', 
                                 '',
                                 'success',
                             )
@@ -91,7 +87,7 @@
                             Swal.fire(
                                 'Senha Atual Errada !', 
                                 '',
-                                'danger',
+                                'error',
                             )
                             </script>
                             ";

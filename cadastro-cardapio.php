@@ -23,6 +23,7 @@
 
             <?php include ('php/barra-menu.php') ?>
     <body>
+        <div class  "body"></div>
         <div class="principal">  
             <!--Para Cadastrar -->
             <div class="cadastro_sabor">
@@ -157,8 +158,8 @@
             </div>
 
             <div class="cadastro_sabor">
-                <h1>Bebida</h1>
-                <a href=""></a>
+                <h1>Cadastro de Bebida</h1>
+                
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-bebida.php">
                     <a id="cad-bebida"><!-- Trazer de volta para aqui --></a>
 
@@ -192,14 +193,6 @@
                             }
                             
                             // ajeitar
-                            if($_SESSION["cad-bebida"]=="duplicado"){
-                                echo"
-                                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                                        <strong>Já está cadastrado !</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
-                                ";
-                            }
                             unset($_SESSION["cad-bebida"]);
                         }
                     ?>
@@ -209,21 +202,20 @@
             </div>
 
         </div> <!-- div GERAL -->
-                        
-                <script>
-                
-                document.getElementById('select-all').onclick = function() {
-                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                    for (var checkbox of checkboxes) {
-                    checkbox.checked = this.checked;
-                    }
-                }
-                </script>
+
+        <?php include "rodape.html"; ?>      
     </body>
 
-    
-
 </html>
+<script>
+
+    document.getElementById('select-all').onclick = function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    }
+</script>
 
 
 

@@ -19,51 +19,38 @@
                     
                     include "php\conexaoBD.php";
 
-                    $sql = "SELECT * FROM `tamanho` WHERE status='on'";
+                    $sql = "SELECT * FROM `sabor` WHERE status='on'";
                     
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            $nome_tamanho = $row["nome"];
-                            $preco = str_replace(".",",",$row["preco"]);
+                            $nome = $row["nome"];
+                            $desc = $row["descricao"];/*
                             $qtdeSabor = $row["qtdeSabor"];
                             $idPizza = $row["idPizza"];
-                            $statusBD = $row["status"];
+                            $statusBD = $row["status"];*/
+                
+
 
                             echo"
-                            <div class='tamanhos'><img class='img' src='imagens/logo2.png' >
                             
-                                <h3>$nome_tamanho</h3>
-
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class='col-2'> Valor</th>
-                                            <th class='col-3'> Quantidade de Fatias </th>
-                                            <th class='col-3'> Quantidade de Sabores </th>
-                                        </tr>
-                                        </thead>           
-                                        
-                                        <tbody>
-                                        <tr>
-                                            <td>$preco</td>
-                                            <td>0</td>
-                                            <td>$qtdeSabor</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                          <div class='card' style='width: 18rem;'>
+                            <img src='imagens/pizza' class='card-img-top' alt='...'>
+                            <div class='card-body'>
+                              <h5 class='card-title'>$nome</h5>
+                              <p class='card-text'>$desc.</p>
+                              <a href='#' class='btn btn-primary'>Go somewhere</a>
                             </div>
-                            ";  
-                        }
-                    } /* ------------------ FIM DO TAMANHO ---------------------*/
+                          </div>";
+                        
+                     /* ------------------ FIM DO TAMANHO ---------------------*/ 
 
 
-                    
+                    }
+                }  
                 ?>
-                
-            <div>   
-
+             </div>   
+                    
 </body>
 </html>
-

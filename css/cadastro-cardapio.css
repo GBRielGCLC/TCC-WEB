@@ -7,21 +7,15 @@
     color:#333;
     
 }
-html,body{
-    position: relative;
-    height: 100%;
-    margin: 0px;
-}
 
 body{
     background-color: #78B678;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .principal{
     margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
     width: 90%;
     height: 1500px;
@@ -37,6 +31,7 @@ h1{
 
 .cadastro_sabor{
     margin-top: 60px;
+    margin-bottom: 10px;
     background-color: white;
     border: 1px solid #5e5c5c;
     width: 80%;

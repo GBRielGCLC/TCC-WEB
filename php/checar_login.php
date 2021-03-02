@@ -23,6 +23,7 @@ else{
         $_SESSION["idPerfil"] = $row["idPerfil"];
         $_SESSION["nome"] = $row["nome"];
         $_SESSION["e-mail"] = $email;
+        $_SESSION["senha"] = $senha;
         $_SESSION["logou"] = "sim";
 
         header("Location: ../index.php");

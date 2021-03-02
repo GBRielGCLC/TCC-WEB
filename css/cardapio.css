@@ -1,14 +1,9 @@
-.sabores{
-    margin-left: auto;
-    margin-right: auto  ;
-    width: 90%;
-}
 /*  */
 body{
     background-color: #78B678;
 }
 h1{
-    margin-top: 5%; 
+    margin-top:auto;
     margin-left: auto;
     margin-right: auto;     
 }
@@ -24,7 +19,7 @@ h1{
     margin-top: 2%;
 }
 
-h3{
+h4{
     float: left;
     transform: translateY(80%);
 }
@@ -43,15 +38,16 @@ table{
     float: left;
     height: 100%;
 }
-/* ANTIGO CARD*/
+/*
+ ANTIGO CARD
 .tamanhos{
     border-radius: 10px;
 
-    /*-------------------------------| Sombra |-------------------------------*/
+    
     -webkit-box-shadow: 8px 8px 17px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow:    8px 8px 17px 0px rgba(0, 0, 0, 1);
     box-shadow:         8px 8px 17px 0px rgba(0, 0, 0, 1);
-    /*------------------------------------------------------------------------*/
+    
 }
 
 .div_nome{
@@ -72,3 +68,4 @@ table{
     font-size: 24px;
     
 }
+*/

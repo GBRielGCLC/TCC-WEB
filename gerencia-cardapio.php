@@ -26,7 +26,7 @@
 <body>
     
     <?php include "php/barra-menu.php"; ?>
-
+    
     <div class="geral">
         <div class="tabelas">
         <h1>Sabores de Pizzas</h1>    
@@ -88,7 +88,7 @@
                                     <td> $descricao </td>
                                     <td>
                                         <div class='form-check form-switch'>
-                                            <label class='form-check-label' for='flexSwitchCheckDefault'>
+                                            <label class='form-check-label' >
                                             <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
                                             $cardapio </label>
                                         </div>
@@ -196,7 +196,7 @@
                                 <td> $qtdeSabor </td>
                                 <td>
                                     <div class='form-check form-switch'>
-                                        <label class='form-check-label' for='flexSwitchCheckDefault'>
+                                        <label class='form-check-label' >
                                         <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
                                          $cardapio </label>
                                     </div>
@@ -294,9 +294,10 @@
                                 <td class='preco'> $brl </td>
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
-                                    <label class='form-check-label' for='flexSwitchCheckDefault'>    
-                                    <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                    $cardapio </label>
+                                        <label class='form-check-label' >    
+                                            <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
+                                            <span> $cardapio </span>
+                                        </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
@@ -332,7 +333,6 @@
                         ";
                         // |-----------------------------------------------------------------------------------------------------------|
                           
-                        
                     }
                 }}
 
@@ -375,6 +375,27 @@
         ?>
         </div>
     </div>
+        
+    <footer> <?php include "rodape.html"; ?> </footer>
 </body>
 </html>
 
+<script>
+$(document).ready(function(){
+
+    $(function () {
+        $('label').click(function () {
+            var id = $(this).attr('id');
+            $('#'+id).click(function () {
+                var checked = $('#i'+id, this).is(':checked');
+                $('#s'+id, this).text(checked ? 'Visível' : 'Oculto');
+            });
+        });
+    });
+
+});
+
+$(document).ready(function () {
+    $.noConflict();
+});
+</script>

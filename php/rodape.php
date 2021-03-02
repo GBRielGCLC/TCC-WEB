@@ -17,7 +17,7 @@
              <img src="imagens/logo3a.png" margin=0>
 
         <div class="text">
-            <h1>Inicio</h1>
+            <h4>Inicio</h4>
             <a href="index.php">home</a>
             
            

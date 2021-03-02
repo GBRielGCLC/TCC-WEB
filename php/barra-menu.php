@@ -51,7 +51,7 @@
                                     </a>
 
                                     <ul class='dropdown-menu' aria-labelledby='perfil' style='background-color: #8B0000; min-width:0px; padding:0;'>
-                                        <li><a href='atualizar-senha-atendente' class='dropdown-item' id='dropdown-item' style='text-align: right;'> Atualizar Senha </a>
+                                        <li><a href='atualizar-senha.php' class='dropdown-item' id='dropdown-item' style='text-align: right;'> Atualizar Senha </a>
                                         <li><a href='conta.php' class='dropdown-item' id='dropdown-item' style='text-align: right;'> Minha Conta </a>
                                         <li><a href='/tcc-web/php/logout.php' class='dropdown-item' id='dropdown-item' style='text-align: right;'> Sair </a>
                                         

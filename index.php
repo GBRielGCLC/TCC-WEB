@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="item">
-                            <img src="imagens\Pizzaria do Careca (1).png" style="width:100%;">
+                            <img src="imagens\Grande.png" style="width:100%;">
                         </div>
                         
                         <div class="item">
@@ -72,7 +72,7 @@
 
     </div><!--Fim da DIV geral -->
     
-    <?php include("footer-with-button-logo.html"); ?>
+    <?php include("rodape.html"); ?>
 
 </body>
 </html>
