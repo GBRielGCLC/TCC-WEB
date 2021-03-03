@@ -67,7 +67,7 @@ h1{
 }
 label{
     display: inline-block;
-    width: 80px;
+    width: 120px;
     margin-top: 15px;
 }
 
@@ -75,8 +75,7 @@ label{
     width: 50%;
     transform: translate(-50%);
     margin-left: 50%; 
-    align-items: center;  
-    text-align: center;
+   
     border: #5e5c5c dashed 1px;
 }
 
@@ -84,7 +83,12 @@ label{
     width: 80%;
     font-size: 20px;
 }
-
+input[type=checkbox]{
+    margin-left: 5%;
+}
 input[type=number]{
     width: 50px;
+}
+.labelTam{
+    width: 180px;
 }

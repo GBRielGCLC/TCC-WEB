@@ -29,114 +29,6 @@
     
     <div class="geral">
         <div class="tabelas">
-        <h1>Sabores de Pizzas</h1>    
-        <!--------------------------------------------------| Início da table sabor |-------------------------------------------------->
-        <a id="sabor"></a>
-        <table class="tabela">
-            <thead>
-                <tr>
-                    <th> Nome</th>
-                    <th> Adicional </th>
-                    <th> Descrição </th>
-                    <th> Cardápio </th>
-                    <th>  </th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    
-
-                    include "php\conexaoBD.php";
-
-                    $sql = "SELECT * FROM `sabor` ORDER BY nome ASC";
-                    $result = $conn->query($sql);   
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            $nome_sabor = $row["nome"];
-                            $descricao = $row["descricao"];
-                            $disponibilidade = $row["disponibilidade"];
-                            $idSabor = $row["idSabor"];
-                            $cardapioBD = $row["cardapio"];
-                            $add = $row["precoAdd"];
-                            $status = $row["status"];
-
-                            if($cardapioBD=="on"){
-                                $check = "checked";
-                                $cardapio = "Visível";
-                            }
-                            else{
-                                $check = "";
-                                $cardapio = "Oculto";
-                            }
-
-                            
-                            $dispo = explode(",", $disponibilidade);
-                            //Transformando em REAL BRASILEIRO
-                            if($status=="on"){
-                            $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-                            $brl = $formatter->formatCurrency($add, 'BRL');
-
-                            
-                            
-                            
-                            // ----------------------| Mostrar a tabela com as informações |----------------------------
-                            echo "
-
-                                <tr>
-                                    <td> $nome_sabor </td>
-                                    <td clas='preco'> $brl </td>
-                                    <td> $descricao </td>
-                                    <td>
-                                        <div class='form-check form-switch'>
-                                            <label class='form-check-label' >
-                                            <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                            $cardapio </label>
-                                        </div>
-                                    </td>
-                                    <td style='width:20%'>
-                                        <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#s$idSabor'> Alterar </button>
-                                        <button type='submit' class='btn btn-danger btr-sm' onclick='exc_sabor(this.id)' id='$idSabor'> Desativar </button>
-                                    </td>
-                                </tr>
-                            ";
-                            echo "
-                            <div class='modal fade' id='s$idSabor' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                <div class='modal-dialog modal-dialog-centered'>
-                                    <div class='modal-content'>
-                                        <div class='modal-header'>
-                                            <h5 class='modal-title' id='exampleModalLabel'> Alterar o sabor $nome_sabor </h5>
-                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                        </div>  
-                                        <form action='php/cardapio/edit-sabor?idSabor=$idSabor' method='POST'>
-                                            <div class='modal-body'>
-                                                <center>
-                                                    <label> Nome </label> <br> <input type='text' name='nome' value='$nome_sabor'> <br>
-                                                    <label> Descrição </label> <br> <input type='text' name='descricao' size='45' value='$descricao'> <br>
-                                                    <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$brl'> <br>
-                                                    
-                                                </center>
-                                            </div>
-                                            <div class='modal-footer'>
-                                                <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
-                                                <button type='submit' class='btn btn-success'> Confirmar </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            ";
-                            // |-----------------------------------------------------------------------------------------------------------|
-
-
-                        }
-                    }
-                    }
-
-                ?>
-            
-            </tbody>
-        </table>
-        <!----------------------------------------------------| Fim da table sabor |---------------------------------------------------->
 
         <h1> Tamanhos de Pizzas</h1>
         <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
@@ -156,8 +48,9 @@
 
                 include "php\conexaoBD.php";
 
-                $sql = "SELECT * FROM `tamanho` ORDER BY preco ASC";
+                $sql = "SELECT * FROM `tamanho` WHERE `status` = 'on' ORDER BY preco ASC";
                 $result = $conn->query($sql);   
+                $i=0;
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $tamanho = $row["nome"];
@@ -166,12 +59,13 @@
                         $cardapioBD = $row["cardapio"];
                         $qtdeSabor = $row["qtdeSabor"];
                         $status = $row["status"];
-                        /* ajeitar
+                        
                         if(isset($tamanho)){
-                            $tamanho[$i] = $tamanho;
-                            $Pizza[$i] = $idPizza;
-                            
-                        }*/
+                            $tamanhos[$i] = $tamanho;
+                            $Pizzas[$i] = $idPizza;
+                            $i++;
+                            $auxi=$i;       
+                        }
                         if($cardapioBD=="on"){
                             $check = "checked";
                             $cardapio = "Visível";
@@ -182,7 +76,7 @@
                         }
 
                         //////////////// testte para verificar se foi excluido /////////////////
-                        if($status=="on"){
+                        
                         //Transformando em REAL BRASILEIRO
                         $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                         $brl = $formatter->formatCurrency($preco, 'BRL');
@@ -196,13 +90,14 @@
                                 <td> $qtdeSabor </td>
                                 <td>
                                     <div class='form-check form-switch'>
-                                        <label class='form-check-label' >
-                                        <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                         $cardapio </label>
+                                        <label class='form-check-label' id='$idPizza'>
+                                            <input class='form-check-input' type='checkbox' id='i$idPizza' $check>
+                                            <span id='s$idPizza'> $cardapio  </span>
+                                        </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
-                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#t$idPizza'> Alterar </button>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#m$idPizza'> Alterar </button>
                                     <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Desativar </button>
                                 </td>
                             </tr>
@@ -210,7 +105,7 @@
                         // |--------------------------------------------------------------------------------------------------------------------------------|
                         // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
                         echo "
-                        <div class='modal fade' id='t$idPizza' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal fade' id='m$idPizza' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
@@ -237,7 +132,7 @@
                         // |-----------------------------------------------------------------------------------------------------------|
 
 
-                    }
+                    
                 }}
             ?>
             
@@ -245,6 +140,141 @@
         </table>
         <!--------------------------------------------------| Fim da table tamanho |-------------------------------------------------->
             
+
+
+        <!----------------------------------->
+        <h1>Sabores de Pizzas</h1>    
+        <!--------------------------------------------------| Início da table sabor |-------------------------------------------------->
+        <a id="sabor"></a>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th> Nome</th>
+                    <th> Adicional </th>
+                    <th> Descrição </th>
+                    <th> Cardápio </th>
+                    <th>  </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    
+
+                    include "php\conexaoBD.php";
+
+                    $sql = "SELECT * FROM `sabor` WHERE `status` = 'on' ORDER BY nome ASC";
+                    $result = $conn->query($sql);   
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $nome_sabor = $row["nome"];
+                            $descricao = $row["descricao"];
+                            $disponibilidade = $row["disponibilidade"];
+                            $idSabor = $row["idSabor"];
+                            $cardapioBD = $row["cardapio"];
+                            $add = $row["precoAdd"];
+                            $status = $row["status"];
+                            
+                            if($cardapioBD=="on"){
+                                $check = "checked";
+                                $cardapio = "Visível";
+                            }
+                            else{
+                                $check = "";
+                                $cardapio = "Oculto";
+                            }
+
+                            
+                            $dispo = explode(",", $disponibilidade);
+                            //Transformando em REAL BRASILEIRO
+                            
+                            $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                            $brl = $formatter->formatCurrency($add, 'BRL');
+
+                            
+                            
+                            
+                            // ----------------------| Mostrar a tabela com as informações |----------------------------
+                            echo "
+
+                                <tr>
+                                    <td> $nome_sabor </td>
+                                    <td clas='preco'> $brl </td>
+                                    <td> $descricao </td>
+                                    <td>
+                                        <div class='form-check form-switch'>
+                                            <label class='form-check-label' id='$idSabor'>    
+                                                <input class='form-check-input' type='checkbox' id='i$idSabor' $check>
+                                                <span id='s$idSabor'> $cardapio </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style='width:20%'>
+                                        <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#m$idSabor'> Alterar </button>
+                                        <button type='submit' class='btn btn-danger btr-sm' onclick='exc_sabor(this.id)' id='$idSabor'> Desativar </button>
+                                    </td>
+                                </tr>
+                            ";
+                            echo "
+                            <div class='modal fade' id='m$idSabor' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                        <div class='modal-header'>
+                                            <h5 class='modal-title' id='exampleModalLabel'> Alterar o sabor $nome_sabor </h5>
+                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                        </div>  
+                                        <form action='php/cardapio/edit-sabor?idSabor=$idSabor' method='POST'>
+                                            <div class='modal-body'>
+                                                <center>
+                                                    <label> Nome </label> <br> <input type='text' name='nome' value='$nome_sabor'> <br>
+                                                    <label> Descrição </label> <br> <input type='text' name='descricao' size='45' value='$descricao'> <br>
+                                                    <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$brl'> <br>";
+
+                                                 /*   
+                                                   
+                                                    for ($i=0; $i < $auxi; $i++){
+                                                       
+                                                        
+                                                        for ($j=0; $j < $auxi; $j++) { 
+                                                        
+                                                            if($dispo[$i]==$idPizza[$j]){
+                                                                $check = "checked";
+                                                                break;
+                                                            }else{
+                                                                $check = "";
+                                                                
+                                                            }
+                                                        }
+                                                        echo "<label> $tamanhos[$i] </label> <input type='checkbox' name='tamanho[]' $check value='$Pizzas[$i]'>";
+                                                    }   
+                                                    
+
+*/
+                                                    
+                                               echo" </center>
+                                            </div>
+                                            <div class='modal-footer'>
+                                                <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
+                                                <button type='submit' class='btn btn-success'> Confirmar </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            ";
+                            // |-----------------------------------------------------------------------------------------------------------|
+
+
+                        
+                    }
+                    }
+
+                ?>
+            
+            </tbody>
+        </table>
+        <!----------------------------------------------------| Fim da table sabor |---------------------------------------------------->
+
+        
         <h1> Bebidas </h1>
         <!--------------------------------------------------| Início da table bebida |-------------------------------------------------->
         <table class="tabela">
@@ -294,21 +324,21 @@
                                 <td class='preco'> $brl </td>
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
-                                        <label class='form-check-label' >    
-                                            <input class='form-check-input' type='checkbox' id='flexSwitchCheckDefault' $check>
-                                            <span> $cardapio </span>
+                                        <label class='form-check-label' id='$idBebida'>    
+                                            <input class='form-check-input' type='checkbox' id='i$idBebida' $check>
+                                            <span id='s$idBebida'> $cardapio </span>
                                         </label>
                                     </div>
                                 </td>
                                 <td style='width:20%'>
-                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#b$idBebida'> Alterar </button>
+                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#m$idBebida'> Alterar </button>
                                     <button type='submit' class='btn btn-danger btr-sm' onclick='exc_bebida(this.id)' id='$idBebida'> Desativar </button>
                                 </td>
                             </tr>
                         ";
                         // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
                         echo "
-                        <div class='modal fade' id='b$idBebida' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal fade' id='m$idBebida' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                             <div class='modal-dialog modal-dialog-centered'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
@@ -382,13 +412,19 @@
 
 <script>
 $(document).ready(function(){
-
     $(function () {
         $('label').click(function () {
             var id = $(this).attr('id');
             $('#'+id).click(function () {
-                var checked = $('#i'+id, this).is(':checked');
-                $('#s'+id, this).text(checked ? 'Visível' : 'Oculto');
+                checked = $('#i'+id, this).is(':checked');
+                var cardapio;
+                if(checked==true){
+                    cardapio = "Visível";
+                }
+                else{
+                    cardapio = "Oculto"
+                }
+                $('#s'+id, this).text(checked ? cardapio : cardapio);
             });
         });
     });

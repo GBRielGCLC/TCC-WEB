@@ -23,7 +23,6 @@
 
             <?php include ('php/barra-menu.php') ?>
     <body>
-        <div class  "body"></div>
         <div class="principal">  
             <!--Para Cadastrar -->
             <div class="cadastro_sabor">
@@ -31,12 +30,12 @@
                     <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-sabor.php">
                         <a id="cad-sabor"></a>
 
-                        <label> Sabor </label> <input type="text" name="sabor">
-                        <label> Valor Adicional </label> <input class="money" id="input" size="9" type="text" name="add"><br>
-                        <label> Descrição </label> <input type="text" name="desc" size="51"> 
+                        <label> Sabor </label> <input type="text" name="sabor" size="51"> <br>
+                        <label> Descrição </label> <input type="text" name="desc" size="51"> <br>
+                        <label> Valor Adicional </label> <input class="money" id="input" size="6" type="text" name="add"> 
                         <hr>
                         <h2 class="texto-tamanho"> Tamanho que o sabor está disponível </h2> 
-
+                    
                         <div class="lista_tamanhos">
 
                             <?php
@@ -45,14 +44,14 @@
 
                                 $sql = "SELECT nome,idPizza FROM `tamanho` ORDER BY preco ASC";
                                 $result = $conn->query($sql);
-
+                                
                                 if ($result->num_rows > 0) {
-                                    echo "<label> Todas as Opções </label> <input type='checkbox' id='select-all'> </label>";
+                                    echo "<label style='margin-bottom: 2%'> <input type='checkbox' id='select-all'> Todas as Opções </label> <br>";
                                     while($row = $result->fetch_assoc()) {
                                         $nome_tamanho = $row["nome"];
                                         $idPizza = $row["idPizza"];
                                         
-                                        echo "<label> $nome_tamanho </label> <input type='checkbox' name='tamanho[]' value='$idPizza'>";
+                                        echo "<label> <input type='checkbox' name='tamanho[]' value='$idPizza'> $nome_tamanho </label>";
                                     }
                                     echo "<label></label>";
 
@@ -111,9 +110,9 @@
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-tamanho.php">
                     <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
 
-                    <label> Tamanho </label> <input type="text" name="tamanho">
-                    <label> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1" max='6'>
-                    <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
+                    <label class="labelTam" > Tamanho </label> <input type="text" size="51" name="tamanho"> <br>
+                    <label class="labelTam"> Preço </label> <input class="money" id="input" size="6" type="text" name="preco"> <br>  
+                    <label class="labelTam"> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1" max='6'> <br> <br>
                     
                     <?php
 
@@ -163,8 +162,8 @@
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-bebida.php">
                     <a id="cad-bebida"><!-- Trazer de volta para aqui --></a>
 
-                    <label> Nome </label> <input type="text" name="nomeBebida">
-                    <label> Preço </label> <input class="money" id="input" size="9" type="text" name="preco"> <br><br> 
+                    <label> Nome </label> <input type="text" size="51" name="nomeBebida"> <br>
+                    <label> Preço </label> <input class="money" id="input" size="6" type="text" name="preco"> <br> <br> 
                     
                     <?php
                         //alterar

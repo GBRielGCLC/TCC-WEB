@@ -13,8 +13,8 @@
 <body>
 
 <?php
-$cardapio = "Ocultar";
-$check = "";
+$cardapio = "Exibir";
+$check = "checked";
 echo "
 <div class='form-check form-switch'>
   <label class='form-check-label' for='flexSwitchCheckDefault' id='1'>
@@ -42,18 +42,25 @@ echo "
 </html>
 
 <script>
-$(document).ready(function(){
+  $(document).ready(function(){
 
-$(function () {
-  $('label').click(function () {
-    var id = $(this).attr('id');
-    
-    $('#'+id).click(function () {
-      var checked = $('#i'+id, this).is(':checked');
-      $('#s'+id, this).text(checked ? 'Exibir' : 'Ocultar');
+  $(function () {
+    $('label').click(function () {
+      var id = $(this).attr('id');
+      
+      $('#'+id).click(function () {
+        var checked = $('#i'+id, this).is(':checked');
+        var cardapio;
+        if(checked==true){
+          cardapio = "Exibir";
+        }
+        else{
+          cardapio = "Ocultar"
+        }
+        $('#s'+id, this).text(cardapio ? cardapio : cardapio);
+      });
     });
   });
-});
 
-});
-</script>
+  });
+  </script>
