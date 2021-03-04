@@ -207,13 +207,22 @@
 
 </html>
 <script>
-
+    // Checar todas as checkbox
     document.getElementById('select-all').onclick = function() {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for (var checkbox of checkboxes) {
             checkbox.checked = this.checked;
         }
     }
+
+    //Deschecar select all quando alguma for descelecionada
+    $("input[type=checkbox]").click(function() {
+        if (!$(this).prop("checked")) {
+            $("#select-all").prop("checked", false);
+        }
+    });
+
+    
 </script>
 
 

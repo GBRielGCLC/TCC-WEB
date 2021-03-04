@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <!------------------------------------------------| Bootstrap |------------------------------------------------>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <!----------------------------------------------------------------------------------------------------------------->
+  <link rel="stylesheet" href="css/cardapio.css">
 </head>
 <?php include "php/barra-menu.php"; ?>    
 <body>
@@ -15,7 +16,7 @@
       
       include "php\conexaoBD.php";
 
-      $sql = "SELECT * FROM `tamanho` WHERE status='on'";
+      $sql = "SELECT * FROM `tamanho` WHERE status='on' order by preco ASC";
       
       $result = $conn->query($sql);
 
@@ -34,7 +35,7 @@
 
       include "php\conexaoBD.php";
 
-      $sql = "SELECT * FROM `sabor` WHERE status='on'";
+      $sql = "SELECT * FROM `sabor` WHERE status='on' order by nome";
       
       
 echo "<div class='accordion' id='accordionExample'>";
@@ -43,11 +44,11 @@ echo "<div class='accordion' id='accordionExample'>";
         echo"
         <div class='accordion-item'>
           <h2 class='accordion-header' id='headingOne'>
-            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#a$auxTamanho' aria-expanded='true' aria-controls='a$auxTamanho'>
+            <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#a$auxTamanho' aria-expanded='true' aria-controls='a$auxTamanho'>
               $pizza[$auxTamanho] - Até $qtdeSabor[$auxTamanho] sabores.
             </button>
           </h2>
-          <div id='a$auxTamanho' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
+          <div id='a$auxTamanho' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
             <div class='accordion-body'>";
 
             $result = $conn->query($sql);
