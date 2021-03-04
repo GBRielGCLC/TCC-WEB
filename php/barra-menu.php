@@ -30,6 +30,9 @@
                             echo "<li><a href='atendente.php'> Incluir Atendente </a></li>";
                         }
                         echo "
+
+                            <li> <a href='aceitar-pedido.php'> Aceitar Pedido </a>
+                            </li>
                             <li>
                                 <div class='dropdown'>
                                     <a href='#' role='button' id='cardapio' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -85,8 +88,8 @@
                 </div>  
                 <div class="modal-body">
                     <center>
-                        <a href="" class="btn btn-primary"> Entrega </a>
-                        <a href="" class="btn btn-primary"> Retirada </a>
+                        <a href="pedido.php" class="btn btn-primary"> Entrega </a>
+                        <a href="pedido.php" class="btn btn-primary"> Retirada </a>
                     </center>
                 </div>
                 <div class="modal-footer">

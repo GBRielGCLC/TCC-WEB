@@ -1,0 +1,30 @@
+    /* C�DIGO DE VISUALIZAR O CARRINHO - SESS�O  */
+    session_start();
+    
+    echo "<B>Conte�do do carrinho de compras</B><BR>";
+    
+    // Verifica se o carrinho n�o est� vazio
+    if(isset($_SESSION["CARRINHO"]))
+    {
+      $total = 0.00;
+      $products = array_keys($_SESSION["CARRINHO"]);
+      foreach($products as $productId)
+      {
+      	$sql = "SELECT * FROM PRODUTOS WHERE ID = ".$productId;
+      	$result = mysql_query($sql);
+      	if($tbl = mysql_fetch_array($result))
+      	{
+      	 $qtd = $_SESSION["CARRINHO"][$productId];
+      	 $value = $qtd * $tbl["VALOR"];
+      	 $total += $value;
+      	 echo $qtd."x ".$tbl["PRODUTO"]." (Unit�rio R$ ".$tbl["VALOR"].
+              ") (Total R$ ".$value.") <A href='?action=remover&id=".
+              $productId."'>Remover</A><BR>";
+      	}
+      }
+      echo "Valor total da compra: R$ ".$total;
+    }
+    else
+      echo "N�o h� produtos no carrinho.";
+      
+    echo "<BR><A href='?'>Retornar � lista de produtos</A>";
