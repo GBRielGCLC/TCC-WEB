@@ -80,8 +80,7 @@ echo "<div class='accordion' id='accordionExample'>";
                   //$dispo = explode(",", $disponibilidade);
                   for ($i=0; $i < sizeof($dispo); $i++) { 
                     if($idPizza[$auxTamanho]==$dispo[$i]){
-                      echo" <strong> $sabor[$qtdeSaborCad]  </strong> - $desc[$qtdeSaborCad] <br> <hr>";
-                      //echo"$sabor[$qtdeSaborCad] <br>";
+                      echo"$sabor[$qtdeSaborCad] <br>";
                     }
                   }
                   $qtdeSaborCad++;

@@ -54,7 +54,8 @@
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $tamanho = $row["nome"];
-                        $preco = str_replace(".",",",$row["preco"]);
+                        //$preco = str_replace(".",",",$row["preco"]);
+                        $preco = $row["preco"];
                         $idPizza = $row["idPizza"];
                         $cardapioBD = $row["cardapio"];
                         $qtdeSabor = $row["qtdeSabor"];

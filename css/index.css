@@ -108,6 +108,13 @@
     width: 100%;
     color:white;  
   }
+  #banner{
+    background-color: transparent; 
+    border: none;
+  }
+  #setinha:hover{
+    background-color: transparent; 
+  }
 
   /*------------------| Fim do Conteudo do Site |------------------------*/
   /*---------------------------------------------------------------------*/
