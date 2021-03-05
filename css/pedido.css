@@ -37,7 +37,7 @@ body{
     height: 30px;   
 }/*
 .btn1:hover{
-    background-color: #78B678;
+    background-color: #78B678; 
     color: black;
 }*//*
 p{
@@ -51,6 +51,7 @@ p{
     color: black;
     margin-bottom: 5%;
 }
+
 h2{
     font-size: 20px;
     margin-left: 5%;

@@ -3,12 +3,10 @@
 
     <head>
         <meta charset="UTF-8">
-        <script src="js\cardapio.js"></script>
         <title>Cardápio</title>
-
         <!------------------------------------------------| Campo monetário |------------------------------------------------>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>´
         <script src="js/money.js"></script>
         <!------------------------------------------------------------------------------------------------------------------->
         <!------------------------------------------------| Bootstrap |------------------------------------------------>
@@ -33,6 +31,7 @@
                         <label> Sabor </label> <input type="text" name="sabor" size="51"> <br>
                         <label> Descrição </label> <input type="text" name="desc" size="51"> <br>
                         <label> Valor Adicional </label> <input class="money" id="input" size="6" type="text" name="add"> 
+                        
                         <hr>
                         <h2 class="texto-tamanho"> Tamanho que o sabor está disponível </h2> 
                     
@@ -42,7 +41,7 @@
 
                                 include "php\conexaoBD.php";
 
-                                $sql = "SELECT nome,idPizza FROM `tamanho` ORDER BY preco ASC";
+                                $sql = "SELECT nome,idPizza FROM `tamanho` Where `status` ='on' ORDER BY preco ASC";
                                 $result = $conn->query($sql);
                                 
                                 if ($result->num_rows > 0) {
@@ -111,7 +110,7 @@
                     <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
 
                     <label class="labelTam" > Tamanho </label> <input type="text" size="51" name="tamanho"> <br>
-                    <label class="labelTam"> Preço </label> <input class="money" id="input" size="6" type="text" name="preco"> <br>  
+                    
                     <label class="labelTam"> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1" max='6'> <br> <br>
                     
                     <?php
@@ -163,7 +162,7 @@
                     <a id="cad-bebida"><!-- Trazer de volta para aqui --></a>
 
                     <label> Nome </label> <input type="text" size="51" name="nomeBebida"> <br>
-                    <label> Preço </label> <input class="money" id="input" size="6" type="text" name="preco"> <br> <br> 
+                    <label> Preço </label> <input type="text" name="preco" class="money" size="6">
                     
                     <?php
                         //alterar
@@ -221,9 +220,6 @@
             $("#select-all").prop("checked", false);
         }
     });
-
     
 </script>
-
-
 

@@ -9,12 +9,10 @@
     <nav class = "menu">
         <ul class="links_menu">
             
-            <li> <a href="index.php">Home</a> <li>
-            <li> <button type="button" id="pedir" data-bs-toggle="modal" data-bs-target="#pedido"> Peça Online </button> <li>
+            <li> <a href="index.php"> Início </a> <li>
+            <li> <a href="pedido.php"> Peça Online </a> <li>
             <li> <a href="cardapio.php">Cardápio</a> <li>
             
-            
-
             <?php
                 session_start();
                 if(isset($_SESSION["logou"]) && isset($_SESSION["nome"])){
@@ -78,27 +76,7 @@
             </ul>
     </nav>
     
-    <!--------------------------------------------------------------------------| Modal |-------------------------------------------------------------------------->
-    <div class="modal fade" id="pedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Escolha o destino</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>  
-                <div class="modal-body">
-                    <center>
-                        <a href="pedido.php" class="btn btn-primary"> Entrega </a>
-                        <a href="pedido.php" class="btn btn-primary"> Retirada </a>
-                    </center>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    
 
 </body>
 </html>

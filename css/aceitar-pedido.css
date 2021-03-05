@@ -1,0 +1,11 @@
+body{
+    background-color: #78B678;
+}
+.geral{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 80%;
+    height: 100%;
+}

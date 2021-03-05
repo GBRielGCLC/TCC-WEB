@@ -25,6 +25,7 @@
         <form method="post">    
             <div class="pedir">
             <h1 class="titulo">Pedir</h1>
+                <!--<h4>Pizzas</h4>-->
             
                 <?php
 
@@ -120,11 +121,44 @@
                 ?>
             </div>
         </form>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carrinho" id="btnCarrinho">
-        <i class="fa fa-shopping-cart"></i>  Carrinho
-    </button>
-    </div>
+        
+        <div class="pedir2">
+            <h1> Bebidas </h1>
+            <?php
+                include "php\conexaoBD.php";
+
+                $sql = "SELECT * FROM `bebida` Where `status`='on' ORDER BY nome ASC";
+                $result = $conn->query($sql);   
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $nome_bebida = $row["nome"];
+                        $preco = $row["preco"];
+                        $idBebida = $row["idBebida"];
+                        $cardapioBD = $row["cardapio"];
+                        $status = $row["status"];
+
+                        $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                        $brl = $formatter->formatCurrency($preco, 'BRL');
+                        
+                        
+                        echo"
+                        <hr><h2> <strong> $nome_bebida - </strong> Por $brl </h2> 
+                        
+                                
+                        ";
+                    
+
+                        
+                    }
+                }
+            ?>
+        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carrinho" id="btnCarrinho">
+            <i class="fa fa-shopping-cart"></i>  Carrinho
+            <!------------------------------------------------------------------------>
+        </button>
+</div>
 
 
 
@@ -147,7 +181,6 @@
     </div>
 </div>
 <!-----------------------------------------------------------------------------> 
-
 
 
 

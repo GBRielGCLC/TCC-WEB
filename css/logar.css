@@ -13,7 +13,9 @@
     background-color:  #78B678;
     
 }
-
+.login{
+    height: 65%;
+}
 .login, .atendente{
     width: 400px;
    /* height: 60%;*/
