@@ -21,13 +21,6 @@
             <?php include ('php/barra-menu.php') ?>
     <body>
 
-        <td class="p-0 d-xl-table-cell d-none">
-        <ul class="p-0 m-0">
-            <li *ngFor='let item of product.items' class="def-number-input number-input d-flex justify-content-center">
-                <input type="number" [(ngModel)]="item.quantity" (change)="this.updateCart(item)" style="height: 45px; line-height: 45px" min="0"> 
-            </li>
-        </ul>
-    </td>
          
     </body>
 

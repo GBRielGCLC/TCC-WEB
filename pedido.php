@@ -24,7 +24,8 @@
     <div class="geral">
         <form method="post">    
             <div class="pedir">
-            <h1 class="titulo">Pedir</h1>
+            <h1 class="titulo">Pizzas</h1>
+            <hr>
                 <!--<h4>Pizzas</h4>-->
             
                 <?php
@@ -71,20 +72,21 @@
                             $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                             $brl = $formatter->formatCurrency($preco[$qtdeTamanhoCad], 'BRL');
                             
-                            echo "<hr> <div class='tamanho'>
+                            echo " <div class='tamanho'>
 
                                 <h2> <strong> $pizza[$qtdeTamanhoCad] - </strong> Até $qtdeSabor[$qtdeTamanhoCad] sabores </h2> 
                                 <p> Por $brl </p>
+                                </div>
                                 
 
                                
-                                <br> <button type='button' class='btn1' data-bs-toggle='modal' data-bs-target='#S$idPizza[$qtdeTamanhoCad]' id='btnCarrinho'>
+                                <br> <button type='button' class='btn1' data-bs-toggle='modal' data-bs-target='#S$idPizza[$qtdeTamanhoCad]'>
                                     <i class='fa fa-shopping-cart'></i> Pedir
                                 </button>
-                                </div>
+                                <hr>
                                 
                                 
-                        <div class='modal fade' id='S$idPizza[$qtdeTamanhoCad]' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                        <div class='modal fade' id='S$idPizza[$qtdeTamanhoCad]' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
                             <div class='modal-dialog'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
@@ -123,7 +125,8 @@
         </form>
         
         <div class="pedir2">
-            <h1> Bebidas </h1>
+            <h1 class="titulo">Bebidas</h1>
+            <hr>
             <?php
                 include "php\conexaoBD.php";
 
@@ -142,14 +145,17 @@
                         
                         
                         echo"
-                        <hr><h2> <strong> $nome_bebida - </strong> Por $brl </h2> 
-                        
-                                
+                        <div class='tamanho'> <h2> <strong> $nome_bebida - </strong> Por $brl </h2> </div> 
+                        <button type='button' class='btn1' data-bs-toggle='modal' data-bs-target='#S'>
+                                    <i class='fa fa-shopping-cart'></i> Pedir
+                                </button>
+                                <hr>
                         ";
                     
 
                         
                     }
+                    
                 }
             ?>
         </div>
@@ -163,7 +169,7 @@
 
 
     <!-- Modal -->
-<div class="modal fade" id="carrinho" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="carrinho" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

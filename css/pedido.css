@@ -14,8 +14,19 @@ body{
 }
 .pedir, .titulo{
     text-align: center;
+    
 }
-.pedir{
+
+.pedir2{
+    margin-left: 10%;
+    margin-top: -105px;
+  
+}
+
+.pedir, .pedir2{
+
+    /*margin-bottom: 10%;*/
+
     width: 400px;
     background-color: #fff;
     text-align: left;
@@ -63,7 +74,21 @@ p{
 }
 
 #btnCarrinho{
-    margin-left: 25%;
-    background-color: #78B678;
-    border:none
+    position: fixed;
+    bottom: 25px;
+    right: 10px; 
+    padding: 20px;
+    height: 70px;
+}/*
+#btnCarrinho{
+  line-height: 80px;  
+  width: 60px;  
+  font-size: 2em;
+  font-weight: bold;
+  
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  cursor: pointer;
 }
+*/

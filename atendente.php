@@ -24,7 +24,7 @@
     <div class=geral>
 
     
-        <div class="login">
+        <div class="atendente">
         <h1 style="margin-top:30px;"> Incluir </h1>
             
             <form method="post" action="php/atendente/cadastro-atendente.php">
