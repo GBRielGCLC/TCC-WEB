@@ -1,0 +1,56 @@
+body{
+    background-color: #78B678;
+}
+
+.geral{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+label{
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.pizza{
+    margin-left: 20px;
+    
+}
+.valor{
+    height: 50%;
+}
+.pizza,.sabor,.bebida{
+    overflow-y: scroll; 
+    height: 500px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+.pizza,.sabor,.bebida,.valor{
+    margin-top: 20px;
+    width: 300px;
+    background-color: #fff;
+    text-align: left;
+    border: solid black 1px;
+    margin-right: 20px;
+    position: relative;
+}
+
+input[type=submit]{
+    text-align: center;
+    background-color: #78B678;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 2%;
+    width: 100px;
+    margin-bottom: 2%;
+}
+
+h4{
+    text-align: center;
+}

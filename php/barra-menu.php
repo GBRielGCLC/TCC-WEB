@@ -10,7 +10,7 @@
         <ul class="links_menu">
             
             <li> <a href="index.php"> Início </a> <li>
-            <li> <a href="pedido.php"> Peça Online </a> <li>
+            <li> <a href="pedido.php"> Fazer Pedido </a> <li>
             <li> <a href="cardapio.php">Cardápio</a> <li>
             
             <?php
@@ -22,10 +22,38 @@
                        // echo "<script> alert($_SESSION['adm'])</script>"; 
                         
                         if($_SESSION["adm"]==true){
-                            
-                            
+                            echo"
+                            <li>
+                                <div class='dropdown'>
+                                    <a href='#' role='button' id='cardapio' data-bs-toggle='dropdown' aria-expanded='false'>
+                                        Gerenciar Atendente <i class='seta baixo'></i>
+                                    </a>
+
+                                    <ul class='dropdown-menu' aria-labelledby='cardapio' style='background-color: #8B0000;'>
+                                    <li><a href='atendente.php' class='dropdown-item' id='dropdown-item'> Incluir Atendente </a></li>
+                                    <li><a href='excluir-atendente.php' class='dropdown-item' id='dropdown-item'> Excluir Atendente </a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class='dropdown'>
+                                    <a href='#' role='button' id='cardapio' data-bs-toggle='dropdown' aria-expanded='false'>
+                                        Gerenciar Promoções <i class='seta baixo'></i>
+                                    </a>
+
+                                    <ul class='dropdown-menu' aria-labelledby='cardapio' style='background-color: #8B0000;'>
+                                    <li><a href='incluir-promocao.php' class='dropdown-item' id='dropdown-item'> Incluir Promoções </a></li>
+                                    <li><a href='gerencia-promocao.php' class='dropdown-item' id='dropdown-item'> Atualizar Promoções </a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+
+                            ";
+
                             echo "<li><a href=''> Relatórios </a></li>";
-                            echo "<li><a href='atendente.php'> Incluir Atendente </a></li>";
                         }
                         echo "
 

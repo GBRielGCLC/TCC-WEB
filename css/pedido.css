@@ -12,18 +12,18 @@ body{
     justify-content: center;
     align-items: center;
 }
-.pedir, .titulo{
+.pizza, .titulo{
     text-align: center;
     
 }
 
-.pedir2{
+.bebida{
+    margin-top: -35%;
     margin-left: 10%;
-    margin-top: -105px;
   
 }
 
-.pedir, .pedir2{
+.pizza, .bebida{
 
     /*margin-bottom: 10%;*/
 
@@ -33,10 +33,9 @@ body{
     border: solid black 1px;
 }
 .tamanho{
-   /* border: solid black 1px;*/
     height: 100px;
 }
-.btn1{
+    .btn1{
     background-color: #78B678;
     border: solid #78B678 1px;
     border-radius: 10px;
@@ -46,16 +45,7 @@ body{
     float: right;
     width: 100px;
     height: 30px;   
-}/*
-.btn1:hover{
-    background-color: #78B678; 
-    color: black;
-}*//*
-p{
-    /*float:right;
-     margin-right: 10px;
-    margin-top: 0;
-}*/
+}
 .titulo{
     margin-left: auto;
     margin-right: auto;
@@ -79,16 +69,24 @@ p{
     right: 10px; 
     padding: 20px;
     height: 70px;
-}/*
-#btnCarrinho{
-  line-height: 80px;  
-  width: 60px;  
-  font-size: 2em;
-  font-weight: bold;
-  
-  background-color: #4CAF50;
-  color: white;
-  text-align: center;
-  cursor: pointer;
 }
-*/
+
+.saboresCarrinho{
+  font-size: 12px;
+  color: gray;  
+  margin-bottom: 0;
+}
+.qtde{
+    width: 20px;
+    text-align: center;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+       -moz-appearance: textfield;
+            appearance: textfield;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+  }

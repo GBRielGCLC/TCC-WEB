@@ -12,7 +12,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!---------------------------------------------------------------------------------------------------------------->
     <!------------------------------------------------| css |------------------------------------------------>
-    <link rel="stylesheet" href="css/logar.css">
+    <link rel="stylesheet" href="css/atendente/logar.css">
 
     <title>Login Aréa Registra</title>
 </head>

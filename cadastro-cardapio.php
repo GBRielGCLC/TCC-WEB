@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Cardápio</title>
+        <title>Incluir Cardápio</title>
         <!------------------------------------------------| Campo monetário |------------------------------------------------>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>´

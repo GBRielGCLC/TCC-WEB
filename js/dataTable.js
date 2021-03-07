@@ -1,4 +1,5 @@
 $(document).ready( function () {
+    $.noConflict();
     $('.tabela').DataTable({
         dom:"ft",
         //dom:"lfrtip",

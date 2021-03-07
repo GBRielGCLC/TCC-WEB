@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Perfil Atendente</title>
 
-    <link rel="stylesheet" href="css/gerencia-atendente.css">
+    <link rel="stylesheet" href="css/atendente/gerencia-atendente.css">
 
        <!------------------------------------------------| Sweet Alert |------------------------------------------------>
        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -27,7 +27,7 @@
     <div class="geral">
     
             <div class="login">
-            <h1 style="margin-top:30px;"> Atualizar dados </h1><br>  
+            <h1 style="margin-top:30px;"> Atualizar Conta </h1><br>  
             
                <form method="post" action="php/atendente/atualizar-conta-atendente.php">
 

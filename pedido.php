@@ -23,7 +23,7 @@
 
     <div class="geral">
         <form method="post">    
-            <div class="pedir">
+            <div class="pizza">
             <h1 class="titulo">Pizzas</h1>
             <hr>
                 <!--<h4>Pizzas</h4>-->
@@ -94,16 +94,26 @@
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                     </div>
                                     <div class='modal-body'>";
-                                    for ($j=0; $j < sizeof($disponibilidade); $j++) { 
-                                        $dispo = explode(",", $disponibilidade[$j]);  
-                                    
-                                    for ($i=0; $i < sizeof($dispo); $i++) {   
-                                                                            
-                                        if($idPizza[$qtdeTamanhoCad] == $dispo[$i]){
+                                    for ($e=0; $e < $qtdeSabor[$qtdeTamanhoCad]; $e++) { 
+                                        $numSabor = $e+1;
+                                        echo" Sabor $numSabor:
+                                        <select class='form-select'>
+                                        <option selected disabled hidden>Clique Aqui Para Escolher Um Sabor</option>
+                                        <option>Nenhum</option>";
+                                        for ($j=0; $j < sizeof($disponibilidade); $j++) { 
+                                            $dispo = explode(",", $disponibilidade[$j]);  
+                                        
+                                        for ($i=0; $i < sizeof($dispo); $i++) {   
+                                                                                
+                                            if($idPizza[$qtdeTamanhoCad] == $dispo[$i]){
 
-                                            echo"$sabor[$j]<br>";
-                                        }}}            
-                                    echo"
+                                                echo"<option> $sabor[$j] </option>";
+                                            }}}            
+                                        echo"
+                                        </select><br>";
+                                    }
+                                    
+                                    echo"<p class='saboresCarrinho'>*caso não queria a mesma quantidade de sabores do máximo, escolhar a opção nenhum </p>
                                     </div>
                                     <div class='modal-footer'>
                                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'> Fechar </button>
@@ -124,7 +134,7 @@
             </div>
         </form>
         
-        <div class="pedir2">
+        <div class="bebida">
             <h1 class="titulo">Bebidas</h1>
             <hr>
             <?php
@@ -145,7 +155,9 @@
                         
                         
                         echo"
-                        <div class='tamanho'> <h2> <strong> $nome_bebida - </strong> Por $brl </h2> </div> 
+                        <div class='tamanho'> <h2> <strong> $nome_bebida </strong></h2>
+                        <p>Por $brl</p> 
+                        </div> 
                         <button type='button' class='btn1' data-bs-toggle='modal' data-bs-target='#S'>
                                     <i class='fa fa-shopping-cart'></i> Pedir
                                 </button>
@@ -177,7 +189,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            
+            <hr>
+            <input type="number" value="1" class="qtde"> * Pizza Pequena  
+            <p class="saboresCarrinho">+1 - Sabor - Frango Catupiry</p>
+            <p class="saboresCarrinho">+1 - Sabor - Calabresa Catupiry</p>
+                
+            <hr>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Fechar </button>
