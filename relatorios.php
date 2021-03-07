@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+fas fa-bars<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -16,13 +16,31 @@
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="js/dataTable.js"></script>
     <!-------------------------------------------------------------------------------------------------------------->
-    <link rel="stylesheet" href="css/ralatorios.css">
+    <link rel="stylesheet" href="css/relatorios.css">
 
 </head>
 <body>
     
         <?php include "php/barra-menu.php" ?>
 
+        <div class="cabecalho">
+            
+            <h1>Relatórios</h1>
+            <button class="vendas"> Vendas </button>        
+            <button> Clientes </button>        
+            <button class="itens"> Itens </button>        
+        
+        </div>
+        
+        <div class="corpo">
+
+            <select class='form-select' style="width:15%;" name="" id="">
+                <option value="">Nenhum</option>
+            </select>
+        <div class="conteudo">
+        Nenhum Dado Encontrado
+        </div>
+        </div>
 
 
 </body>

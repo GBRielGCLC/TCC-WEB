@@ -17,7 +17,7 @@
   <div class="pedido">
       <div class="barra-pedido">
         <div class="itens-barra">
-          <label class="id"> id: 019 </label> <label class="nome" > Nome: Paulinho Bastos</label>
+          <label class="id"> Id: 019 </label> <label class="nome" > Nome: Paulinho Bastos</label>
 
          <label class="status" for="despachado"> Despachado
             <input type="radio" name="status" id="status" value="despachado">
@@ -35,22 +35,41 @@
         
         
         <div class="descricao">
-<pre> 
-  ID do Pedido: 019              Cliente: Paulinho Bastos
-  Celular: (79) 9 9634-7743      Horário do Pedido : 19:28
-  Endereço:
-  Bairro: São Carlos             Rua: São Paulo     N°: 48
-  Complemento: Logo Ali aaaaaaaaaaaaaaaaaaaaaaaaa
-  -------------------------------------------------------
-  Resumo do Pedido: 
-  
-            30,00 * 1 - Pizza Grande (Calabresa II, Frango Cheddar);
-             5,00 * 1 - Guaraná Antartica de 1L
-             3,00 * Entrega
-  Total: R$ 38,00 reais
+          <div class="tabela">
+        <table>
+          <tr>
+            <td> <b>Nome:</b> Paulinho Bastos </td>
+            <td> <b>Valor Total dos Itens:</b> R$ 30,00  </td>
+          </tr>
+          
+          <tr>
+            <td> <b>Horário do Pedido:</b>19:28 </td>
+            <td> <b>Taxa de Entrega:</b>$ 3,00 </td>
+          </tr>
 
-</pre>
+          <tr>
+            <td> <b>Celular:</b> (79) 9 9634-7743 </td>
+            <td> <b>Desconto:</b> R$ 0,00 </td>
+          </tr>
 
+          <tr> 
+            <td> <b>Endereço:</b> Rua São Paulo, N° 48 </td>
+            <td> <b>Total:</b> R$ 33,00 </td>
+          </tr>
+
+          <tr>
+            <td> <b>Referência:</b> Mercearia do Popular Dede </td>
+            <td> <b>Forma de Pagamento:</b> Dinheiro </td>
+          </tr>
+        </table>
+        </div>
+      <div class="resumo">
+        <h6> 1x  - Pizza Grande Tradicional - 2 Sabores </h6>
+        <hr>
+          <p> + Sabor - Frango Catupiry - x1 </p>
+          <p> + Sabor - Calabresa Cheddar - x1 </p>
+          
+      </div>
         
       </div>
   </div>

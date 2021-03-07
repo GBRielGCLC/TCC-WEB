@@ -34,11 +34,11 @@
   
   /* efeito  de " Visibilidade "*/
   .links_menu li a:hover{
-    background-color: rgb(226, 0, 0);
+    background-color: #e20000;
     color: white;
   }
   #pedir:hover{
-    background-color: rgb(226, 0, 0);
+    background-color: #e20000;
     cursor: pointer;
   }
 

@@ -37,6 +37,11 @@
                                 </div>
                             </li>
 
+                            ";
+
+                            echo "<li><a href='relatorios.php'> Relatórios </a></li>";
+                        }
+                        echo "
                             <li>
                                 <div class='dropdown'>
                                     <a href='#' role='button' id='cardapio' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -50,13 +55,6 @@
                                     </ul>
                                 </div>
                             </li>
-
-                            ";
-
-                            echo "<li><a href='relatorios.php'> Relatórios </a></li>";
-                        }
-                        echo "
-
                             <li> <a href='aceitar-pedido.php'> Aceitar Pedido </a>
                             </li>
                             <li>
