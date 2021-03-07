@@ -135,6 +135,7 @@
         <div class="bebida">
             <h1 class="titulo">Bebidas</h1>
             <hr>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#finalizar"> Finalizar Pedido </button>
             <?php
                 include "php\conexaoBD.php";
 
@@ -167,6 +168,7 @@
                     }
                     
                 }
+                
             ?>
         </div>
         <!-- Button trigger modal -->
@@ -196,13 +198,33 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Fechar </button>
-                <button type="button" class="btn btn-success"> Finalizar </button>
+                <button type="button" class="btn btn-success"> Próximo </button>
             </div>
         </div>
     </div>
 </div>
-<!-----------------------------------------------------------------------------> 
 
+
+    <!-- Modal -->
+<div class="modal fade" id="finalizar" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"> Finalizar Pedido </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Nome:  <input type="text"><br>
+                Telefone: <input type="text">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Fechar </button>
+                <button type="button" class="btn btn-success" > Finalizar Pedido </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <?php include "rodape.html"; ?>

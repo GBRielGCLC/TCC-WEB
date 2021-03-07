@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 02-Mar-2021 às 21:47
+-- Tempo de geração: 07-Mar-2021 às 20:18
 -- Versão do servidor: 10.4.10-MariaDB
 -- versão do PHP: 7.3.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bebida` (
   `idBebida` int(11) NOT NULL AUTO_INCREMENT,
   `status` enum('on','off') NOT NULL,
   PRIMARY KEY (`idBebida`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `bebida`
@@ -45,8 +45,73 @@ CREATE TABLE IF NOT EXISTS `bebida` (
 INSERT INTO `bebida` (`nome`, `preco`, `cardapio`, `idBebida`, `status`) VALUES
 ('coca 1L', 5, 'on', 2, 'on'),
 ('Fanta laranja 1L', 5, 'on', 4, 'on'),
-('11', 11.75, 'off', 5, 'off'),
 ('coca 500ml', 5, 'on', 7, 'on');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `idCliente` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(20) NOT NULL,
+  `telefone` char(16) NOT NULL,
+  `endereco` text NOT NULL,
+  PRIMARY KEY (`idCliente`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pedido`
+--
+
+DROP TABLE IF EXISTS `pedido`;
+CREATE TABLE IF NOT EXISTS `pedido` (
+  `idPedido` int(11) NOT NULL AUTO_INCREMENT,
+  `idCliente` int(11) NOT NULL,
+  `idTaxa` int(11) NOT NULL,
+  `valorTotal` double NOT NULL,
+  `dataPedido` date NOT NULL,
+  `local` enum('Mesa','balcao','on-line') NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idPedido`),
+  KEY `idCliente` (`idCliente`),
+  KEY `idTaxa` (`idTaxa`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pedido-bebida`
+--
+
+DROP TABLE IF EXISTS `pedido-bebida`;
+CREATE TABLE IF NOT EXISTS `pedido-bebida` (
+  `idBebida` int(11) NOT NULL,
+  `idPedido` int(11) NOT NULL,
+  `qtde` int(11) NOT NULL,
+  KEY `idBebida` (`idBebida`),
+  KEY `idPedido` (`idPedido`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pedido_pizza`
+--
+
+DROP TABLE IF EXISTS `pedido_pizza`;
+CREATE TABLE IF NOT EXISTS `pedido_pizza` (
+  `idPedido` int(11) NOT NULL,
+  `idPizza` int(11) NOT NULL,
+  `idSabor` int(11) NOT NULL,
+  KEY `idPedido` (`idPedido`),
+  KEY `idPizza` (`idPizza`),
+  KEY `idSabor` (`idSabor`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -69,8 +134,8 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 --
 
 INSERT INTO `perfil` (`idPerfil`, `nome`, `e-mail`, `senha`, `adm`) VALUES
-(1, 'Lucas Santana', 'lucas1.stoly@gmail.com', '123', 1),
-(4, 'Gabriel Christyan', 'gabriel.gclc@gmail.com', '9603', 1),
+(1, 'Lucas Santana', 'lucas1.stoly@gmail.com', '1234', 1),
+(4, 'Gabriel', 'gabriel.gclc@gmail.com', '9603', 1),
 (3, 'aa', 'a@gmail.com', '123', 0);
 
 -- --------------------------------------------------------
@@ -89,17 +154,35 @@ CREATE TABLE IF NOT EXISTS `sabor` (
   `precoAdd` double DEFAULT NULL,
   `status` enum('on','off') NOT NULL,
   PRIMARY KEY (`idSabor`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `sabor`
 --
 
 INSERT INTO `sabor` (`idSabor`, `nome`, `descricao`, `cardapio`, `disponibilidade`, `precoAdd`, `status`) VALUES
-(11, 'Marguerita', 'Mussarela, ParmesÃ£o ,manjericÃ£o e orÃ©gano.', 'on', ',108', 2, 'on'),
-(16, 'Calabresa Cheddar', 'Mussarela, Calabresa, Tomate, Azeitona, Cebola e OrÃ©gano', 'on', ',109,110,111,112', 1, 'on'),
-(15, 'Calabresa 2', 'Mussarela, Calabresa, Tomate, Azeitona, Cebola e OrÃ©gano', 'on', ',109,110,111,112', 0, 'on'),
-(17, 'Frango Catupiry', 'Mussarela, Frango Desfiado, Catupiry, Azeitona, Milho e OrÃ©gano.', 'on', ',109,110,115,111,112', 0, 'on');
+(21, 'Marguerita', 'Mussarela, parmesÃ£o, manjericÃ£o e orÃ©gano.', 'on', ',109,110,115,112,111', 0, 'on'),
+(20, 'Calabresa Cheddar', 'Mussarela, Calabresa, Cheddar, Azeitona e OrÃ©gano', 'on', ',109,110,115,112,111', 0, 'on'),
+(19, 'Baiana', 'Mussarela, Calabresa tirturada, Pimenta calabresa', 'on', ',109', 0, 'on'),
+(18, 'Calabresa 2', 'Mussarela, Calabresa, Tomate, Azeitona, Cebola e OrÃ©gano', 'on', '109,110,115,111,112', 0, 'on'),
+(22, 'Moda da Casa', 'Presunto', 'on', ',109,110,115,112,111', 0, 'on'),
+(23, 'aaaaaaa', 'w', 'on', ',109,110,115,112,111', 0, 'off'),
+(24, 'Banana', 'Mussarela, Banana, Canela em PÃ³.', 'on', ',109,115,112,111', 0, 'on'),
+(25, 'Mussarela', 'Mussarela, Azeitona e Tomate', 'on', ',109,110,115,111,112', 0, 'on');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sabor_pizza`
+--
+
+DROP TABLE IF EXISTS `sabor_pizza`;
+CREATE TABLE IF NOT EXISTS `sabor_pizza` (
+  `idPizza` int(11) NOT NULL,
+  `idSabor` int(11) NOT NULL,
+  KEY `idPizza` (`idPizza`),
+  KEY `idSabor` (`idSabor`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -116,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `tamanho` (
   `qtdeSabor` int(11) NOT NULL,
   `status` enum('on','off') NOT NULL,
   PRIMARY KEY (`idPizza`)
-) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tamanho`
@@ -124,10 +207,26 @@ CREATE TABLE IF NOT EXISTS `tamanho` (
 
 INSERT INTO `tamanho` (`idPizza`, `nome`, `preco`, `cardapio`, `qtdeSabor`, `status`) VALUES
 (109, 'Pequena', 20, 'on', 2, 'on'),
-(110, 'MÃ©dia', 27, 'on', 3, 'on'),
-(111, 'Grande', 35, 'on', 3, 'on'),
-(112, 'FÃ¡milia', 45, 'on', 4, 'on'),
-(115, 'Grande Tradicional', 30, 'on', 2, 'on');
+(110, 'MÃ©dia', 27, 'on', 2, 'on'),
+(111, 'Grande', 35, 'off', 3, 'on'),
+(112, 'FamÃ­lia', 40, 'on', 4, 'on'),
+(115, 'Grande Tradicional', 30, 'on', 2, 'on'),
+(116, 'ads', 15, 'on', 2, 'off'),
+(117, 'aaa', 21.56, 'on', 3, 'off');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `taxa_entrega`
+--
+
+DROP TABLE IF EXISTS `taxa_entrega`;
+CREATE TABLE IF NOT EXISTS `taxa_entrega` (
+  `idTaxa` int(11) NOT NULL AUTO_INCREMENT,
+  `bairro` varchar(60) NOT NULL,
+  `taxa` double NOT NULL,
+  PRIMARY KEY (`idTaxa`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
