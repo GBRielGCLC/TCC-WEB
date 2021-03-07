@@ -53,7 +53,7 @@
 
                             ";
 
-                            echo "<li><a href=''> Relatórios </a></li>";
+                            echo "<li><a href='relatorios.php'> Relatórios </a></li>";
                         }
                         echo "
 
