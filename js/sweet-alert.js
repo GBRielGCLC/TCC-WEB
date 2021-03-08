@@ -90,3 +90,33 @@ function exc_bebida(clicked_id) {
         }
     })
 }
+function exc_atendente(clicked_id) {  
+
+    const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: 'Tem certeza?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não',
+        reverseButtons: true
+        },
+        
+        ).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Excluído!', 
+                '',
+                'success',
+                window.location.href = 'php/atendente/exc-atendente.php?idPerfil='+clicked_id,
+            )
+        }
+    })
+}

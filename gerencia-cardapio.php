@@ -199,7 +199,7 @@
 
                                 <tr>
                                     <td> $nome_sabor </td>
-                                    <td clas='preco'> $brl </td>
+                                    <td class3='preco'> $brl </td>
                                     <td> $descricao </td>
                                     <td>
                                         <div class='form-check form-switch'>
