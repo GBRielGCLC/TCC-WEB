@@ -8,22 +8,21 @@
         $preco = str_replace(",",".",$_POST["preco"]);
         $qtdeSabor = $_POST["qtdeSabor"];
 
-        include "../conexaoBD.php"; 
-
-        $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`qtdeSabor`,`status`) VALUES ('$tamanho',$preco,$qtdeSabor,'on')";
-        
+        include "../conexaoBD.php";
+        $sql = "SELECT * FROM `sabor` WHERE `nome` = '$nome'";
+        echo$sql;
         if (mysqli_query($conn, $sql)) {
-            $_SESSION["cad-tamanho"] = "sucesso";
-            
+            $_SESSION["cad-tamanho"] = "duplicado";
+
         } else {
-            $teste = explode(" ",mysqli_error($conn));
+
+            $sql = "INSERT INTO `tamanho`(`nome`, `preco`,`qtdeSabor`,`status`) VALUES ('$tamanho',$preco,$qtdeSabor,'on')";
             
-            if($teste[0]=="Duplicate"){// Testar se ja estar duplicado
-                $_SESSION["cad-tamanho"] = "duplicado";
+            if (mysqli_query($conn, $sql)) {
+                $_SESSION["cad-tamanho"] = "sucesso";
                 
             }
         }
-        
         $conn->close();
     }
     header("Location: ../../cadastro-cardapio.php#cad-tamanho");

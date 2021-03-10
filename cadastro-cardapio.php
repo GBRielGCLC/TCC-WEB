@@ -23,10 +23,10 @@
     <body>
         <div class="principal">  
             <!--Para Cadastrar -->
+            <a id="cad-sabor"></a>
             <div class="cadastro_sabor">
                 <h1>Cadastro de Sabores</h1>
                     <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-sabor.php">
-                        <a id="cad-sabor"></a>
 
                         <label> Sabor </label> <input type="text" name="sabor" size="51"> <br>
                         <label> Descrição </label> <input type="text" name="desc" size="51"> <br>
@@ -78,7 +78,7 @@
                                     echo"
                                     <script>
                                     Swal.fire(
-                                        'Cadastrado com sucesso',
+                                        'Cadastrado Com Sucesso',
                                         '',
                                         'success'
                                     )
@@ -87,10 +87,13 @@
                                 }
                                 if($_SESSION["cad-sabor"]=="duplicado"){
                                     echo"
-                                        <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                                            <strong>Já está cadastrado !</strong>
-                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                        </div>
+                                    <script>
+                                    Swal.fire(
+                                        'Já está cadastrado',
+                                        '',
+                                        'error'
+                                    )
+                                    </script>
                                     ";
                                 }
                                 unset($_SESSION["cad-sabor"]);
@@ -103,14 +106,14 @@
             </div>
 
             <!--------------------------------------------------------------------------------  Tamanho  -------------------------------------------------------------------------------->
+            <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
             <div class="cadastro_sabor">
                 <h1>Cadastro de Tamanho</h1>
                 
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-tamanho.php">
-                    <a id="cad-tamanho"><!-- Trazer de volta para aqui --></a>
 
-                    <label class="labelTam" > Tamanho </label> <input type="text" size="51" name="tamanho"> <br>
-                    
+                    <label class="labelTam"> Tamanho </label> <input type="text" size="51" name="tamanho"> <br>
+                    <label class="labelTam"> Preço </label> <input type="text" name="preco" class="money" size="6"> <br>
                     <label class="labelTam"> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1" max='6'> <br> <br>
                     
                     <?php
@@ -131,7 +134,7 @@
                                 echo"
                                 <script>
                                 Swal.fire(
-                                    'Cadastrado com sucesso',
+                                    'Cadastrado Com Sucesso',
                                     '',
                                     'success'
                                 )
@@ -141,10 +144,13 @@
                             // ajeitar para verificar se já existe cadastraddo
                             if($_SESSION["cad-tamanho"]=="duplicado"){
                                 echo"
-                                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                                        <strong>Já está cadastrado !</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                    <script>
+                                    Swal.fire(
+                                        'Ja está cadastrado',
+                                        '',
+                                        'error'
+                                    )
+                                    </script>
                                 ";
                             }
                             unset($_SESSION["cad-tamanho"]);
@@ -155,11 +161,11 @@
                 </form>
             </div>
 
+            <a id="cad-bebida"><!-- Trazer de volta para aqui --></a>
             <div class="cadastro_sabor">
                 <h1>Cadastro de Bebida</h1>
                 
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-bebida.php">
-                    <a id="cad-bebida"><!-- Trazer de volta para aqui --></a>
 
                     <label> Nome </label> <input type="text" size="51" name="nomeBebida"> <br>
                     <label> Preço </label> <input type="text" name="preco" class="money" size="6">
@@ -182,11 +188,22 @@
                                 echo"
                                 <script>
                                 Swal.fire(
-                                    'Cadastrado com sucesso',
+                                    'Cadastrado Com Sucesso',
                                     '',
                                     'success'
                                 )
                                 </script>
+                                ";
+                            }
+                            if($_SESSION["cad-bebida"]=="duplicado"){
+                                echo"
+                                    <script>
+                                    Swal.fire(
+                                        'Ja está cadastrado',
+                                        '',
+                                        'error'
+                                    )
+                                    </script>
                                 ";
                             }
                             

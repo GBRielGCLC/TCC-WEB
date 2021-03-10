@@ -9,22 +9,23 @@
 
         include "../conexaoBD.php"; 
 
+        $sql="SELECT * FROM `bebida` WHERE `nome` = '$nome'";
+        echo$sql;
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION["cad-bebida"] = "duplicado";
+            
+        } else {
+
         $sql = "INSERT INTO `bebida`(`nome`, `preco`,`status`) VALUES ('$nome',$preco,'on')";
         echo $sql;
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-bebida"] = "sucesso";
             
-        } else {
-            $teste = explode(" ",mysqli_error($conn));
-            
-            if($teste[0]=="Duplicate"){// Testar se ja estar duplicado
-                $_SESSION["cad-bebida"] = "duplicado";
-                
-            }
         }
+    
         
         $conn->close();
-    }
-    
-    header("Location: ../../cadastro-cardapio.php#cad-bebida");
+    }}
+
+   header("Location: ../../cadastro-cardapio.php#cad-bebida");
 ?>

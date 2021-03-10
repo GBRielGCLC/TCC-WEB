@@ -18,23 +18,22 @@
             $tam = $tam.",".$tamanho;
         }}
 
-        include "../conexaoBD.php";    
+        include "../conexaoBD.php";
+        $sql = "SELECT * FROM `sabor` WHERE `nome` = '$nome'";
+        echo$sql;
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION["cad-sabor"] = "duplicado";
+
+        } else {
 
         $sql = "INSERT INTO sabor(nome,descricao,status,disponibilidade,precoAdd) VALUES('$nome','$desc','on','$tam','$add')";
         
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-sabor"] = "sucesso";
 
-        } else {
-            $teste = explode(" ",mysqli_error($conn));
-            
-            if($teste[0]=="Duplicate"){// Testar se ja estar duplicado
-                $_SESSION["cad-sabor"] = "duplicado";
-
-            }
         }
         $conn->close();
         
-    }
+    }}
     header("Location: ../../cadastro-cardapio.php#cad-sabor");
 ?>
