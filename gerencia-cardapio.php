@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <!------------------------------------------------------------------------------------------------------------------>
     <!------------------------------------------------| Data Table |------------------------------------------------>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="js/dataTable.js"></script>
@@ -92,7 +92,7 @@
                                 <td>
                                     <div class='form-check form-switch'>
                                         <label class='form-check-label'>
-                                            <input class='form-check-input' type='checkbox' id='$idPizza' $check>
+                                            <input class='form-check-input' type='checkbox' id='tamanho|$idPizza' $check>
                                             <span> $cardapio  </span>
                                         </label>
                                     </div>
@@ -204,7 +204,7 @@
                                     <td>
                                         <div class='form-check form-switch'>
                                             <label class='form-check-label'>    
-                                                <input class='form-check-input' type='checkbox' id='$idSabor' $check>
+                                                <input class='form-check-input' type='checkbox' id='sabor|$idSabor' $check>
                                                 <span> $cardapio </span>
                                             </label>
                                         </div>
@@ -326,7 +326,7 @@
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
                                         <label class='form-check-label'>    
-                                            <input class='form-check-input' type='checkbox' id='$idBebida' $check>
+                                            <input class='form-check-input' type='checkbox' id='bebida|$idBebida' $check>
                                             <span> $cardapio </span>
                                         </label>
                                     </div>
@@ -415,13 +415,20 @@
 $(document).ready(function(){
     $('table').on('change', ':checkbox', function() {
         var id = this.id;
-        alert(id);
+        var status;
         if(this.checked==true){
             $(this).next('span').text("Visível");
+            status = "on";
         }
         else{
             $(this).next('span').text("Oculto");
+            status = "off";
         }
+        $.ajax({
+            type: "POST",
+            url: "php/cardapio/edit-status.php",
+            data: {id:id, status:status},
+        })
     });
 
 });
