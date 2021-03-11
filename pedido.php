@@ -135,7 +135,7 @@
         <div class="bebida">
             <h1 class="titulo">Bebidas</h1>
             <hr>
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#finalizar"> Finalizar Pedido </button>
+            <!--<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#finalizar"> Finalizar Pedido </button>-->
             <?php
                 include "php\conexaoBD.php";
 

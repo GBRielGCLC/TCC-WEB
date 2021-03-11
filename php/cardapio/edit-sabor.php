@@ -7,7 +7,8 @@
     else{
         $nome_sabor = $_POST["nome"];
         $descricao = $_POST["descricao"];
-        $add = str_replace(",",".",$_POST["add"]);
+        $add = str_replace(".","",$_POST["add"]);
+        $add = str_replace(",","."$add);
         $idSabor = $_GET["idSabor"];
 
 

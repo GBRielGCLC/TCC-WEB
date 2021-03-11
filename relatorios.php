@@ -37,9 +37,9 @@ fas fa-bars<!DOCTYPE html>
             <select class='form-select' style="width:15%;" name="" id="">
                 <option value="">Nenhum</option>
             </select>
+
         <div class="conteudo">
-        Nenhum Dado Encontrado
-        </div>
+            Nenhum Dado Encontrado
         </div>
 
 

@@ -42,7 +42,7 @@
                         <td> R$ 10,00 </td>
                         <td>
                             <button class='btn btn-warning btr-sm'> Alterar </button>
-                            <button class="btn btn-danger btr-sm"> Excluir </button> 
+                            <button class="btn btn-danger btr-sm"> Desativar </button> 
                         </td> 
                     </tr>
 
@@ -54,7 +54,7 @@
                         <td> R$ 5,00 </td>
                         <td>
                             <button class='btn btn-warning btr-sm'> Alterar </button>
-                            <button class="btn btn-danger btr-sm"> Excluir </button> 
+                            <button class="btn btn-danger btr-sm"> Desativar </button> 
                         </td> 
                     </tr>
                 </tbody>

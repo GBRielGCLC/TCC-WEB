@@ -5,13 +5,14 @@
     }
     else{
         $tamanho = $_POST["tamanho"];
-        $preco = str_replace(",",".",$_POST["preco"]);
+        $preco = str_replace(".","",$_POST["preco"]);
+        $preco = str_replace(",",".",$preco);
         $qtdeSabor = $_POST["qtdeSabor"];
 
         include "../conexaoBD.php";
-        $sql = "SELECT * FROM `sabor` WHERE `nome` = '$nome'";
-        echo$sql;
-        if (mysqli_query($conn, $sql)) {
+        $sql = "SELECT * FROM `tamanho` WHERE `nome` = '$tamanho'";
+        $result = $conn->query($sql);   
+        if ($result->num_rows > 0) {
             $_SESSION["cad-tamanho"] = "duplicado";
 
         } else {

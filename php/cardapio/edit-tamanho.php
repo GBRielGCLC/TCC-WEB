@@ -6,7 +6,8 @@
     }
     else{
         $tamanho = $_POST["tamanho"];
-        $preco = str_replace(",",".",$_POST["preco"]);
+        $preco = str_replace(".","",$_POST["preco"]);
+        $preco = str_replace(",","."$preco);
         $qtdeSabor = $_POST["qtdeSabor"];
         $idPizza = $_GET["idPizza"];
 

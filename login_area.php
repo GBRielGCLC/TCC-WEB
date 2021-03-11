@@ -25,7 +25,7 @@
 
     
         <div class="login">
-        <h1 style="margin-top:30px;">Entrar</h1>
+        <h1 style="margin-top:30px;"> Acesso Restrito</h1>
             
             <form method="post" action="php/checar_login.php">
 
@@ -39,7 +39,7 @@
                     <label for="floatingPassword">Senha</label>
                 </div>
 
-                <input type="submit" value="Logar" id="btn"><br>
+                <input type="submit" value="Logar" id="btn"><br>    
                 <a id="recu-senha" href="recusenha.php">Esqueceu a senha ?</a>
                 
                 <?php

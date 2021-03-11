@@ -5,13 +5,14 @@
     }
     else{
         $nome = $_POST["nomeBebida"];
-        $preco = str_replace(",",".",$_POST["preco"]);
+        $preco = str_replace(".","",$_POST["preco"]);
+        $preco = str_replace(",",".",$preco);
 
         include "../conexaoBD.php"; 
 
         $sql="SELECT * FROM `bebida` WHERE `nome` = '$nome'";
-        echo$sql;
-        if (mysqli_query($conn, $sql)) {
+        $result = $conn->query($sql);   
+        if ($result->num_rows > 0) {
             $_SESSION["cad-bebida"] = "duplicado";
             
         } else {

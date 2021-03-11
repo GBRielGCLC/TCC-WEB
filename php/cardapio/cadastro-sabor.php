@@ -11,7 +11,8 @@
             $add=0;  
         }
         else{
-            $add = str_replace(",",".",$_POST["add"]);
+            $add = str_replace(".","",$_POST["add"]);
+            $add = str_replace(",",".",$add);
         }
         if(isset($_POST["tamanho"])){
         foreach ($_POST["tamanho"] as $tamanho) {
@@ -20,8 +21,8 @@
 
         include "../conexaoBD.php";
         $sql = "SELECT * FROM `sabor` WHERE `nome` = '$nome'";
-        echo$sql;
-        if (mysqli_query($conn, $sql)) {
+        $result = $conn->query($sql);   
+        if ($result->num_rows > 0) {
             $_SESSION["cad-sabor"] = "duplicado";
 
         } else {

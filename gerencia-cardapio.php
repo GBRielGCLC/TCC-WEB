@@ -39,7 +39,7 @@
                     <th class="col-3"> Descrição </th>
                     <th class="col-1"> Valor</th>
                     <th class="col-2"> Quantidade de Sabores</th>
-                    <th class="col-2"> Status</th>
+                    <th class="col-2"> Cardápio </th>
                     <th class="col-3">  </th>
                 </tr>
             </thead>
@@ -140,8 +140,6 @@
             </tbody>
         </table>
         <!--------------------------------------------------| Fim da table tamanho |-------------------------------------------------->
-            
-
 
         <!----------------------------------->
         <h1>Sabores de Pizzas</h1>    
@@ -284,7 +282,7 @@
                 <tr>
                     <th class="col-2"> Descrição </th>
                     <th class="col-1"> Valor </th>
-                    <th class="col-2"> Status</th>
+                    <th class="col-2"> Cardápio </th>
                     <th class="col-3">  </th>
                 </tr>
             </thead>
