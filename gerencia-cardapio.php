@@ -91,9 +91,9 @@
                                 <td> $qtdeSabor </td>
                                 <td>
                                     <div class='form-check form-switch'>
-                                        <label class='form-check-label' id='$idPizza'>
-                                            <input class='form-check-input' type='checkbox' id='i$idPizza' $check>
-                                            <span id='s$idPizza'> $cardapio  </span>
+                                        <label class='form-check-label'>
+                                            <input class='form-check-input' type='checkbox' id='$idPizza' $check>
+                                            <span> $cardapio  </span>
                                         </label>
                                     </div>
                                 </td>
@@ -203,9 +203,9 @@
                                     <td> $descricao </td>
                                     <td>
                                         <div class='form-check form-switch'>
-                                            <label class='form-check-label' id='$idSabor'>    
-                                                <input class='form-check-input' type='checkbox' id='i$idSabor' $check>
-                                                <span id='s$idSabor'> $cardapio </span>
+                                            <label class='form-check-label'>    
+                                                <input class='form-check-input' type='checkbox' id='$idSabor' $check>
+                                                <span> $cardapio </span>
                                             </label>
                                         </div>
                                     </td>
@@ -325,9 +325,9 @@
                                 <td class='preco'> $brl </td>
                                 <td>
                                     <div style='align-items: center;' class='form-check form-switch'>
-                                        <label class='form-check-label' id='$idBebida'>    
-                                            <input class='form-check-input' type='checkbox' id='i$idBebida' $check>
-                                            <span id='s$idBebida'> $cardapio </span>
+                                        <label class='form-check-label'>    
+                                            <input class='form-check-input' type='checkbox' id='$idBebida' $check>
+                                            <span> $cardapio </span>
                                         </label>
                                     </div>
                                 </td>
@@ -414,6 +414,8 @@
 <script>
 $(document).ready(function(){
     $('table').on('change', ':checkbox', function() {
+        var id = this.id;
+        alert(id);
         if(this.checked==true){
             $(this).next('span').text("Visível");
         }
