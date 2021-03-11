@@ -413,21 +413,13 @@
 
 <script>
 $(document).ready(function(){
-    $(function () {
-        $('label').click(function () {
-            var id = $(this).attr('id');
-            $('#'+id).click(function () {
-                checked = $('#i'+id, this).is(':checked');
-                var cardapio;
-                if(checked==true){
-                    cardapio = "Visível";
-                }
-                else{
-                    cardapio = "Oculto"
-                }
-                $('#s'+id, this).text(checked ? cardapio : cardapio);
-            });
-        });
+    $('table').on('change', ':checkbox', function() {
+        if(this.checked==true){
+            $(this).next('span').text("Visível");
+        }
+        else{
+            $(this).next('span').text("Oculto");
+        }
     });
 
 });
