@@ -7,7 +7,7 @@
     else{
         $nome_bebida = $_POST["nome_bebida"];
         $preco = str_replace(".","",$_POST["preco"]);
-        $preco = str_replace(",","."$preco);
+        $preco = str_replace(",",".",$preco);
         $idBebida = $_GET["idBebida"];
 
 

@@ -3,13 +3,16 @@
     margin-left:auto;
     margin-right:auto;
     width: 90%;
-    background-color:white;
+    background-color:#78B678;
 }
 .pizzas,.bebidas{
-    border: solid black 1px;
+    /*border: solid black 1px;*/
     width:95%;
     margin-left:auto;
     margin-right:auto;
+    background-color: white;
+    margin-top: 5%;
+    margin-bottom: 5%;
     
 }
 body{
@@ -21,6 +24,5 @@ h1{
     margin-bottom: 2%;
 }
 .bebidas{
-    margin-top: 5%;
-    border: solid black 1px;
+
 }
