@@ -54,7 +54,13 @@
             <div class='accordion-item'>
               <h2 class='accordion-header' id='headingOne'>
                 <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#a$auxTamanho' aria-expanded='true' aria-controls='a$auxTamanho'>
-                  $pizza[$auxTamanho] - Até $qtdeSabor[$auxTamanho] sabores.
+                  ";
+                  $es="";
+                  if($qtdeSabor[$auxTamanho]>1){
+                    $es="es";
+                  }
+                  echo"
+                  $pizza[$auxTamanho] - Até $qtdeSabor[$auxTamanho] sabor$es - Por $brl reais.
                 </button>
               </h2>
               <div id='a$auxTamanho' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
@@ -110,12 +116,15 @@
             $nome = $row["nome"];
             $preco = $row["preco"];
 
+            $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                $brl = $formatter->formatCurrency($preco, 'BRL');
+
             echo"
             <div class='accordion' id='accordionExample'>
               <div class='accordion-item'>
                 <h2 class='accordion-header' id='headingTwo'>
                   <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo'>
-                    $nome - Por R$ $preco
+                    $nome - Por $brl reais.
                   </button>
                 </h2>
               </div>

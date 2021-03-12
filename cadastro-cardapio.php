@@ -177,7 +177,7 @@
                                 echo"
                                 <script>
                                 Swal.fire(
-                                    'Preencha Todos os Campos',
+                                    'Preencha todos os campos',
                                     '',
                                     'warning'
                                 )
@@ -188,7 +188,7 @@
                                 echo"
                                 <script>
                                 Swal.fire(
-                                    'Cadastrado Com Sucesso',
+                                    'Cadastrado com sucesso',
                                     '',
                                     'success'
                                 )

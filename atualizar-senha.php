@@ -52,7 +52,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'Preencha Todos os Campos !',
+                                'Preencha todos os campos !',
                                 '',
                                 'warning'
                             )
@@ -63,7 +63,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'As Senhas Estão Diferentes!',
+                                'As senhas estão diferentes!',
                                 '',
                                 'error',
                             )
@@ -74,7 +74,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'Atualizado !', 
+                                'Atualizado com sucesso!', 
                                 '',
                                 'success',
                             )
@@ -85,7 +85,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'Senha Atual Errada !', 
+                                'Senha atual errada!', 
                                 '',
                                 'error',
                             )

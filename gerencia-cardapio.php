@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -86,7 +87,7 @@
                             echo "
 
                                 <tr>
-                                    <td> $tamanho </td>
+                                    <td style='text-align: left';> $tamanho </td>
                                     <td class='preco'> $brl </td>
                                     <td> $qtdeSabor </td>
                                     <td>
@@ -197,7 +198,7 @@
                                 echo "
 
                                     <tr>
-                                        <td> $nome_sabor </td>
+                                        <td style='text-align: left';> $nome_sabor </td>
                                         <td class3='preco'> $brl </td>
                                         <td> $descricao </td>
                                         <td>
@@ -382,7 +383,7 @@
                 echo"
                 <script>
                 Swal.fire(
-                    'Alterado com sucesso',
+                    'Alterado com sucesso!',
                     '',
                     'success'
                 )
@@ -397,7 +398,7 @@
                 echo"
                 <script>
                 Swal.fire(
-                    'Desativado!', 
+                    'Desativado com sucesso!', 
                     '',
                     'success',
                 )

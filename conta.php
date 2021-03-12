@@ -51,7 +51,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'Preencha Todos os Campos !',
+                                'Preencha todos os campos !',
                                 '',
                                 'warning'
                             )
@@ -63,7 +63,7 @@
                             echo"
                             <script>
                             Swal.fire(
-                                'Atualizado !', 
+                                'Atualizado com sucesso !', 
                                 '',
                                 'success',
                             )
