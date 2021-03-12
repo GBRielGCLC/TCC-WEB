@@ -1,10 +1,26 @@
-.principal {
+.geral{
     margin-top: 50px;
     margin-left:auto;
     margin-right:auto;
-    width: 80%;
+    width: 90%;
     background-color:white;
+}
+.pizzas,.bebidas{
+    border: solid black 1px;
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+    
 }
 body{
     background-color: #78B678;
+}
+h1{
+    text-align:center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.bebidas{
+    margin-top: 5%;
+    border: solid black 1px;
 }

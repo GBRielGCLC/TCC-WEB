@@ -75,7 +75,7 @@
                             <li> 
                                 <div class='dropdown'>
                                     <a style='float:right;' href='#' role='button' id='perfil' data-bs-toggle='dropdown' aria-expanded='false'>
-                                        $nome <i class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i> </i>
+                                        $nome <i class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i>
                                     </a>
 
                                     <ul class='dropdown-menu' aria-labelledby='perfil' style='background-color: #8B0000; min-width:0px; padding:0;'>
@@ -88,12 +88,12 @@
                             </li>
                         ";
                     }else{
-                        echo "<a style='float:right' href='login_area.php'> Iniciar </a>";
+                        echo "<a style='float:right' href='login_area.php'> <i class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i> </a>";
                     }
                 }
                 else{
                     echo "
-                    <li> <a style='float:right' href='login_area.php'> Iniciar </a> </li>
+                    <li> <a style='float:right' href='login_area.php'> <i title='Mensagem aqui!' class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i> </a> </li>
                     <li> <a href='index.php#onde_encontrar'>Onde Nos encontrar</a> </li>
                     ";
                 }

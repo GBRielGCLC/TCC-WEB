@@ -30,115 +30,117 @@
     <div class="geral">
         <div class="tabelas">
 
-        <h1> Tamanhos de Pizzas</h1>
-        <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
-        <table class="tabela">
-            <a id="tamanho"></a>
-            <thead>
-                <tr>
-                    <th class="col-3"> Descrição </th>
-                    <th class="col-1"> Valor</th>
-                    <th class="col-2"> Quantidade de Sabores</th>
-                    <th class="col-2"> Cardápio </th>
-                    <th class="col-3">  </th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
+        <div class="">
+            <h1> Tamanhos de Pizzas</h1>
+            <!------------------------------------------------| Início da table tamanho |------------------------------------------------>
+            <table class="tabela">
+                <a id="tamanho"></a>
+                <thead>
+                    <tr>
+                        <th class="col-3"> Descrição </th>
+                        <th class="col-1"> Valor</th>
+                        <th class="col-2"> Quantidade de Sabores</th>
+                        <th class="col-2"> Cardápio </th>
+                        <th class="col-3">  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
 
-                include "php\conexaoBD.php";
+                    include "php\conexaoBD.php";
 
-                $sql = "SELECT * FROM `tamanho` WHERE `status` = 'on' ORDER BY preco ASC";
-                $result = $conn->query($sql);   
-                $i=0;
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        $tamanho = $row["nome"];
-                        //$preco = str_replace(".",",",$row["preco"]);
-                        $preco = $row["preco"];
-                        $idPizza = $row["idPizza"];
-                        $cardapioBD = $row["cardapio"];
-                        $qtdeSabor = $row["qtdeSabor"];
-                        $status = $row["status"];
-                        
-                        if(isset($tamanho)){
-                            $tamanhos[$i] = $tamanho;
-                            $Pizzas[$i] = $idPizza;
-                            $i++;
-                            $auxi=$i;       
-                        }
-                        if($cardapioBD=="on"){
-                            $check = "checked";
-                            $cardapio = "Visível";
-                        }
-                        else{
-                            $check = "";
-                            $cardapio = "Oculto";
-                        }
+                    $sql = "SELECT * FROM `tamanho` WHERE `status` = 'on' ORDER BY preco ASC";
+                    $result = $conn->query($sql);   
+                    $i=0;
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $tamanho = $row["nome"];
+                            //$preco = str_replace(".",",",$row["preco"]);
+                            $preco = $row["preco"];
+                            $idPizza = $row["idPizza"];
+                            $cardapioBD = $row["cardapio"];
+                            $qtdeSabor = $row["qtdeSabor"];
+                            $status = $row["status"];
+                            
+                            if(isset($tamanho)){
+                                $tamanhos[$i] = $tamanho;
+                                $Pizzas[$i] = $idPizza;
+                                $i++;
+                                $auxi=$i;       
+                            }
+                            if($cardapioBD=="on"){
+                                $check = "checked";
+                                $cardapio = "Visível";
+                            }
+                            else{
+                                $check = "";
+                                $cardapio = "Oculto";
+                            }
 
-                        //////////////// testte para verificar se foi excluido /////////////////
-                        
-                        //Transformando em REAL BRASILEIRO
-                        $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-                        $brl = $formatter->formatCurrency($preco, 'BRL');
-                        
-                        // |------------------------------------------| Mostrar a tabela com as informações |------------------------------------------------|
-                        echo "
+                            //////////////// testte para verificar se foi excluido /////////////////
+                            
+                            //Transformando em REAL BRASILEIRO
+                            $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                            $brl = $formatter->formatCurrency($preco, 'BRL');
+                            
+                            // |------------------------------------------| Mostrar a tabela com as informações |------------------------------------------------|
+                            echo "
 
-                            <tr>
-                                <td> $tamanho </td>
-                                <td class='preco'> $brl </td>
-                                <td> $qtdeSabor </td>
-                                <td>
-                                    <div class='form-check form-switch'>
-                                        <label class='form-check-label'>
-                                            <input class='form-check-input' type='checkbox' id='tamanho|$idPizza' $check>
-                                            <span> $cardapio  </span>
-                                        </label>
+                                <tr>
+                                    <td> $tamanho </td>
+                                    <td class='preco'> $brl </td>
+                                    <td> $qtdeSabor </td>
+                                    <td>
+                                        <div class='form-check form-switch'>
+                                            <label class='form-check-label'>
+                                                <input class='form-check-input' type='checkbox' id='tamanho|$idPizza' $check>
+                                                <span> $cardapio  </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style='width:20%'>
+                                        <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#m$idPizza'> Alterar </button>
+                                        <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Desativar </button>
+                                    </td>
+                                </tr>
+                            ";
+                            // |--------------------------------------------------------------------------------------------------------------------------------|
+                            // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
+                            echo "
+                            <div class='modal fade' id='m$idPizza' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                        <div class='modal-header'>
+                                            <h5 class='modal-title' id='exampleModalLabel'> Alterar o tamanho $tamanho </h5>
+                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                        </div>  
+                                        <form action='php/cardapio/edit-tamanho?idPizza=$idPizza' method='POST'>
+                                            <div class='modal-body'>
+
+                                                <label> Descrição </label> <br> <input type='text' name='tamanho' value='$tamanho'> <br>
+                                                <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$brl'> <br>
+                                                <label> Quantidade de sabores </label> <br> <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
+
+                                            </div>
+                                            <div class='modal-footer'>
+                                                <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
+                                                <button type='submit' class='btn btn-success'> Confirmar </button>
+                                            </div>
+                                        </form>
                                     </div>
-                                </td>
-                                <td style='width:20%'>
-                                    <button type='button' class='btn btn-warning btr-sm' data-bs-toggle='modal' data-bs-target='#m$idPizza'> Alterar </button>
-                                    <button type='submit' class='btn btn-danger btr-sm' onclick='exc_tamanho(this.id)' id='$idPizza'> Desativar </button>
-                                </td>
-                            </tr>
-                        ";
-                        // |--------------------------------------------------------------------------------------------------------------------------------|
-                        // |-------------------------------| Criar o modal com as repequitivas informações |---------------------------|
-                        echo "
-                        <div class='modal fade' id='m$idPizza' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                            <div class='modal-dialog modal-dialog-centered'>
-                                <div class='modal-content'>
-                                    <div class='modal-header'>
-                                        <h5 class='modal-title' id='exampleModalLabel'> Alterar o tamanho $tamanho </h5>
-                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                    </div>  
-                                    <form action='php/cardapio/edit-tamanho?idPizza=$idPizza' method='POST'>
-                                        <div class='modal-body'>
-
-                                            <label> Descrição </label> <br> <input type='text' name='tamanho' value='$tamanho'> <br>
-                                            <label> Valor </label> <br> <input class='money' id='input' size='9' type='text' name='preco' value='$brl'> <br>
-                                            <label> Quantidade de sabores </label> <br> <input type='number' name='qtdeSabor' value='$qtdeSabor' min='1' max='6'> <br>
-
-                                        </div>
-                                        <div class='modal-footer'>
-                                            <button type='button' class='btn btn-danger' data-bs-dismiss='modal'> Cancelar </button>
-                                            <button type='submit' class='btn btn-success'> Confirmar </button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        ";
-                        // |-----------------------------------------------------------------------------------------------------------|
+                            ";
+                            // |-----------------------------------------------------------------------------------------------------------|
 
 
-                    
-                }}
-            ?>
-            
-            </tbody>
-        </table>
+                        
+                    }}
+                ?>
+                
+                </tbody>
+            </table>
+        </div>
         <!--------------------------------------------------| Fim da table tamanho |-------------------------------------------------->
 
         <!----------------------------------->
