@@ -21,6 +21,9 @@
 
     
     <div class="geral">
+    <hr>
+    <h1>Fazer Pedido</h1>
+    <hr>
         <form method="post">    
             <div class="pizza">
                 <h1 class="titulo">Pizzas</h1>
