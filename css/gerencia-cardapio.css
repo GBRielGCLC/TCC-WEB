@@ -7,16 +7,12 @@ body{
     height: 100%;
 }
 
-hr{
-    color: black;
-}
 .preco{
     text-align: right;
 }
 
 .form-check-input{  
     background-color: #dc3444;
-    color: white;
 }
 .form-check-input:checked{
     background-color: #1c8454;
@@ -29,7 +25,7 @@ input[type=number]{
 }
 
 .geral{
-    margin-top: auto;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto; 
     background-color: white;
@@ -38,15 +34,19 @@ input[type=number]{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    text-align: center;
+    text-align: center; 
 }
 input{
     margin: 10px;
     padding: 6px;
 }
 .tabelas{
-    width: 95%;
+    width: 90%;
+    margin-bottom: 50px;
 }
 h1{
-    margin-top: 10%;
+    margin-top: 10px;
+}
+footer{
+    margin-top: 50px;
 }

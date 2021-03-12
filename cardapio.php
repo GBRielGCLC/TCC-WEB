@@ -43,7 +43,7 @@
           
           include "php\conexaoBD.php";
 
-          $sql = "SELECT * FROM `sabor` WHERE status='on' order by nome";
+          $sql = "SELECT * FROM `sabor` WHERE status='on' and cardapio='on'order by nome";
           
           
     echo " <h1>Pizzas</h1> 
@@ -98,66 +98,36 @@
       echo" </div>
       </div><!--div da class pizzas-->
       ";
-      echo "
-      <div class='bebidas'>
-        <h1> Bebidas </h1>";
-        
-      echo"
-      </div>
-      ";
-          
-        
-    
-    
-    
     ?>
+    <div class="bebidas">
+      <h1> Bebidas </h1>
+      <?php
+        $sql = "SELECT * FROM `bebida` WHERE status='on' and `cardapio`='on' order by nome";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            $idBebida = $row["idBebida"];
+            $nome = $row["nome"];
+            $preco = $row["preco"];
+
+            echo"
+            <div class='accordion' id='accordionExample'>
+              <div class='accordion-item'>
+                <h2 class='accordion-header' id='headingTwo'>
+                  <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo'>
+                    $nome - Por R$ $preco
+                  </button>
+                </h2>
+              </div>
+            </div>
+            ";
+          }
+        }
+      ?>
+    </div>
 </div>
 
 <footer> <?php include "rodape.html"; ?> </footer>
 
 </body>
 </html>
-
-<!--
-        $sql = "SELECT * FROM `bebida` WHERE status='on' and `cardapio`='on' order by nome";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-            $idBebida = $row["idBebida"];
-            $nome = $row["nome"];
-            $preco = $row["preco"];
-            
-            $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-            $brl = $formatter->formatCurrency($preco, 'BRL');
-            
-            echo "<div class='accordion' id='accordionExample'> 
-            
-          <div class='accordion-item'>
-            <h2 class='accordion-header' id='headingOne'>
-              <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#a' aria-expanded='true' aria-controls='a'>
-                $nome - Por  $brl.
-              </button>
-            </h2>
-          </div>
-        ";
-
-          }
-        } 
-        
-
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-        </div>
--->
