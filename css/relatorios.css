@@ -25,11 +25,13 @@ button{
     float: right;
     margin-right: 8%;
 }
-select{
+.btnPDF{
     margin-left: 5%;
     margin-top: 1%;
-    width: 1%;
-}
+
+}/*
+select{
+}*/
 .conteudo{
     border: solid black 1px;
     width: 90%;
@@ -38,4 +40,9 @@ select{
     margin-right: auto;
     text-align: center;
     margin-top: 5%;
+}
+a{
+    list-style: none;
+    text-decoration: none;
+    color: black;
 }

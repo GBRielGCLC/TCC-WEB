@@ -33,10 +33,11 @@ fas fa-bars<!DOCTYPE html>
         </div>
         
         <div class="corpo">
-
-            <select class='form-select' style="width:15%;" name="" id="">
+            <button class="btnPDF"> <a href="Relatórios tcc (1).pdf" target="_blank"> Gerar PDF </a> </button>
+            
+           <!--- <select class='form-select' style="width:15%;" name="" id="">
                 <option value="">Nenhum</option>
-            </select>
+            </select> --->
 
         <div class="conteudo">
             Nenhum Dado Encontrado

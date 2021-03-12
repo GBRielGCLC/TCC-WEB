@@ -212,7 +212,7 @@
                         }
                     ?>
 
-                    <input type="submit" value="Cadastrar" class="btn_cadastrar">
+                  <br>  <input type="submit" value="Cadastrar" class="btn_cadastrar">
                 </form>
             </div>
 
