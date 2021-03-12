@@ -19,6 +19,7 @@
     
     <?php include ("php/barra-menu.php"); ?>
 
+    
     <div class="geral">
         <form method="post">    
             <div class="pizza">
