@@ -93,7 +93,7 @@
                 }
                 else{
                     echo "
-                    <li> <a style='float:right' href='login_area.php'> <i title='Carregando...' class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i> </a> </li>
+                    <li> <a style='float:right; height:100%;' href='login_area.php' data-toggle='tooltip' title='Acessar área restrita'> <i class='fas fa-user-alt' style='font-size:18px; margin-left:5px; color:white;'></i> </a> </li>
                     <li> <a href='index.php#onde_encontrar'>Onde nos encontrar</a> </li>
                     ";
                 }

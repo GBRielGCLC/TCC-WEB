@@ -11,16 +11,19 @@
 </head>
 <?php include "php/barra-menu.php" ?>
 <body>
+    
     <div class="geral">
-
+        <h1>Incluir Promoções</h1>
         <div class="pizza">
             <h4> Tamanhos </h4>
+            <hr>
             <label> <input type="checkbox">  Grande</label><br>
             <label> <input type="checkbox">  Família</label><br>
         </div>
 
         <div class="sabor">
             <h4> Sabor </h4>
+            <hr>
             <label> <input type="checkbox">  Portuguesa </label><br>
             <label> <input type="checkbox">  Baiana </label><br>
 
@@ -28,6 +31,7 @@
 
         <div class="bebida">
             <h4> Bebidas </h4>
+            <hr>
             <label> <input type="checkbox">  Guaraná Antartica 1L </label><br>
             <label> <input type="checkbox">  Fanta Laranja 1L</label><br>
         </div>
@@ -35,6 +39,7 @@
         <div class="valor">
             <center>
                 <h4> Promoção</h4>
+                <hr>
                 <form>
                     <label> Nome : <input type="text"> </label>
                     <label>Valor : <input type="text"><br> </label>

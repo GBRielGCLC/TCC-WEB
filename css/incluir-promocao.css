@@ -7,19 +7,18 @@ body{
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
+    width: 95%;
+    display: table;
+    /*flex-direction: row;*/
 }
 label{
     margin-left: 2%;
     margin-top: 2%;
 }
-
 .pizza{
-    margin-left: 20px;
-    
+    margin-left: 4%;
 }
+
 .valor{
     height: 50%;
 }
@@ -27,16 +26,16 @@ label{
     overflow-y: scroll; 
     height: 500px;
     margin-bottom: 50px;
-    margin-left: 20px;
+    
 }
 .pizza,.sabor,.bebida,.valor{
     margin-top: 20px;
-    width: 300px;
+    width: 250px;
     background-color: #fff;
     text-align: left;
     border: solid black 1px;
-    margin-right: 20px;
-    position: relative;
+    margin-right: 4%;
+    float: left;
 }
 
 input[type=submit]{
@@ -52,5 +51,8 @@ input[type=submit]{
 }
 
 h4{
+    text-align: center;
+}
+h1{
     text-align: center;
 }
