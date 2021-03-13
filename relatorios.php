@@ -23,26 +23,27 @@ fas fa-bars<!DOCTYPE html>
     
         <?php include "php/barra-menu.php" ?>
 
-        <div class="cabecalho">
+        <div class="principal">
+            <div class="cabecalho">
+                
+                <h1>Relatórios</h1>
+                <button class="vendas"> Vendas </button>        
+                <button> Clientes </button>        
+                <button class="itens"> Itens </button>        
             
-            <h1>Relatórios</h1>
-            <button class="vendas"> Vendas </button>        
-            <button> Clientes </button>        
-            <button class="itens"> Itens </button>        
-        
-        </div>
-        
-        <div class="corpo">
-            <button class="btnPDF"> <a href="Relatórios tcc (1).pdf" target="_blank"> Gerar PDF </a> </button>
+            </div>
             
-           <!--- <select class='form-select' style="width:15%;" name="" id="">
-                <option value="">Nenhum</option>
-            </select> --->
+            <div class="corpo">
+                <button class="btnPDF"> <a href="Relatórios tcc (1).pdf" target="_blank"> Gerar PDF </a> </button>
+                
+            <!--- <select class='form-select' style="width:15%;" name="" id="">
+                    <option value="">Nenhum</option>
+                </select> --->
 
-        <div class="conteudo">
-            Nenhum Dado Encontrado
+            <div class="conteudo">
+                Nenhum Dado Encontrado
+            </div>
         </div>
-
 
 </body>
 </html>

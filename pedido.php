@@ -56,7 +56,7 @@
                 }
                 /*-----------------------------------------------------------------------------------------------------------*/
                 include "php\conexaoBD.php";
-                    $sql = "SELECT * FROM `tamanho` WHERE status='on' order by preco ASC";
+                    $sql = "SELECT * FROM `tamanho` WHERE status='on' and `cardapio`='on' order by preco ASC";
 
                     $result = $conn->query($sql);
 
@@ -137,7 +137,7 @@
             <?php
                 include "php\conexaoBD.php";
 
-                $sql = "SELECT * FROM `bebida` Where `status`='on' ORDER BY nome ASC";
+                $sql = "SELECT * FROM `bebida` Where `status`='on' and `cardapio`='on' ORDER BY nome ASC";
                 $result = $conn->query($sql);   
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {

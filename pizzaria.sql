@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 07-Mar-2021 às 20:18
+-- Tempo de geração: 13-Mar-2021 às 11:20
 -- Versão do servidor: 10.4.10-MariaDB
 -- versão do PHP: 7.3.12
 
@@ -36,15 +36,16 @@ CREATE TABLE IF NOT EXISTS `bebida` (
   `idBebida` int(11) NOT NULL AUTO_INCREMENT,
   `status` enum('on','off') NOT NULL,
   PRIMARY KEY (`idBebida`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `bebida`
 --
 
 INSERT INTO `bebida` (`nome`, `preco`, `cardapio`, `idBebida`, `status`) VALUES
-('coca 1L', 5, 'on', 2, 'on'),
+('coca 1L', 5, 'off', 2, 'off'),
 ('Fanta laranja 1L', 5, 'on', 4, 'on'),
+('GuarnÃ¡ Antartica 1L', 5, 'on', 14, 'on'),
 ('coca 500ml', 5, 'on', 7, 'on');
 
 -- --------------------------------------------------------
@@ -127,16 +128,16 @@ CREATE TABLE IF NOT EXISTS `perfil` (
   `senha` varchar(16) NOT NULL,
   `adm` tinyint(1) NOT NULL,
   PRIMARY KEY (`idPerfil`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `perfil`
 --
 
 INSERT INTO `perfil` (`idPerfil`, `nome`, `e-mail`, `senha`, `adm`) VALUES
-(1, 'Lucas Santana', 'lucas1.stoly@gmail.com', '1234', 1),
+(1, 'Lucas Santana', 'lucas1.stoly@gmail.com', '123', 1),
 (4, 'Gabriel', 'gabriel.gclc@gmail.com', '9603', 1),
-(3, 'aa', 'a@gmail.com', '123', 0);
+(33, 'Gilvalda', 'Gilvalda@gmail.com', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -154,21 +155,22 @@ CREATE TABLE IF NOT EXISTS `sabor` (
   `precoAdd` double DEFAULT NULL,
   `status` enum('on','off') NOT NULL,
   PRIMARY KEY (`idSabor`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `sabor`
 --
 
 INSERT INTO `sabor` (`idSabor`, `nome`, `descricao`, `cardapio`, `disponibilidade`, `precoAdd`, `status`) VALUES
-(21, 'Marguerita', 'Mussarela, parmesÃ£o, manjericÃ£o e orÃ©gano.', 'on', ',109,110,115,112,111', 0, 'on'),
+(21, 'Marguerita', 'Mussarela, parmesÃ£o, manjericÃ£o e orÃ©gano.', 'off', ',109,110,115,112,111', 0, 'on'),
 (20, 'Calabresa Cheddar', 'Mussarela, Calabresa, Cheddar, Azeitona e OrÃ©gano', 'on', ',109,110,115,112,111', 0, 'on'),
-(19, 'Baiana', 'Mussarela, Calabresa tirturada, Pimenta calabresa', 'on', ',109', 0, 'on'),
-(18, 'Calabresa 2', 'Mussarela, Calabresa, Tomate, Azeitona, Cebola e OrÃ©gano', 'on', '109,110,115,111,112', 0, 'on'),
+(19, 'Baiana', 'Mussarela, Calabresa tirturada, Pimenta calabresa', 'off', ',109', 0, 'on'),
+(18, 'Calabresa 2', 'Mussarela, Calabresa, Tomate, Azeitona, Cebola e OrÃ©gano', 'off', '109,110,115,111,112', 0, 'on'),
 (22, 'Moda da Casa', 'Presunto', 'on', ',109,110,115,112,111', 0, 'on'),
 (23, 'aaaaaaa', 'w', 'on', ',109,110,115,112,111', 0, 'off'),
 (24, 'Banana', 'Mussarela, Banana, Canela em PÃ³.', 'on', ',109,115,112,111', 0, 'on'),
-(25, 'Mussarela', 'Mussarela, Azeitona e Tomate', 'on', ',109,110,115,111,112', 0, 'on');
+(25, 'Mussarela', 'Mussarela, Azeitona e Tomate', 'off', ',109,110,115,111,112', 0, 'on'),
+(29, '4 queijos', 'Mussarela, parmesÃ£o, manjericÃ£o e orÃ©gano.', 'on', ',118,109', 1, 'on');
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `tamanho` (
   `qtdeSabor` int(11) NOT NULL,
   `status` enum('on','off') NOT NULL,
   PRIMARY KEY (`idPizza`)
-) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=120 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tamanho`
@@ -208,11 +210,13 @@ CREATE TABLE IF NOT EXISTS `tamanho` (
 INSERT INTO `tamanho` (`idPizza`, `nome`, `preco`, `cardapio`, `qtdeSabor`, `status`) VALUES
 (109, 'Pequena', 20, 'on', 2, 'on'),
 (110, 'MÃ©dia', 27, 'on', 2, 'on'),
-(111, 'Grande', 35, 'off', 3, 'on'),
+(111, 'Grande', 35, 'on', 3, 'on'),
 (112, 'FamÃ­lia', 40, 'on', 4, 'on'),
-(115, 'Grande Tradicional', 30, 'on', 2, 'on'),
+(115, 'Grande Tradicional', 30, 'off', 2, 'on'),
 (116, 'ads', 15, 'on', 2, 'off'),
-(117, 'aaa', 21.56, 'on', 3, 'off');
+(117, 'aaa', 21.56, 'on', 3, 'off'),
+(118, 'Brotinho', 15, 'off', 1, 'on'),
+(119, 'Gigante', 60, 'on', 6, 'off');
 
 -- --------------------------------------------------------
 
