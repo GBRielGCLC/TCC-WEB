@@ -35,15 +35,15 @@
                     <div class="carousel-inner">
 
                         <div class="carousel-item active">
-                            <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="...">
+                            <img src="imagens\img1" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
                         </div>
 
                         <div class="carousel-item">
-                            <img src="imagens\Grande.png" class="d-block w-100" alt="...">
+                            <img src="imagens\Grande.png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
                         </div>
 
                         <!--<div class="carousel-item">
-                            <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="...">
+                            <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
                         </div>-->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" id="banner">
@@ -71,7 +71,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             
-                            <form method="post" action="php/cad-imagem.php">
+                            <form method="post" action="php/cad-imagem.php" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     Imagem 1 : <input type="file" name="img1" accept="image/x-png,image/gif,image/jpeg">
                                     Imagem 2 : <input type="file" name="img2" accept="image/x-png,image/gif,image/jpeg">
