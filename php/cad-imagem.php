@@ -1,22 +1,12 @@
 <?php
-//$_FILES["img1"] = $_FILES["img1"]["tmp_name"];
 
-if(isset($_FILES["img1"]["tmp_name"])){
 
-$img1 = $_FILES["img1"]["tmp_name"];
+    $extensao_carteiravac = strtolower(substr($_FILES['img1']['name'], -4)); //Pega extensão do arquivo
+    $nova_carteiravac = md5(time()) . $extensao_carteiravac; //Define o nome do arquivo
+    $diretorio = "imagens/"; //Define o diretorio para onde enviaremos o arquivo
+    move_uploaded_file($_FILES['img1']['tmp_name'], $diretorio.$nova_carteiravac); //Efetua o upload
+    $nova_carteiravac = "'" . $nova_carteiravac . "'";
+    echo "aaaaaaaaaaaaa";
 
-if(isset($img1)){
-    include("conexaoBD.php");
 
-    $sql = "INSERT INTO `imagem`(`imagens`) VALUES (LOAD_FILE('imagens/marcacareca.png'))";
-    $result = $conn->query($sql);   
-    if ($result->num_rows > 0) {
-  
-        echo"aaaaaaaaaaaaaaaaaaaaa";
-
-    }
-}
-}
-/*
-*/
 ?>

@@ -73,13 +73,13 @@
                             
                             <form method="post" action="php/cad-imagem.php">
                                 <div class="modal-body">
-                                    <input type="file" name="img1" accept="image/x-png,image/gif,image/jpeg">
-                                    <input type="file" name="img2" accept="image/x-png,image/gif,image/jpeg">
-                                    <input type="file" name="img3" accept="image/x-png,image/gif,image/jpeg">
+                                    Imagem 1 : <input type="file" name="img1" accept="image/x-png,image/gif,image/jpeg">
+                                    Imagem 2 : <input type="file" name="img2" accept="image/x-png,image/gif,image/jpeg">
+                                    Imagem 3 : <input type="file" name="img3" accept="image/x-png,image/gif,image/jpeg">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Fechar </button>
-                                    <button type="submit" class="btn btn-success"> Salvar </button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Cancelar </button>
+                                    <button type="submit" class="btn btn-success"> Alterar </button>
                                 </div>
                             </form>
                         </div>
