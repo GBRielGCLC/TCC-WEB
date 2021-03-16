@@ -22,7 +22,7 @@
         <?php
             include ("php/barra-menu.php");
         ?>
-
+<!------------------------------   Carrosel     ----------------->
         <div id = "conteudo" style="margin-top:3%;">
 
             <div id="conteudo_principal">
@@ -54,15 +54,45 @@
                     </button>
                 </div>
             </div>
-                
-            
+            <!------------------------    Fim Do Carrosel      ------------->
+
+            <div id="edit">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" style="margin-right: 10%" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Editar Imagem<i class='fas fa-edit' style='font-size:18px; color:white;'></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Alterar imagens</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <form method="post" action="php/cad-imagem.php">
+                                <div class="modal-body">
+                                    <input type="file" name="img1" accept="image/x-png,image/gif,image/jpeg">
+                                    <input type="file" name="img2" accept="image/x-png,image/gif,image/jpeg">
+                                    <input type="file" name="img3" accept="image/x-png,image/gif,image/jpeg">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Fechar </button>
+                                    <button type="submit" class="btn btn-success"> Salvar </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div id="conteudo_Onde">
                 <a name="onde_encontrar"></a>
                 <h1 class="titulo_onde"> Onde nos encontrar</h1>
                 <iframe id="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.81812555735!2d-37.102369985198074!3d-10.901422792236762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71ab35ae0944521%3A0x59cc70c675335bbe!2sPizzaria%20do%20Careca!5e0!3m2!1spt-BR!2sbr!4v1592503562638!5m2!1spt-BR!2sbr" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
             </div>
-        </div>
 
     </div><!--Fim da DIV geral -->
     

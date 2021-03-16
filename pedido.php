@@ -171,7 +171,7 @@
         </div>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carrinho" id="btnCarrinho">
-            <i class="fa fa-shopping-cart"></i>  Carrinho
+            <span class="badge bg-secondary">Quantidade de itens</span> <i class="fa fa-shopping-cart"></i>  Carrinho
             <!------------------------------------------------------------------------>
         </button>
 </div>
