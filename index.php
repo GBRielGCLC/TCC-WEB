@@ -34,17 +34,23 @@
                     </div>
                     <div class="carousel-inner">
 
-                        <div class="carousel-item active">
-                            <img src="imagens\img1" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
-                        </div>
+                        <?php if(file_exists("imagens/img1.png")==true){ ?>
+                            <div class="carousel-item">
+                                <img src="imagens\img1" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
+                            </div>
+                        <?php } ?>
 
-                        <div class="carousel-item">
-                            <img src="imagens\Grande.png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
-                        </div>
+                        <?php if(file_exists("imagens/img2.png")==false){ ?>
+                            <div class="carousel-item">
+                                <img src="imagens\Grande.png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
+                            </div>
+                        <?php } ?>
 
-                        <!--<div class="carousel-item">
-                            <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
-                        </div>-->
+                        <?php if(file_exists("imagens/img3.png")==true){ ?>
+                            <div class="carousel-item">
+                                <img src="imagens\fundo.png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
+                            </div>
+                        <?php } ?>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" id="banner">
                         <span class="carousel-control-prev-icon" aria-hidden="true" id="setinha"></span>
@@ -73,9 +79,21 @@
                             
                             <form method="post" action="php/cad-imagem.php" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    Imagem 1 : <input type="file" name="img1" accept="image/x-png,image/gif,image/jpeg">
-                                    Imagem 2 : <input type="file" name="img2" accept="image/x-png,image/gif,image/jpeg">
-                                    Imagem 3 : <input type="file" name="img3" accept="image/x-png,image/gif,image/jpeg">
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Imagem 1</label>
+                                        <input class="form-control" type="file" id="formFile" accept="image/x-png,image/gif,image/jpeg">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Imagem 2</label>
+                                        <input class="form-control" type="file" id="formFile" accept="image/x-png,image/gif,image/jpeg">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Imagem 3</label>
+                                        <input class="form-control" type="file" id="formFile" accept="image/x-png,image/gif,image/jpeg">
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Cancelar </button>
