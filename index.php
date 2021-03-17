@@ -27,30 +27,17 @@
 
             <div id="conteudo_principal">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <!--<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
-                    </div>
+                
                     <div class="carousel-inner">
-
-                        <?php if(file_exists("imagens/img1.png")==true){ ?>
-                            <div class="carousel-item">
-                                <img src="imagens\img1" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
-                            </div>
-                        <?php } ?>
-
-                        <?php if(file_exists("imagens/img2.png")==false){ ?>
-                            <div class="carousel-item">
-                                <img src="imagens\Grande.png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
-                            </div>
-                        <?php } ?>
-
-                        <?php if(file_exists("imagens/img3.png")==true){ ?>
-                            <div class="carousel-item">
-                                <img src="imagens\fundo.png" class="d-block w-100" alt="..." onerror="imagens\Pizzaria do Careca (1).png">
-                            </div>
-                        <?php } ?>
+                        <div class="carousel-item active">
+                            <img src="imagens\img1" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="imagens\img2" class="d-block w-100" alt="...">
+                        </div>
+                        <!--<div class="carousel-item">
+                            <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="...">
+                        </div>-->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" id="banner">
                         <span class="carousel-control-prev-icon" aria-hidden="true" id="setinha"></span>
