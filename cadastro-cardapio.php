@@ -33,7 +33,7 @@
                         <label> Valor Adicional </label> <input class="money" id="input" size="6" type="text" name="add"> 
                         
                         <hr>
-                        <h2 class="texto-tamanho"> Tamanho que o sabor está disponível </h2> 
+                        <h2 class="texto-tamanho"> Tamanhos disponíveis </h2> 
                     
                         <div class="lista_tamanhos">
 
@@ -113,7 +113,7 @@
                 <form method="POST" class=campos_cadastro action="php\cardapio\cadastro-tamanho.php">
 
                     <label class="labelTam"> Tamanho </label> <input type="text" size="51" name="tamanho"> <br>
-                    <label class="labelTam"> Preço </label> <input type="text" name="preco" class="money" size="6"> <br>
+                    <label class="labelTam"> Preço </label> <input type="text" name="preco" class="money" size="6">
                     <label class="labelTam"> Quantidade de Sabores </label> <input type="number" name="qtdeSabor" min="1" max='6'> <br> <br>
                     
                     <?php
