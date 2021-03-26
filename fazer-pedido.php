@@ -61,12 +61,12 @@
             <div class='accordion' id='accordionExample'>
             <div class='accordion-item'>
               <h2 class='accordion-header' id='headingOne'>
-                <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
-                <h1 class='titulo'>Pizzas</h1>
+                <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' style='height: 75px; width: 250px;' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
+                <h1 class='titulo' style='font-size: 35px;'>Pizzas</h1>
                 <hr>
                 </button>
               </h2>
-              <div id='collapseOne' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
+              <div style='width: 250px;' id='collapseOne' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
                 <div class='accordion-body'>
 
 
@@ -93,7 +93,7 @@
                       echo"
                         <!------------------------------------------------------------------------------------------------->
                         <!-- Button trigger modal -->
-                      <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#e$idPizza[$qtdeTamanhoCad]'>
+                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e$idPizza[$qtdeTamanhoCad]'>
                       $pizza[$qtdeTamanhoCad]
                       </button>
                       <br>
@@ -128,8 +128,8 @@
                         echo"<p class='saboresCarrinho'>*caso não queria a mesma quantidade de sabores do máximo, escolhar a opção nenhum </p>
                         </div>
                             <div class='modal-footer'>
-                              <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                              <button type='button' class='btn btn-primary'>Save changes</button>
+                              <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
+                              <button type='submit' class='btn btn-primary'>Adicionar $brl</button>
                             </div>
                           </div>
                         </div>
@@ -160,12 +160,12 @@
             <div class='accordion' id='accordionExample'>
             <div class='accordion-item'>
               <h2 class='accordion-header' id='headingOne'>
-                <button class='accordion-button collapsed' id='botao' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo'>
-                <h1 class='titulo'>Bebidas</h1>
+                <button class='accordion-button collapsed' id='botao' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTwo' style='height: 75px; width: 250px;' aria-expanded='true' aria-controls='collapseTwo'>
+                <h1 class='titulo' style='font-size: 35px;'>Bebidas</h1>
                 <hr>
                 </button>
               </h2>
-              <div id='collapseTwo' class='accordion-collapse collapse' aria-labelledby='headingTwo' data-bs-parent='#accordionExample'>
+              <div style='width: 250px;' id='collapseTwo' class='accordion-collapse collapse' aria-labelledby='headingTwo' data-bs-parent='#accordionExample'>
                 <div class='accordion-body'>
 
 
@@ -189,7 +189,7 @@
                       echo"
 
                       <!-- Button trigger modal -->
-                      <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#e$idBebida'>
+                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e$idBebida'>
                       $nome_bebida
                     </button>
                       <br>
@@ -205,8 +205,8 @@
                               $nome_bebida
                               </div>
                               <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                <button type='button' class='btn btn-primary'>Save changes</button>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
+                                <button type='button' class='btn btn-primary'>Adicionar $brl</button>
                               </div>
                             </div>
                           </div>
@@ -221,25 +221,34 @@
                     </div>
                     </div>
                     </div>
+                    </div>
                   </div>";
                   }
 
                   
-                  ?>
-
-
-
+                  echo"
+                  </form>
+                <div class='card'>
+                      <div class='card-header'>
+                        Carrinho
+                      </div>
+                      <div class='card-body'>
+                        <h5 class='card-title'>  </h5>
+                        <p class='card-text'></p>
+                        <a href='#' class='btn btn-primary'>Go somewhere</a>
+                        
+                      </div>
+                    </div>
+";
+                    ?> 
+                    
 </div> <!-- Fim da div geral -->
 
 
-</form>
 
 
-<button class="confirmar">Adicionar</button>
-                            
-<hr>
-<h1>Itens Adicionados</h1>
-<hr>
+          
+
                   
 
 

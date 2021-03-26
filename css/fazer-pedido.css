@@ -16,19 +16,6 @@ body{
     
 }
 
-
-.bebida, .pizza{
-    /*margin-top: -35%;*/
-    margin-left: 10%;
-  
-}
-.confirmar{
-    float: right;
-    margin-top: -20%;
-    margin-right: 10%;
-
-}
-
 .pizza, .bebida{
 
     /*margin-bottom: 10%;*/
@@ -37,11 +24,10 @@ body{
     width: 38%;
     background-color: #fff;
     text-align: left;
-    border: solid black 1px;
+    margin-left: 10%;
+    
 }
-.tamanho{
-    height: 100px;
-}
+
     .btn1{
     background-color: #78B678;
     border: solid #78B678 1px;
@@ -61,13 +47,14 @@ body{
 }
 
 h2{
-    font-size: 20px;
+    font-size: 18px;
     margin-top: auto;
     margin-bottom: auto;
    
 }
 h1{
     text-align: center;
+    
 }
 p{
     margin-left: 5%;
@@ -104,4 +91,22 @@ input[type="number"] {
   a{
       list-style: none;
     
+  }
+  .opcoes{
+      background-color: transparent;
+      border: turquoise;
+      margin-bottom: 2%;
+      width: 100%;
+      float: left;
+
+  }
+  .card{
+      width: 250px;
+      float: right;
+      margin-top: -169px;
+      margin-right: 10%;
+      margin-bottom: 10%;
+  }
+  form{
+      width: 40%;
   }
