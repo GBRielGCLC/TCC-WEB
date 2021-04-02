@@ -222,12 +222,13 @@
 
                         </form>
                         ";
-                        if(isset($_POST["qtde"])){
-                          $_SESSION["qtde"] = $_POST["qdte"];
-                        }
+                        
 
 
                     }
+                  /*  if(isset($_POST["qtde"])){
+                      $_SESSION["qtde"] = $_POST["qdte"];
+                    }*/
                     echo"
                     </div>
                     </div>
@@ -248,8 +249,10 @@
                       <div class='card-body'>
                         <h5 class='card-title'></h5>
                         <p class='card-text'>
-                         "; echo $_POST['qtde'];
-                       echo" </p>
+                         "; if(isset($_POST['qtde'])){
+                         echo $_POST['qtde'];
+                        }
+                         echo" </p>
                         <a href='#' class='btn btn-primary'>Go somewhere</a>
                         
                       </div>
