@@ -24,19 +24,18 @@
     <hr>
     <h1>Fazer Pedido</h1>
     <hr>
-        <form method="post">    
-        
+           
         
             <div class="pizza">
                 
-                    <!--<h4>Pizzas</h4>-->
+                    
                 
                     <?php
 
                 /* CHAMAR TABELA DE SABORES */
                 include "php\conexaoBD.php";
 
-                $sql = "SELECT * FROM `sabor` WHERE status='on' order by nome";
+                $sql = "SELECT * FROM `sabor` WHERE status='on' and cardapio='on' order by nome";
                 
                 $result = $conn->query($sql);
 
@@ -98,6 +97,9 @@
                       </button>
                       <br>
                       <!-- Modal -->
+
+                      <form method='post'>
+
                       <div class='modal fade' id='e$idPizza[$qtdeTamanhoCad]' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                         <div class='modal-dialog'>
                           <div class='modal-content'>
@@ -135,14 +137,17 @@
                         </div>
                       </div>  
                     <!------------------------------------------------------------------------------------------------->
-
+                    </form>
                       ";
 
                     }
+                    
                   }
                   echo"    </div>
                   </div>
-                </div>";
+                </div>
+                
+                ";
                          
                             ?>
                             </div> <!-- Fim da div pizza -->
@@ -152,7 +157,7 @@
               
             <div class="bebida">
             
-            <!--<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#finalizar"> Finalizar Pedido </button>-->
+            
             <?php
 
             echo"
@@ -194,26 +199,32 @@
                     </button>
                       <br>
                         <!-- Modal -->
+
+                        <form method='post'>
+
                         <div class='modal fade' id='e$idBebida' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                           <div class='modal-dialog'>
                             <div class='modal-content'>
                               <div class='modal-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
+                                <h5 class='modal-title' id='exampleModalLabel'>$nome_bebida</h5>
                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                               </div>
                               <div class='modal-body'>
-                              $nome_bebida
+                               $nome_bebida <input type='number' size='10' name='qtde' id=''>
                               </div>
                               <div class='modal-footer'>
                                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
-                                <button type='button' class='btn btn-primary'>Adicionar $brl</button>
+                                <input type='submit' value='Adicionar $brl' class='btn btn-primary'>
                               </div>
                             </div>
                           </div>
-                        </div>  
-                        
-                        ";
+                        </div>
 
+                        </form>
+                        ";
+                        if(isset($_POST["qtde"])){
+                          $_SESSION["qtde"] = $_POST["qdte"];
+                        }
 
 
                     }
@@ -227,14 +238,18 @@
 
                   
                   echo"
+                  
                   </form>
+
                 <div class='card'>
                       <div class='card-header'>
                         Carrinho
                       </div>
                       <div class='card-body'>
-                        <h5 class='card-title'>  </h5>
-                        <p class='card-text'></p>
+                        <h5 class='card-title'></h5>
+                        <p class='card-text'>
+                         "; echo $_POST['qtde'];
+                       echo" </p>
                         <a href='#' class='btn btn-primary'>Go somewhere</a>
                         
                       </div>
@@ -243,14 +258,6 @@
                     ?> 
                     
 </div> <!-- Fim da div geral -->
-
-
-
-
-          
-
-                  
-
 
 </body>
 </html>
