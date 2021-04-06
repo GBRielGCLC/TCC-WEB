@@ -48,7 +48,7 @@
                     $idSabor[$qtdeSaborCad] = $row["idSabor"];
                     $desc[$qtdeSaborCad] = $row["descricao"];
                     $disponibilidade[$qtdeSaborCad] = $row["disponibilidade"]; 
-                    //$dispo = explode(",", $disponibilidade[$qtdeSaborCad]);
+                    
                     $qtdeSaborCad++;
                     
                 }
@@ -79,8 +79,9 @@
             $result = $conn->query($sql);
             
             if ($result->num_rows > 0) {
-                $qtdeTamanhoCad=0;
+                $qtdeTamanhoCad=-1;
                     while($row = $result->fetch_assoc()) {
+                        $qtdeTamanhoCad++;
                         $pizza[$qtdeTamanhoCad] = $row["nome"];
                         $idPizza[$qtdeTamanhoCad] = $row["idPizza"];
                         $qtdeSabor[$qtdeTamanhoCad] = $row["qtdeSabor"];
@@ -111,7 +112,7 @@
                         for ($e=0; $e < $qtdeSabor[$qtdeTamanhoCad]; $e++) { 
                             $numSabor = $e+1;
                             echo" Sabor $numSabor:
-                            <select class='form-select'>
+                            <select name='opcao$numSabor' class='form-select'>
                             <option selected disabled hidden>Clique Aqui Para Escolher Um Sabor</option>
                             <option>Nenhum</option>";
                             for ($j=0; $j < sizeof($disponibilidade); $j++) { 
@@ -129,9 +130,10 @@
                         
                         echo"<p class='saboresCarrinho'>*caso não queria a mesma quantidade de sabores do máximo, escolhar a opção nenhum </p>
                         </div>
+                        <input type='hidden' name='aux_pizza' value='$qtdeTamanhoCad'>
                             <div class='modal-footer'>
                               <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
-                              <button type='submit' class='btn btn-primary'>Adicionar $brl</button>
+                              <button type='submit' name='pizza' class='btn btn-primary'>Adicionar $brl</button>
                             </div>
                           </div>
                         </div>
@@ -140,10 +142,12 @@
                     </form>
                       ";
 
+                    
                     }
                     
                   }
-                  echo"    </div>
+                  echo"    
+                  </div>
                   </div>
                 </div>
                 
@@ -177,43 +181,48 @@
             ";
 
                 include "php\conexaoBD.php";
-
+                
                 $sql = "SELECT * FROM `bebida` Where `status`='on' and `cardapio`='on' ORDER BY nome ASC";
                 $result = $conn->query($sql);   
                 if ($result->num_rows > 0) {
+                  $aux_bebida=-1;
                     while($row = $result->fetch_assoc()) {
-                        $nome_bebida = $row["nome"];
-                        $preco = $row["preco"];
-                        $idBebida = $row["idBebida"];
-                        $cardapioBD = $row["cardapio"];
-                        $status = $row["status"];
+                        $aux_bebida++;
+                        $nome_bebida[$aux_bebida] = $row["nome"];
+                        $preco[$aux_bebida] = $row["preco"];
+                        $idBebida[$aux_bebida] = $row["idBebida"];
+                        $cardapioBD[$aux_bebida] = $row["cardapio"];
+                        $status[$aux_bebida] = $row["status"];
 
                         $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-                        $brl = $formatter->formatCurrency($preco, 'BRL');
+                        $brl = $formatter->formatCurrency($preco[$aux_bebida], 'BRL');
 
                       echo"
 
                       <!-- Button trigger modal -->
-                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e$idBebida'>
-                      $nome_bebida
+                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e$idBebida[$aux_bebida]'>
+                      $nome_bebida[$aux_bebida]
                     </button>
                       <br>
                         <!-- Modal -->
 
                         <form method='post'>
 
-                        <div class='modal fade' id='e$idBebida' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal fade' id='e$idBebida[$aux_bebida]' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                           <div class='modal-dialog'>
                             <div class='modal-content'>
                               <div class='modal-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'>$nome_bebida</h5>
+                                <h5 class='modal-title' id='exampleModalLabel'>$nome_bebida[$aux_bebida]</h5>
                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                               </div>
                               <div class='modal-body'>
-                               $nome_bebida <input type='number' size='10' name='qtde' id=''>
+                               $nome_bebida[$aux_bebida] <input type='text' size='1' name='qtde'>
+                               <input type='hidden' name='aux_bebida' value='$aux_bebida'>
+                               
+                               
                               </div>
                               <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'> Fechar</button>
                                 <input type='submit' value='Adicionar $brl' class='btn btn-primary'>
                               </div>
                             </div>
@@ -223,12 +232,15 @@
                         </form>
                         ";
                         
-
+                        if(isset($_POST['qtde'])){
+                          $_SESSION['qtde'] = $_POST['qtde'];
+                          $_SESSION['aux_bebida'] = $_POST["aux_bebida"];
+                         }
 
                     }
-                  /*  if(isset($_POST["qtde"])){
-                      $_SESSION["qtde"] = $_POST["qdte"];
-                    }*/
+
+                   
+
                     echo"
                     </div>
                     </div>
@@ -249,11 +261,26 @@
                       <div class='card-body'>
                         <h5 class='card-title'></h5>
                         <p class='card-text'>
-                         "; if(isset($_POST['qtde'])){
-                         echo $_POST['qtde'];
-                        }
+                         "; 
+
+                         if(isset($_POST["aux_pizza"]) && isset($_POST["opcao1"]) && isset($_POST["opcao2"])){
+                        echo"
+
+                        <input type='number' value='1' class='qtde'> *", $pizza[$_POST['aux_pizza']],"  
+                        <p class='saboresCarrinho'>+1 - Sabor - ", $_POST['opcao1'],"</p>
+                        <p class='saboresCarrinho'>+1 - Sabor - ", $_POST['opcao2'],"</p>
+
+                         <hr>";
+                         }
+
+                         
+                         
+                       echo"   <input type='number' value='",$_SESSION['qtde'],"' class='qtde'> * ",$nome_bebida[$_SESSION['aux_bebida']];
+
+
+                        
                          echo" </p>
-                        <a href='#' class='btn btn-primary'>Go somewhere</a>
+                        <a href='#' class='btn btn-primary'>Finalizar</a>
                         
                       </div>
                     </div>
