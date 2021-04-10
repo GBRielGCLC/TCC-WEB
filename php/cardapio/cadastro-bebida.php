@@ -18,7 +18,6 @@
         } else {
 
         $sql = "INSERT INTO `bebida`(`nome`, `preco`,`status`) VALUES ('$nome',$preco,'on')";
-        echo $sql;
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-bebida"] = "sucesso";
             

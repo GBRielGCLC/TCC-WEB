@@ -232,24 +232,19 @@
                         </form>
                         
                         <?php
-                       /*  if(isset($_POST['qtde'])){
-
-                          $_SESSION['qtde'] = $_POST['qtde'];
-                          $_SESSION['aux_bebida'] = $_POST["aux_bebida"];
-                         
-                        }
-*/
+                       
                         
 
                     }
-
+                    if(isset($_POST['aux_bebida']) && isset($_POST['qtde'])){
                     if(isset($_SESSION["carrinho"][$_POST['aux_bebida']])){
-                      $_SESSION["carrinho"][$_POST['aux_bebida']] +=1; 
-                      unset($_POST['aux_bebida']);
+                      $_SESSION["carrinho"][$_POST['aux_bebida']] += $_POST['qtde'];
                     }else{
-                      $_SESSION["carrinho"][$_POST['aux_bebida']] = 1;
-                      unset($_POST['aux_bebida']);
+                      $_SESSION["carrinho"][$_POST['aux_bebida']] = $_POST['qtde'];
+                      
                     }
+                  }
+                  
 ?>
   
                     </div>
@@ -259,10 +254,6 @@
                   </div>
                 <?php  } ?>
 
-                  
-                  
-                  
-                  </form>
 
                 <div class='card'>
                       <div class='card-header'>
@@ -282,15 +273,26 @@
 
                          <?php } 
 
-                         
-                      foreach ($_SESSION["carrinho"] as $key => $value) {  ?>
+                      
+                      foreach ($_SESSION["carrinho"] as $key => $value) {
+                        if(isset($nome_bebida[$key])){
+                        ?>
                         
                         <input type="number" value="<?=$value?>" class="qtde"> <?= $nome_bebida[$key] ?>  <hr>
                         
+                       <?php 
 
-
-                        <?php } ?>
-                  
+                       $total = 0;
+                       if(isset($preco[$key])){
+                        
+                        $total += $preco[$key];
+                          $_SESSION["total"] = $total;
+                            }
+                          }
+                        } 
+                        
+                        ?>
+                      <?= $_SESSION["total"] ?>
                   
                          </p>
                          <!-- Button trigger modal -->
@@ -328,8 +330,6 @@
                       </div>
                     </div>
                     </form>
-
-                  
                    
                     
 </div> <!-- Fim da div geral -->

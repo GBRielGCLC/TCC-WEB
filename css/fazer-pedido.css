@@ -92,14 +92,14 @@ a{
 list-style: none;
 
 }
-/* .opcoes{
+.opcoes{
 background-color: transparent;
 border: turquoise;
 margin-bottom: 2%;
 width: 100%;
 float: left;
-
-}*/
+text-align: left;
+}
 .card{
 width: 250px;
 float: right;

@@ -14,10 +14,12 @@
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
             $_SESSION["login-cliente"]= "on";
+            
             $_SESSION["nome-cliente"] = $row["nome"];
             $_SESSION["telefone-cliente"] = $row["telefone"];
             $_SESSION["endereco-cliente"] = $row["endereco"];
             $_SESSION["bairro"] = $row["bairro"];
+            $_SESSION["id-cliente"] = $row["idCliente"];
             }
         } else {
     

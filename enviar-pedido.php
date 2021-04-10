@@ -21,6 +21,7 @@
         <hr>
         <div class="campos">
 
+      <form action="cad-pedido.php" method="post">
 
         <label> Nome </label> <input type="text" value="<?= $_SESSION['nome-cliente'] ?>" size="25" disabled>     
         <label> Celular  </label> <input type="text" value="<?= $_SESSION['telefone-cliente'] ?>" disabled>    
@@ -39,9 +40,11 @@
                 while($row = $result->fetch_assoc()) {
                   $taxa = $row["taxa"];
                   $bairro = $row["bairro"];
+                  $id = $row["idTaxa"];
                 
                   if($_SESSION["bairro"] == $bairro){
                     $selected = "selected";
+                    $_SESSION["idBairro"] = $id;
                   }else{
                     $selected = "";
                   }
@@ -62,11 +65,14 @@
         <label> Referência </label> <input type="text" size="65"> 
         
         <hr>
-        <p> Valor Total : R$ XX,XX </p>
+        <p> 
+        
+         Valor Total : R$ <?= $_SESSION["total"] ?> 
+        
+        </p>
         <select class='form-select' id="select"> 
         
         <option> Selecione o Método de Pagamento </option> 
-        <!-- INSERT INTO `taxa_entrega`(`bairro`, `taxa`) VALUES ('São Carlos',3) -->
         </select>
         
         <div class="center">
@@ -75,6 +81,7 @@
         </center>
         
         </div>
+        </form>
 
         <hr>
         </div>
