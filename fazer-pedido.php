@@ -197,62 +197,70 @@
                         $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                         $brl = $formatter->formatCurrency($preco[$aux_bebida], 'BRL');
 
-                      echo"
+                      ?>
 
                       <!-- Button trigger modal -->
-                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e$idBebida[$aux_bebida]'>
-                      $nome_bebida[$aux_bebida]
+                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e<?=$idBebida[$aux_bebida]?>'>
+                      <?=$nome_bebida[$aux_bebida]?>
                     </button>
                       <br>
                         <!-- Modal -->
 
                         <form method='post'>
 
-                        <div class='modal fade' id='e$idBebida[$aux_bebida]' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal fade' id='e<?=$idBebida[$aux_bebida]?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                           <div class='modal-dialog'>
                             <div class='modal-content'>
                               <div class='modal-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'>$nome_bebida[$aux_bebida]</h5>
+                                <h5 class='modal-title' id='exampleModalLabel'><?= $nome_bebida[$aux_bebida] ?></h5>
                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                               </div>
                               <div class='modal-body'>
-                               $nome_bebida[$aux_bebida] <input type='text' size='1' name='qtde'>
-                               <input type='hidden' name='aux_bebida' value='$aux_bebida'>
+                              <?=$nome_bebida[$aux_bebida]?> <input type='text' size='1' name='qtde'>
+                               <input type='hidden' name='aux_bebida' value='<?=$aux_bebida?>'>
                                
                                
                               </div>
                               <div class='modal-footer'>
                                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'> Fechar</button>
-                                <input type='submit' value='Adicionar $brl' class='btn btn-primary'>
+                                <input type='submit' value='Adicionar <?=$brl?>' class='btn btn-primary'>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         </form>
-                        ";
                         
-                        if(isset($_POST['qtde'])){
+                        <?php
+                       /*  if(isset($_POST['qtde'])){
 
                           $_SESSION['qtde'] = $_POST['qtde'];
                           $_SESSION['aux_bebida'] = $_POST["aux_bebida"];
                          
                         }
+*/
+                        
 
                     }
 
-                   
-
-                    echo"
+                    if(isset($_SESSION["carrinho"][$_POST['aux_bebida']])){
+                      $_SESSION["carrinho"][$_POST['aux_bebida']] +=1; 
+                      unset($_POST['aux_bebida']);
+                    }else{
+                      $_SESSION["carrinho"][$_POST['aux_bebida']] = 1;
+                      unset($_POST['aux_bebida']);
+                    }
+?>
+  
                     </div>
                     </div>
                     </div>
                     </div>
-                  </div>";
-                  }
+                  </div>
+                <?php  } ?>
 
                   
-                  echo"
+                  
                   
                   </form>
 
@@ -263,24 +271,27 @@
                       <div class='card-body'>
                         <h5 class='card-title'></h5>
                         <p class='card-text'>
-                         "; 
+                         
 
-                         if(isset($_POST["aux_pizza"]) && isset($_POST["opcao1"]) && isset($_POST["opcao2"])){
-                        echo"
+                      <?php   if(isset($_POST["aux_pizza"]) && isset($_POST["opcao1"]) && isset($_POST["opcao2"])){ ?>
 
-                        <input type='number' value='1' class='qtde'> *", $pizza[$_POST['aux_pizza']],"  
-                        <p class='saboresCarrinho'>+1 - Sabor - ", $_POST['opcao1'],"</p>
-                        <p class='saboresCarrinho'>+1 - Sabor - ", $_POST['opcao2'],"</p>
+                        <input type='number' value='1' class='qtde'> * <?= $pizza[$_POST['aux_pizza']] ?>  
+                        <p class='saboresCarrinho'>+1 - Sabor - <?= $_POST['opcao1'] ?> </p>
+                        <p class='saboresCarrinho'>+1 - Sabor - <?= $_POST['opcao2'] ?> </p>
+                        <hr>
 
-                         <hr>";
-                         }
+                         <?php } 
 
                          
-                  if(isset($_SESSION['qtde']) && isset($_SESSION['aux_bebida'])){
-                      echo "<input type='number' value='",$_SESSION['qtde'],"' class='qtde'> * ",$nome_bebida[$_SESSION['aux_bebida']], "<hr>";
-                  }
+                      foreach ($_SESSION["carrinho"] as $key => $value) {  ?>
+                        
+                        <input type="number" value="<?=$value?>" class="qtde"> <?= $nome_bebida[$key] ?>  <hr>
+                        
+
+
+                        <?php } ?>
                   
-                  ?> 
+                  
                          </p>
                          <!-- Button trigger modal -->
                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
