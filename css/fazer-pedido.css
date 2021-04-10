@@ -1,112 +1,116 @@
 body{
-    background-color: #78B678;
+background-color: #78B678;
 }
 .geral{
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color:white;
-    width: 80%;
-    border: solid black 1px;
-    display: table;
-    
+margin-top: 50px;
+margin-left: auto;
+margin-right: auto;
+background-color:white;
+width: 80%;
+border: solid black 1px;
+display: table;
+
 }
 .pizza, .titulo{
-    text-align: center;
-    
+text-align: center;
+
 }
 
 .pizza, .bebida{
 
-    /*margin-bottom: 10%;*/
-    margin-top: 2%;
-    margin-bottom: 2%;
-    width: 38%;
-    background-color: #fff;
-    text-align: left;
-    margin-left: 10%;
-    
+/*margin-bottom: 10%;*/
+margin-top: 2%;
+margin-bottom: 2%;
+width: 38%;
+background-color: #fff;
+text-align: left;
+margin-left: 10%;
+
 }
 
-    .btn1{
-    background-color: #78B678;
-    border: solid #78B678 1px;
-    border-radius: 10px;
-    margin-top: -30px;
-    margin-right: 5%;
-    color: white;
-    float: right;
-    width: 100px;
-    height: 30px;   
+.btn1{
+background-color: #78B678;
+border: solid #78B678 1px;
+border-radius: 10px;
+margin-top: -30px;
+margin-right: 5%;
+color: white;
+float: right;
+width: 100px;
+height: 30px;   
 }
 .titulo{
-    margin-left: auto;
-    margin-right: auto;
-    color: black;
-    margin-bottom: 5%;
+margin-left: auto;
+margin-right: auto;
+color: black;
+margin-bottom: 5%;
 }
 
 h2{
-    font-size: 18px;
-    margin-top: auto;
-    margin-bottom: auto;
-   
+font-size: 18px;
+margin-top: auto;
+margin-bottom: auto;
+
 }
 h1{
-    text-align: center;
-    
+text-align: center;
+
 }
 p{
-    margin-left: 5%;
-    
+margin-left: 5%;
+
 }
 
 #btnCarrinho{
-    position: fixed;
-    bottom: 25px;
-    right: 10px; 
-    padding: 20px;
-    height: 70px;
+position: fixed;
+bottom: 25px;
+right: 10px; 
+padding: 20px;
+height: 70px;
 }
 
 .saboresCarrinho{
-  font-size: 12px;
-  color: gray;  
-  margin-bottom: 0;
+font-size: 12px;
+color: gray;  
+margin-bottom: 0;
 }
 .qtde{
-    width: 20px;
-    text-align: center;
+width: 20px;
+text-align: center;
 }
 
 input[type="number"] {
-    -webkit-appearance: textfield;
-       -moz-appearance: textfield;
-            appearance: textfield;
-  }
-  input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-  }
-  a{
-      list-style: none;
-    
-  }
-  .opcoes{
-      background-color: transparent;
-      border: turquoise;
-      margin-bottom: 2%;
-      width: 100%;
-      float: left;
+-webkit-appearance: textfield;
+-moz-appearance: textfield;
+appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none;
+}
+a{
+list-style: none;
 
-  }
-  .card{
-      width: 250px;
-      float: right;
-      margin-top: -169px;
-      margin-right: 10%;
-      margin-bottom: 10%;
-  }
-  form{
-      width: 40%;
-  }
+}
+/* .opcoes{
+background-color: transparent;
+border: turquoise;
+margin-bottom: 2%;
+width: 100%;
+float: left;
+
+}*/
+.card{
+width: 250px;
+float: right;
+margin-top: -169px;
+margin-right: 10%;
+margin-bottom: 10%;
+}
+form{
+width: 40%;
+}
+label{
+    text-align: left;
+    width: 100%;
+}

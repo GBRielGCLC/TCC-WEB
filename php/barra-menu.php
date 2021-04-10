@@ -10,7 +10,7 @@
         <ul class="links_menu">
             
             <li> <a href="index.php"> Início </a> <li>
-            <li> <a href="pedido.php"> Fazer Pedido </a> <li>
+            <li> <a href="fazer-pedido.php"> Fazer Pedido </a> <li>
             <li> <a href="cardapio.php">Cardápio</a> <li>
             
             <?php

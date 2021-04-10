@@ -14,23 +14,60 @@
     <!--------------------------------------------------------->
 </head>
 <body>
-<?php include("php/barra-menu.php");?>
+<?php include("php/barra-menu.php"); ?>
         
         <div class="geral">
         <h1>Finalizar Pedido</h1>
         <hr>
         <div class="campos">
 
-        <label> Nome </label> <input type="text" size="25">     
-        <label> Celular  </label> <input type="text">    
+
+        <label> Nome </label> <input type="text" value="<?= $_SESSION['nome-cliente'] ?>" size="25" disabled>     
+        <label> Celular  </label> <input type="text" value="<?= $_SESSION['telefone-cliente'] ?>" disabled>    
         <hr>
-        <select class='form-select' id="select"> <option> Selecione o Seu Bairro </option> </select>
-        <label> Endereço </label> <input type="text" size="65"> <br>     
+        <select class='form-select' id="select"> 
+        <option selected disabled hidden> Selecione o Seu Bairro </option> 
+        
+        <?php 
+        
+        include "php\conexaoBD.php";
+        $sql = "SELECT * FROM `taxa_entrega` order by bairro ASC";
+        
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                  $taxa = $row["taxa"];
+                  $bairro = $row["bairro"];
+                
+                  if($_SESSION["bairro"] == $bairro){
+                    $selected = "selected";
+                  }else{
+                    $selected = "";
+                  }
+            ?> 
+            
+            <option <?= $selected ?> > <?=  $bairro?> </option>
+            
+              <?php  }
+            }
+        ?>
+
+        </select>
+
+        
+
+
+        <label> Endereço </label> <input value=" <?= $_SESSION["endereco-cliente"] ?>" type="text" size="65"> <br>     
         <label> Referência </label> <input type="text" size="65"> 
         
         <hr>
         <p> Valor Total : R$ XX,XX </p>
-        <select class='form-select' id="select"> <option> Selecione o Método de Pagamento </option> </select>
+        <select class='form-select' id="select"> 
+        
+        <option> Selecione o Método de Pagamento </option> 
+        <!-- INSERT INTO `taxa_entrega`(`bairro`, `taxa`) VALUES ('São Carlos',3) -->
+        </select>
         
         <div class="center">
         <center>
