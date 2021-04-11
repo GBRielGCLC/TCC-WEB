@@ -273,26 +273,32 @@
 
                          <?php } 
 
-                      
+                      if(isset($_SESSION["carrinho"])){
                       foreach ($_SESSION["carrinho"] as $key => $value) {
+                                                      
                         if(isset($nome_bebida[$key])){
                         ?>
                         
                         <input type="number" value="<?=$value?>" class="qtde"> <?= $nome_bebida[$key] ?>  <hr>
-                        
+                          
                        <?php 
 
                        $total = 0;
-                       if(isset($preco[$key])){
+                       
                         
+                       if(isset($_SESSION["total"])){
                         $total += $preco[$key];
-                          $_SESSION["total"] = $total;
-                            }
+                        $_SESSION["total"] += $total;
+                            
                           }
                         } 
                         
-                        ?>
-                      <?= $_SESSION["total"] ?>
+                        
+                         echo $_SESSION["total"];
+                       } 
+                      }
+                       
+                       ?>
                   
                          </p>
                          <!-- Button trigger modal -->

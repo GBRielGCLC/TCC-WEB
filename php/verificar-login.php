@@ -10,6 +10,7 @@
         $telefone = $_POST["telefone"];
 
         $sql="SELECT * FROM `cliente` WHERE `telefone` = '$telefone'";
+        echo $sql;
         $result = $conn->query($sql);   
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
