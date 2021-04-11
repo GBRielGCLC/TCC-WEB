@@ -41,7 +41,11 @@ fas fa-bars<!DOCTYPE html>
                 </select> --->
 
             <div class="conteudo">
-                Nenhum Dado Encontrado
+              <?php  include "relVendas.php"; ?>
+            
+
+
+
             </div>
         </div>
 

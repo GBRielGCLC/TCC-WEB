@@ -21,12 +21,12 @@
         <hr>
         <div class="campos">
 
-      <form action="cad-pedido.php" method="post">
+      <form action="php/cad-pedido.php" method="post">
 
         <label> Nome </label> <input type="text" value="<?= $_SESSION['nome-cliente'] ?>" size="25" disabled>     
         <label> Celular  </label> <input type="text" value="<?= $_SESSION['telefone-cliente'] ?>" disabled>    
         <hr>
-        <select class='form-select' id="select"> 
+        <select class='form-select' id="select" name="bairro"> 
         <option selected disabled hidden> Selecione o Seu Bairro </option> 
         
         <?php 
@@ -61,7 +61,7 @@
         
 
 
-        <label> Endereço </label> <input value=" <?= $_SESSION["endereco-cliente"] ?>" type="text" size="65"> <br>     
+        <label> Endereço </label> <input value=" <?= $_SESSION["endereco-cliente"] ?>" name="endereco" type="text" size="65"> <br>     
         <label> Referência </label> <input type="text" size="65"> 
         
         <hr>
