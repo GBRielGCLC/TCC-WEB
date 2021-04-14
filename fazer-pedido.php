@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -216,8 +216,9 @@
                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                               </div>
                               <div class='modal-body'>
-                              <?=$nome_bebida[$aux_bebida]?> <input type='text' size='1' name='qtde'>
-                               <input type='hidden' name='aux_bebida' value='<?=$aux_bebida?>'>
+                              
+                                <?=$nome_bebida[$aux_bebida]?> <input type='text' size='1' name='qtde'>
+                                <input type='hidden' name='aux_bebida' value='<?=$aux_bebida?>'>
                                
                                
                               </div>
@@ -236,6 +237,7 @@
                         
 
                     }
+                    
                     if(isset($_POST['aux_bebida']) && isset($_POST['qtde'])){
                     if(isset($_SESSION["carrinho"][$_POST['aux_bebida']])){
                       $_SESSION["carrinho"][$_POST['aux_bebida']] += $_POST['qtde'];
@@ -274,7 +276,8 @@
                          <?php } 
 
                       if(isset($_SESSION["carrinho"])){
-                      foreach ($_SESSION["carrinho"] as $key => $value) {
+                     
+                        foreach ($_SESSION["carrinho"] as $key => $value) {
                                                       
                         if(isset($nome_bebida[$key])){
                         ?>
@@ -293,9 +296,9 @@
                           }
                         } 
                         
-                        
+                        if(isset($_SESSION["total"])){
                          echo $_SESSION["total"];
-                       } 
+                       } }
                       }
                        
                        ?>

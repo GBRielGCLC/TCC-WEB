@@ -66,9 +66,11 @@
         
         <hr>
         <p> 
-        
+        <?php if(isset($_SESSION["total"])){ ?>
          Valor Total : R$ <?= $_SESSION["total"] ?> 
-        
+        <?php } else{
+          echo "Valor Total : R$ 0,00";
+        }?>
         </p>
         <select class='form-select' id="select"> 
         

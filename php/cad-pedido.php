@@ -28,7 +28,7 @@
                     }
             }
         }
-        ///fim do cadastro do cliente
+        ///fim do cadastro do client
 
     }else{
         $idCliente = $_SESSION["id-cliente"];
@@ -40,7 +40,7 @@
 
         $hoje = date('Y/m/d');
         echo $idTaxa;
-        $sql = "INSERT INTO `pedido`(`idCliente`, `idTaxa`,`valorTotal`,`dataPedido`,`local`,`status`) VALUES ('$idCliente',$idTaxa,'$total','$hoje','on-line',true)";
+        $sql = "INSERT INTO `pedido`(`idCliente`, `idTaxa`,`valorTotal`,`dataPedido`,`local`,`status`) VALUES ('$idCliente',$idTaxa,'$total','$hoje','on-line','aguardando')";
         echo $sql;
         if (mysqli_query($conn, $sql)) {
            // $_SESSION["cad-bebida"] = "sucesso";
@@ -50,7 +50,7 @@
         
         $conn->close();
     
-   header("Location: ../index.php");
+  // header("Location: ../index.php");
 ?>
 
         

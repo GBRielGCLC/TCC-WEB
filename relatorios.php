@@ -41,7 +41,8 @@ fas fa-bars<!DOCTYPE html>
                 </select> --->
 
             <div class="conteudo">
-              <?php  include "relVendas.php"; ?>
+              <?php//  include "relVendas.php"; ?>
+              <?php//  include "relcliente.php"; ?>
             
 
 
