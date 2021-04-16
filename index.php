@@ -50,10 +50,17 @@
             <!------------------------    Fim Do Carrosel      ------------->
 
             <div id="edit">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" style="margin-right: 10%" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Editar Imagem<i class='fas fa-edit' style='font-size:18px; color:white;'></i>
-                </button>
+                <?php
+                    if(isset($_SESSION["logou"])){
+                        if($_SESSION["logou"]=="sim"){?>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" style="margin-right: 10%" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Editar Imagem<i class='fas fa-edit' style='font-size:18px; color:white;'></i>
+                            </button>
+                           <?php 
+                        }
+                    }
+                ?>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

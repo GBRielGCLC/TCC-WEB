@@ -34,12 +34,12 @@
         $idCliente = $_SESSION["id-cliente"];
     }
         $idTaxa = $_SESSION["idBairro"];
-        $total = $_SESSION["total"];
-    
-
-
+        $total = $_SESSION["ValorTotalItens"];
         $hoje = date('Y/m/d');
-        echo $idTaxa;
+        
+
+        $idSabores = $_SESSION["sabores"];
+
         
         $sql = "INSERT INTO `pedido`(`idCliente`, `idTaxa`,`valorTotal`,`dataPedido`,`local`,`status`) VALUES ('$idCliente',$idTaxa,'$total','$hoje','on-line','aguardando')";
         echo $sql;
@@ -47,6 +47,16 @@
            // $_SESSION["cad-bebida"] = "sucesso";
             
         }
+        $sql = "SELECT max(`idPedido`) FROM `pedido` ";
+        $result = $conn->query($sql);   
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+            }
+        }
+                            row["max(`idPedido`)"]
+        
+
+        $sql = "INSERT INTO `pedido-bebida`(`idBebida`, `idPedido`, `qtde`) VALUES ('$idCliente',$idTaxa,'$total')";
     
         
         $conn->close();

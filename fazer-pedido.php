@@ -75,7 +75,6 @@
             
             include "php\conexaoBD.php";
             $sql = "SELECT * FROM `tamanho` WHERE status='on' and `cardapio`='on' order by preco ASC";
-            
             $result = $conn->query($sql);
             
             if ($result->num_rows > 0) {
@@ -222,7 +221,7 @@
                               </div>
                               <div class='modal-body'>
                               
-                                <?=$nome_bebida[$aux_bebida]?> <input type='text' size='1' name='qtde'>
+                                <?=$nome_bebida[$aux_bebida]?> <input type='text' min="0" size='1' name='qtde'>
                                 <input type='hidden' name='aux_bebida' value='<?=$aux_bebida?>'>
                                
                                
@@ -271,58 +270,72 @@
                         <p class='card-text'>
                          
 
-                      <?php   if(isset($_SESSION["carrinho_pizza"])){ 
+                      <?php   
+                        if(isset($_SESSION["carrinho_pizza"])){ 
+                          $totalPizza = 0;
+                          foreach ($_SESSION["carrinho_pizza"] as $key => $value) { 
+                          $totalPizza += $preco_pizza[$key]*$value;
 
-                        foreach ($_SESSION["carrinho_pizza"] as $key => $value) {
-                         
+                            ?>
+
+                            <form action="php/unset-pizza.php" method="post">
+                            <input type='number' value='<?=$value?>' class='qtde'> * <?= $pizza[$key] ?>  
+                              <input type='hidden' name='chave' value='<?=$key?>'>
+                                <button type="submit"> <i style='font-size:24px' class='fas'>&#xf2ed;</i> </button> <hr>
+                            </form>
+
                         
-
-                        ?>
-                        <input type='number' value='1' class='qtde'> * <?= $pizza[$key] ?>  
                          
                           <?php
                           for ($i=0; $i < $qtdeSabor[$key]; $i++) { 
-                        if(isset($_POST['opcao'.($i+1)])){
-                      echo" <p class='saboresCarrinho'>+1 - Sabor -", $_POST['opcao'.($i+1)]  ,"</p>";
-                    }
-                      }
+                          if(isset($_POST['opcao'.($i+1)])){
+                           echo" <p class='saboresCarrinho'>+1 - Sabor -", $_POST['opcao'.($i+1)]  ,"</p>";
+                           $_SESSION["sabores"] = ",". $_POST['opcao'.($i+1)];
+                           }
+                        }
                       ?>
                         <hr>
 
                         <?php
-                        $valorTotalPizza = 0;
-                         if(isset($preco_pizza[$key])){
-                         $valorTotalPizza += $preco_pizza[$key];
-                        }
-                          }} 
+                          } // FIM DO FOREACH
+                        } 
 
                       
                      if(isset($_SESSION["carrinho"])){
+                       $totalBebida = 0;
                         foreach ($_SESSION["carrinho"] as $key => $value) {                   
                           if(isset($nome_bebida[$key])){    ?>
                             <form action="php/unset-bebida.php" method="post">
                               <input type="number" value="<?=$value?>" class="qtde"> * <?= $nome_bebida[$key] ?> 
-                              <input type='hidden' name='chave' value='<?=$key?>'>
-                                <button type="submit"> <i style='font-size:24px' class='fas'>&#xf2ed;</i> </button> <hr>
+                              <input type='hidden' name='chave' value='<?=$key?>'> <br>
+                                <button type="submit" class="lixeira" style=" "> <i style='font-size:24px;' class='fas'>&#xf2ed;</i> </button> <br> <hr>
                             </form>
                               <?php 
 
-                        $total = 0;
-                        $total += $preco[$key] * $value;
-                        $_SESSION["total"] += $total;
+                     $totalBebida += $preco[$key]*$value;
                             
                           
                         } // FIM DO ISSET NOME_BEBIDA
                         
                         
                         
-                      }} // FIM DO FOREACH
-                      if(empty($valorTotalPizza)){
-                        $valorTotalPizza = 0;
+                        
+                      } // FIM DO FOREACH
+                      if( empty($totalPizza)){
+                        $totalPizza =0;
                       }
-                      if(isset($_SESSION["total"])){
-                        echo $_SESSION["total"]+$valorTotalPizza;
-                      } // FIM DO ISSET TOTAL 
+                      if(empty($totalBebida)){
+                        $totalBebida =0;
+                      }
+                      $TOTAL = $totalBebida+$totalPizza;
+                      $_SESSION["ValorTotalItens"] = $TOTAL; 
+                      //Transformando em REAL BRASILEIRO
+                      $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                      $TOTAL = $formatter->formatCurrency($TOTAL, 'BRL');
+
+                    echo "Valor total dos itens : <b>", $TOTAL,"</b>";
+                    } 
+                      
                        ?>
                   
                          </p>
@@ -336,20 +349,15 @@
                            <div class="modal-dialog">
                              <div class="modal-content">
                                <div class="modal-header">
-                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                 <h5 class="modal-title" id="exampleModalLabel">Informe os dados</h5>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                </div>
                                <div class="modal-body">
                                 
                                <form action="php\verificar-login.php" method="post">
-                               nome <input type="text" name="nome"> <br>
-                               telefone <input type="text" name="telefone"> <br>
+                                Nome <input type="text" name="nome"> <br>
+                                Telefone <input type="text" name="telefone"> <br>
                            
-                              
-                           
-                               
-
-
                                </div>
                                <div class="modal-footer">
                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
