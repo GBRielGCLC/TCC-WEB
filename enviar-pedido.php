@@ -38,11 +38,11 @@
         
         if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                  $taxa = $row["taxa"];
-                  $bairro = $row["bairro"];
-                  $id = $row["idTaxa"];
+                  $taxa = $row["taxa"]; //valor
+                  $bairro = $row["bairro"]; //nome
+                  $id = $row["idTaxa"]; //id
                 
-                  if($_SESSION["bairro"] == $bairro){
+                  if($_SESSION["bairro"] == $id){
                     $selected = "selected";
                     $_SESSION["idBairro"] = $id;
                   }else{
@@ -50,7 +50,7 @@
                   }
             ?> 
             
-            <option <?= $selected ?> > <?=  $bairro?> </option>
+            <option <?= $selected ?> value="<?=$id?>" > <?=  $bairro?> </option>
             
               <?php  }
             }
@@ -74,7 +74,10 @@
         </p>
         <select class='form-select' id="select"> 
         
-        <option> Selecione o Método de Pagamento </option> 
+          <option selected hidden> Selecione o Método de Pagamento </option> 
+
+          <option value="Dinheiro"> Dinheiro </option>
+          <option value="Cartao"> Cartão </option>
         </select>
         
         <div class="center">

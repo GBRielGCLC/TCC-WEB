@@ -18,13 +18,6 @@
     
 
     include "../conexaoBD.php"; 
-    /*
-    $idTabela = "idPizza";
-    $tabela = "tamanho";
-    $status ="off";
-    $idTabela="idPizza"; 
-    $id = 109;
-    */
 
     $sql = "UPDATE `$tabela` SET `cardapio`= '$status' where `$idTabela` = $id";
     

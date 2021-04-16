@@ -42,7 +42,7 @@
                             echo "<li><a href='relatorios.php'> Relatórios </a></li>";
                         }
                         echo "
-                            <li>
+                            <!--<li>
                                 <div class='dropdown'>
                                     <a href='#' role='button' id='cardapio' data-bs-toggle='dropdown' aria-expanded='false'>
                                         Gerenciar Promoções <i class='seta baixo'></i>
@@ -54,7 +54,7 @@
                                         
                                     </ul>
                                 </div>
-                            </li>
+                            </li>-->
                             <li> <a href='aceitar-pedido.php'> Aceitar Pedido </a>
                             </li>
                             <li>
