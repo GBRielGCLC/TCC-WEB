@@ -40,6 +40,7 @@
 
         $hoje = date('Y/m/d');
         echo $idTaxa;
+        
         $sql = "INSERT INTO `pedido`(`idCliente`, `idTaxa`,`valorTotal`,`dataPedido`,`local`,`status`) VALUES ('$idCliente',$idTaxa,'$total','$hoje','on-line','aguardando')";
         echo $sql;
         if (mysqli_query($conn, $sql)) {

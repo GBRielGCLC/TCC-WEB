@@ -55,21 +55,21 @@
                 
             }
             /*-----------------------------------------------------------------------------------------------------------*/
-            echo"
+            ?>
 
-            <div class='accordion' id='accordionExample'>
-            <div class='accordion-item'>
-              <h2 class='accordion-header' id='headingOne'>
-                <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' style='height: 75px; width: 250px;' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
-                <h1 class='titulo' style='font-size: 35px;'>Pizzas</h1>
+            <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" style="height: 75px; width: 250px;" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h1 class="titulo" style="font-size: 35px;">Pizzas</h1>
                 <hr>
                 </button>
               </h2>
-              <div style='width: 250px;' id='collapseOne' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
-                <div class='accordion-body'>
+              <div style="width: 250px;" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
 
 
-            ";
+            <?php
 
             
             
@@ -85,10 +85,10 @@
                         $pizza[$qtdeTamanhoCad] = $row["nome"];
                         $idPizza[$qtdeTamanhoCad] = $row["idPizza"];
                         $qtdeSabor[$qtdeTamanhoCad] = $row["qtdeSabor"];
-                        $preco[$qtdeTamanhoCad] = $row["preco"];
+                        $preco_pizza[$qtdeTamanhoCad] = $row["preco"];
                         
                         $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-                        $brl = $formatter->formatCurrency($preco[$qtdeTamanhoCad], 'BRL');
+                        $brl = $formatter->formatCurrency($preco_pizza[$qtdeTamanhoCad], 'BRL');
                         
                       echo"
                         <!------------------------------------------------------------------------------------------------->
@@ -115,6 +115,7 @@
                             <select name='opcao$numSabor' class='form-select'>
                             <option selected disabled hidden>Clique Aqui Para Escolher Um Sabor</option>
                             <option>Nenhum</option>";
+
                             for ($j=0; $j < sizeof($disponibilidade); $j++) { 
                                 $dispo = explode(",", $disponibilidade[$j]);  
                             
@@ -144,6 +145,15 @@
 
                     
                     }
+
+                    if(isset($_POST['aux_pizza'])){
+                      if(isset($_SESSION["carrinho_pizza"][$_POST['aux_pizza']])){
+                        $_SESSION["carrinho_pizza"][$_POST['aux_pizza']] += 1;
+                      }else{
+                        $_SESSION["carrinho_pizza"][$_POST['aux_pizza']] = 1;
+                        
+                      }
+                    }
                     
                   }
                   echo"    
@@ -158,27 +168,22 @@
 
                   </div>
                            
-              
+<!----------------------------------------------------------------------------------------------------------->              
             <div class="bebida">
-            
-            
-            <?php
 
-            echo"
-
-            <div class='accordion' id='accordionExample'>
-            <div class='accordion-item'>
-              <h2 class='accordion-header' id='headingOne'>
-                <button class='accordion-button collapsed' id='botao' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTwo' style='height: 75px; width: 250px;' aria-expanded='true' aria-controls='collapseTwo'>
-                <h1 class='titulo' style='font-size: 35px;'>Bebidas</h1>
+            <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" id="botao" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" style="height: 75px; width: 250px;" aria-expanded="true" aria-controls="collapseTwo">
+                <h1 class="titulo" style="font-size: 35px;">Bebidas</h1>
                 <hr>
                 </button>
               </h2>
-              <div style='width: 250px;' id='collapseTwo' class='accordion-collapse collapse' aria-labelledby='headingTwo' data-bs-parent='#accordionExample'>
-                <div class='accordion-body'>
+              <div style="width: 250px;" id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
 
 
-            ";
+            <?php
 
                 include "php\conexaoBD.php";
                 
@@ -266,41 +271,58 @@
                         <p class='card-text'>
                          
 
-                      <?php   if(isset($_POST["aux_pizza"]) && isset($_POST["opcao1"]) && isset($_POST["opcao2"])){ ?>
+                      <?php   if(isset($_SESSION["carrinho_pizza"])){ 
 
-                        <input type='number' value='1' class='qtde'> * <?= $pizza[$_POST['aux_pizza']] ?>  
-                        <p class='saboresCarrinho'>+1 - Sabor - <?= $_POST['opcao1'] ?> </p>
-                        <p class='saboresCarrinho'>+1 - Sabor - <?= $_POST['opcao2'] ?> </p>
+                        foreach ($_SESSION["carrinho_pizza"] as $key => $value) {
+                         
+                        
+
+                        ?>
+                        <input type='number' value='1' class='qtde'> * <?= $pizza[$key] ?>  
+                         
+                          <?php
+                          for ($i=0; $i < $qtdeSabor[$key]; $i++) { 
+                        if(isset($_POST['opcao'.($i+1)])){
+                      echo" <p class='saboresCarrinho'>+1 - Sabor -", $_POST['opcao'.($i+1)]  ,"</p>";
+                    }
+                      }
+                      ?>
                         <hr>
 
-                         <?php } 
+                        <?php
+                        $valorTotalPizza = 0;
+                         if(isset($preco_pizza[$key])){
+                         $valorTotalPizza += $preco_pizza[$key];
+                        }
+                          }} 
 
-                      if(isset($_SESSION["carrinho"])){
-                     
-                        foreach ($_SESSION["carrinho"] as $key => $value) {
-                                                      
-                        if(isset($nome_bebida[$key])){
-                        ?>
-                        
-                        <input type="number" value="<?=$value?>" class="qtde"> <?= $nome_bebida[$key] ?>  <hr>
-                          
-                       <?php 
+                      
+                     if(isset($_SESSION["carrinho"])){
+                        foreach ($_SESSION["carrinho"] as $key => $value) {                   
+                          if(isset($nome_bebida[$key])){    ?>
+                            <form action="php/unset-bebida.php" method="post">
+                              <input type="number" value="<?=$value?>" class="qtde"> * <?= $nome_bebida[$key] ?> 
+                              <input type='hidden' name='chave' value='<?=$key?>'>
+                                <button type="submit"> <i style='font-size:24px' class='fas'>&#xf2ed;</i> </button> <hr>
+                            </form>
+                              <?php 
 
-                       $total = 0;
-                       
-                        
-                       if(isset($_SESSION["total"])){
-                        $total += $preco[$key];
+                        $total = 0;
+                        $total += $preco[$key] * $value;
                         $_SESSION["total"] += $total;
                             
-                          }
-                        } 
+                          
+                        } // FIM DO ISSET NOME_BEBIDA
                         
-                        if(isset($_SESSION["total"])){
-                         echo $_SESSION["total"];
-                       } }
+                        
+                        
+                      }} // FIM DO FOREACH
+                      if(empty($valorTotalPizza)){
+                        $valorTotalPizza = 0;
                       }
-                       
+                      if(isset($_SESSION["total"])){
+                        echo $_SESSION["total"]+$valorTotalPizza;
+                      } // FIM DO ISSET TOTAL 
                        ?>
                   
                          </p>

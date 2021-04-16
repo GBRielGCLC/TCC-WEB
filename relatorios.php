@@ -1,4 +1,4 @@
-fas fa-bars<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -27,8 +27,8 @@ fas fa-bars<!DOCTYPE html>
             <div class="cabecalho">
                 
                 <h1>Relatórios</h1>
-                <button class="vendas"> Vendas </button>        
-                <button> Clientes </button>        
+                <a href="relVendas.php"> <button class="vendas"> Vendas </button> </a>        
+                <a href="relCliente.php"> <button> Clientes </button> </a>
                 <button class="itens"> Itens </button>        
             
             </div>
@@ -42,7 +42,7 @@ fas fa-bars<!DOCTYPE html>
 
             <div class="conteudo">
               <?php//  include "relVendas.php"; ?>
-              <?php//  include "relcliente.php"; ?>
+              <?php // include "relcliente.php"; ?>
             
 
 
