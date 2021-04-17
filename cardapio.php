@@ -29,10 +29,10 @@
                 $pizza[$qtdeTamanhoCad] = $row["nome"];
                 $idPizza[$qtdeTamanhoCad] = $row["idPizza"];
                 $qtdeSabor[$qtdeTamanhoCad] = $row["qtdeSabor"];
-                $preco = $row["preco"];
+                $preco[$qtdeTamanhoCad] = $row["preco"];
 
                 $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-                $brl = $formatter->formatCurrency($preco, 'BRL');
+                $brl[$qtdeTamanhoCad] = $formatter->formatCurrency($preco[$qtdeTamanhoCad], 'BRL');
 
                 /*$desc = $row["descricao"];
                 $idPizza = $row["idPizza"];
@@ -60,7 +60,7 @@
                     $es="es";
                   }
                   echo"
-                  $pizza[$auxTamanho] - Até $qtdeSabor[$auxTamanho] sabor$es - Por $brl reais.
+                  $pizza[$auxTamanho] - Até $qtdeSabor[$auxTamanho] sabor$es - Por $brl[$auxTamanho] reais.
                 </button>
               </h2>
               <div id='a$auxTamanho' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
