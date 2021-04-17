@@ -68,13 +68,13 @@
                     <tr>
                         <th>Cliente</th>
                         <th>Valor do Pedido</th>
-                        <th>Data último Pedido</th>
+                        <th>Data do Pedido</th>
                     
                     </tr>
 
                         <?php
                             include "php\conexaoBD.php";
-                            $sql = "SELECT * FROM `cliente`,`pedido` WHERE cliente.`idCliente`= pedido.`idCliente`";
+                            $sql = "SELECT * FROM `cliente`,`pedido` WHERE cliente.`idCliente`= pedido.`idCliente` ORDER BY  `dataPedido` ASC";
                         
                             $result = $conn->query($sql); 
                             if ($result->num_rows > 0) {

@@ -30,14 +30,14 @@
                 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="imagens\img1" class="d-block w-100" alt="...">
+                            <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens\img2" class="d-block w-100" alt="...">
+                            <img src="imagens\Grande.png" class="d-block w-100" alt="...">
                         </div>
-                        <!--<div class="carousel-item">
+                        <div class="carousel-item">
                             <img src="imagens\Pizzaria do Careca (1).png" class="d-block w-100" alt="...">
-                        </div>-->
+                        </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" id="banner">
                         <span class="carousel-control-prev-icon" aria-hidden="true" id="setinha"></span>
