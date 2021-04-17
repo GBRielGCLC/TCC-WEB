@@ -35,7 +35,7 @@
 
 
 */
-            $sql = "    SELECT * FROM `pedido`,`cliente`,`taxa_entrega`,`pedido-bebida` WHERE extract( DAY from `dataPedido`) = $dia
+            $sql = "    SELECT * FROM `pedido`,`cliente`,`taxa_entrega` WHERE extract( DAY from `dataPedido`) = $dia
             and extract( MONTH from `dataPedido`) = $mes and extract( YEAR from `dataPedido`) = $ano 
             and pedido.`idCliente` = cliente.`idCliente` and pedido.`idTaxa` = taxa_entrega.`idTaxa` = cliente.`idTaxa` and pedido.`idPedido`";
            
@@ -194,7 +194,6 @@ $(document).ready(function(){
     else if(this.value == 'recusado'){
       status = "recusado";
     }
-    alert("Id:"+id+"|Status:"+status);
     $.ajax({
       type: "POST",
       url: "php/edit-status-pedido.php",

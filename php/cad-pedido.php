@@ -28,6 +28,7 @@
                     }
             }
         }
+        $_SESSION['cad'] = "sim";
         ///fim do cadastro do client
 
     }else{

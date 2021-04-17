@@ -108,6 +108,23 @@
 
     </div><!--Fim da DIV geral -->
     
+    <?php
+        if(isset($_SESSION['cad'])){
+            if ($_SESSION['cad']=="sim") {
+                echo"
+                <script>
+                Swal.fire(
+                    'Pedido enviado!', 
+                    '',
+                    'success',
+                )
+                </script>
+                ";
+            }
+            unset($_SESSION['cad']);
+        }
+    ?>
+
     <?php include("rodape.html"); ?>
 
 </body>
