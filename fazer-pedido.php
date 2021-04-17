@@ -263,7 +263,7 @@
 
                 <div class='card'>
                       <div class='card-header'>
-                        Carrinho
+                        Sacola
                       </div>
                       <div class='card-body'>
                         <h5 class='card-title'></h5>
@@ -279,7 +279,7 @@
                             ?>
 
                             <form action="php/unset-pizza.php" method="post">
-                            <input type='number' value='<?=$value?>' class='qtde'> * <?= $pizza[$key] ?>  
+                            <?=$value?> * <?= $pizza[$key] ?>  
                               <input type='hidden' name='chave' value='<?=$key?>'>
                                 <button type="submit" class="lixeira"> <i style='font-size:24px' class='fas'>&#xf2ed;</i> </button> <hr>
                             </form>
@@ -306,7 +306,7 @@
                         foreach ($_SESSION["carrinho"] as $key => $value) {                   
                           if(isset($nome_bebida[$key])){    ?>
                             <form action="php/unset-bebida.php" method="post">
-                              <input type="number" value="<?=$value?>" class="qtde"> * <?= $nome_bebida[$key] ?> 
+                              <?=$value?> * <?= $nome_bebida[$key] ?> 
                               <input type='hidden' name='chave' value='<?=$key?>'> <br>
                                 <button type="submit" class="lixeira" style=" "> <i style='font-size:24px;' class='fas'>&#xf2ed;</i> </button> <br> <hr>
                             </form>
