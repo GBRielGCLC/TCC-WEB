@@ -19,7 +19,7 @@
             $_SESSION["nome-cliente"] = $row["nome"];
             $_SESSION["telefone-cliente"] = $row["telefone"];
             $_SESSION["endereco-cliente"] = $row["endereco"];
-            $_SESSION["bairro"] = $row["bairro"];
+            $_SESSION["idTaxa"] = $row["idTaxa"];
             $_SESSION["id-cliente"] = $row["idCliente"];
             }
         } else {

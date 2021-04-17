@@ -71,14 +71,14 @@
             <div class="cabecalho">
                 
                 <h1>Relatórios</h1>
-                <a href="relVendas.php"> <button class="vendas"> Vendas </button> </a>        
-                <a href="relCliente.php"> <button> Clientes </button> </a>     
-                <button class="itens"> Itens </button>        
+                <a href="relVendas.php"> <button class="vendas"> Vendas por mês </button> </a>        
+                <a href="relCliente.php"> <button> Pedido por cliente </button> </a>
+                <button class="itens"> Itens mais vendidos </button>
             
             </div>
             
             <div class="corpo">
-                <button class="btnPDF"> <a href="Relatórios tcc (1).pdf" target="_blank"> Gerar PDF </a> </button>
+                <!--<button class="btnPDF"> <a href="Relatórios tcc (1).pdf" target="_blank"> Gerar PDF </a> </button>-->
                 
             <!--- <select class='form-select' style="width:15%;" name="" id="">
                     <option value="">Nenhum</option>

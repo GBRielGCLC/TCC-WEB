@@ -41,7 +41,7 @@
         $idSabores = $_SESSION["sabores"];
 
         
-        $sql = "INSERT INTO `pedido`(`idCliente`, `idTaxa`,`valorTotal`,`dataPedido`,`local`,`status`) VALUES ('$idCliente',$idTaxa,'$total','$hoje','on-line','aguardando')";
+        $sql = "INSERT INTO `pedido`(`idCliente`,`idTaxa`,`valorTotal`,`dataPedido`,`local`,`status`) VALUES ('$idCliente',$idTaxa,'$total','$hoje','on-line','aguardando')";
         echo $sql;
         if (mysqli_query($conn, $sql)) {
            // $_SESSION["cad-bebida"] = "sucesso";
@@ -51,13 +51,17 @@
         $result = $conn->query($sql);   
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
+                $max = $row["max(`idPedido`)"];
             }
         }
-                            row["max(`idPedido`)"]
-        
+        $qtde = 0;
+        foreach ($_SESSION["carrinho"] as $key => $value) {
+            $qtde += $value;
+        }
 
-        $sql = "INSERT INTO `pedido-bebida`(`idBebida`, `idPedido`, `qtde`) VALUES ('$idCliente',$idTaxa,'$total')";
-    
+        $sql = "INSERT INTO `pedido-bebida`(`idBebida`, `idPedido`, `qtde`) VALUES ('$idCliente',$max,'$qtde')";
+        mysqli_query($conn, $sql);
+        echo $sql;
         
         $conn->close();
     

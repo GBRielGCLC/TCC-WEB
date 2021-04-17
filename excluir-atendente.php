@@ -71,6 +71,7 @@
                                 </script>
                                 ";
                             }
+                            unset($_SESSION)["exc"];
                         }
 
                         

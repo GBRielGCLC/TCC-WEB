@@ -35,10 +35,12 @@
 
 
 */
-            $sql = "    SELECT * FROM `pedido`,`cliente`,`taxa_entrega` WHERE extract( DAY from `dataPedido`) = $dia
+            $sql = "    SELECT * FROM `pedido`,`cliente`,`taxa_entrega`,`pedido-bebida` WHERE extract( DAY from `dataPedido`) = $dia
             and extract( MONTH from `dataPedido`) = $mes and extract( YEAR from `dataPedido`) = $ano 
-            and pedido.`idCliente` = cliente.`idCliente` and pedido.`idTaxa` = taxa_entrega.`idTaxa` = cliente.`idTaxa`";
+            and pedido.`idCliente` = cliente.`idCliente` and pedido.`idTaxa` = taxa_entrega.`idTaxa` = cliente.`idTaxa` and pedido.`idPedido`";
            
+           date_default_timezone_set('America/Sao_Paulo');
+           $today = date("H:i:s");  
            $result = $conn->query($sql);   
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
@@ -62,6 +64,9 @@
 
                   //taxa_entrega
                   $taxa = $row["taxa"];
+                  
+                  $valorTotalTotal= $valorTotal+$taxa;
+
                   $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                   $taxa = $formatter->formatCurrency($taxa, 'BRL');
                   //cliente 
@@ -71,6 +76,10 @@
 
                   $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                   $valorTotal = $formatter->formatCurrency($valorTotal, 'BRL');
+                  
+                  $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                  $valorTotalTotal = $formatter->formatCurrency($valorTotalTotal, 'BRL');
+                  
                   
                   $statusAceito = "";
                   if($status == "aceito"){
@@ -117,7 +126,7 @@
                   </tr>
                   
                   <tr>
-                    <td> <b>Horário do Pedido:</b>  </td>
+                    <td> <b>Horário do Pedido:</b> <?= $today ?> </td>
                     <td> <b>Taxa de Entrega:</b> <?= $taxa ?> </td>
                   </tr>
 
@@ -129,7 +138,7 @@
 
                   <tr> 
                     <td> <b>Endereço:</b> <?= $endereco ?></td>
-                    <td> <b>Total:</b>  </td>
+                    <td> <b>Total:</b> <?= $valorTotalTotal ?> </td>
                   </tr>
 
                   <tr>
@@ -145,10 +154,15 @@
                   <p> + Sabor - Calabresa Cheddar - x1 </p>
                   
               </div>
+
+              <div class="resumo">
+              <h6> 1x  - Fanta laranja 1L  </h6>
+              </div>
                 
+
               </div>
           </div>
-
+          <br>
 
               <?php  }
               }else{

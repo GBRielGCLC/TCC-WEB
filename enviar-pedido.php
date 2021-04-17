@@ -23,11 +23,11 @@
 
       <form action="php/cad-pedido.php" method="post">
 
-        <label> Nome </label> <input type="text" value="<?= $_SESSION['nome-cliente'] ?>" size="25" disabled>     
-        <label> Celular  </label> <input type="text" value="<?= $_SESSION['telefone-cliente'] ?>" disabled>    
+        <label> Nome </label> <input type="text" required value="<?= $_SESSION['nome-cliente'] ?>" size="25" disabled>     
+        <label> Celular  </label> <input type="text" required value="<?= $_SESSION['telefone-cliente'] ?>" disabled>    
         <hr>
-        <select class='form-select' id="select" name="bairro"> 
-        <option selected disabled hidden> Selecione o Seu Bairro </option> 
+        <select class='form-select' id="select" required name="bairro"> 
+        <option selected disabled hidden> Selecione o seu bairro </option> 
         
         <?php 
         
@@ -42,11 +42,13 @@
                   $bairro = $row["bairro"]; //nome
                   $id = $row["idTaxa"]; //id
                 
-                  if($_SESSION["bairro"] == $id){
+                  if($_SESSION["idTaxa"] == $id){
                     $selected = "selected";
+                    
                     $_SESSION["idBairro"] = $id;
                   }else{
                     $selected = "";
+                    echo"AAAAAAAAA";
                   }
             ?> 
             
@@ -61,23 +63,30 @@
         
 
 
-        <label> Endereço </label> <input value=" <?= $_SESSION["endereco-cliente"] ?>" name="endereco" type="text" size="65"> <br>     
+        <label> Endereço </label> <input value=" <?= $_SESSION["endereco-cliente"] ?>" required name="endereco" type="text" size="65"> <br>     
         <label> Referência </label> <input type="text" size="65"> 
         
         <hr>
         <p> 
-        <?php if(isset($_SESSION["total"])){ ?>
-         Valor Total : R$ <?= $_SESSION["total"] ?> 
+        <?php if(isset($_SESSION["ValorTotalItens"])){ 
+        $total = $_SESSION["ValorTotalItens"]; 
+        
+        $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+        $total = $formatter->formatCurrency($total, 'BRL');
+        
+        ?>
+         Valor Total : <?= $total ?> 
         <?php } else{
           echo "Valor Total : R$ 0,00";
         }?>
         </p>
-        <select class='form-select' id="select"> 
+        <select required class='form-select' id="select"> 
         
-          <option selected hidden> Selecione o Método de Pagamento </option> 
+          <option selected disabled hidden> Selecione o método de pagamento </option> 
 
           <option value="Dinheiro"> Dinheiro </option>
           <option value="Cartao"> Cartão </option>
+
         </select>
         
         <div class="center">

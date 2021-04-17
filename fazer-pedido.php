@@ -112,7 +112,7 @@
                             $numSabor = $e+1;
                             echo" Sabor $numSabor:
                             <select name='opcao$numSabor' class='form-select'>
-                            <option selected disabled hidden>Clique Aqui Para Escolher Um Sabor</option>
+                            <option selected disabled hidden>Clique aqui para Escolher Um Sabor</option>
                             <option>Nenhum</option>";
 
                             for ($j=0; $j < sizeof($disponibilidade); $j++) { 
@@ -281,7 +281,7 @@
                             <form action="php/unset-pizza.php" method="post">
                             <input type='number' value='<?=$value?>' class='qtde'> * <?= $pizza[$key] ?>  
                               <input type='hidden' name='chave' value='<?=$key?>'>
-                                <button type="submit"> <i style='font-size:24px' class='fas'>&#xf2ed;</i> </button> <hr>
+                                <button type="submit" class="lixeira"> <i style='font-size:24px' class='fas'>&#xf2ed;</i> </button> <hr>
                             </form>
 
                         
@@ -349,14 +349,14 @@
                            <div class="modal-dialog">
                              <div class="modal-content">
                                <div class="modal-header">
-                                 <h5 class="modal-title" id="exampleModalLabel">Informe os dados</h5>
+                                 <h5 class="modal-title" id="exampleModalLabel">Complemente os dados do Pedido</h5>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                </div>
                                <div class="modal-body">
                                 
                                <form action="php\verificar-login.php" method="post">
-                                Nome <input type="text" name="nome"> <br>
-                                Telefone <input type="text" name="telefone"> <br>
+                                <label style="width:100px;"> Nome </label> <input type="text" name="nome"> <br><br>
+                                <label style="width:100px;"> Telefone </label> <input type="text" name="telefone"> <br>
                            
                                </div>
                                <div class="modal-footer">
