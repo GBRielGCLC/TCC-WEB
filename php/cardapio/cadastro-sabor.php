@@ -31,7 +31,19 @@
         
         if (mysqli_query($conn, $sql)) {
             $_SESSION["cad-sabor"] = "sucesso";
+        }
 
+        $sql = "SELECT MAX(`idSabor`) FROM `sabor`";
+        $result = $conn->query($sql);   
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $idSabor = $row["MAX(`idSabor`)"];
+            }
+        }
+        
+        foreach ($_POST["tamanho"] as $tamanho) {
+            $sql = "INSERT INTO `sabor_pizza`(`idPizza`, `idSabor`) VALUES ($tamanho,$idSabor)";
+            mysqli_query($conn, $sql);
         }
         $conn->close();
         

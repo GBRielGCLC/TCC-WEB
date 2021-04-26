@@ -170,7 +170,6 @@
                             while($row = $result->fetch_assoc()) {
                                 $nome_sabor = $row["nome"];
                                 $descricao = $row["descricao"];
-                                $disponibilidade = $row["disponibilidade"];
                                 $idSabor = $row["idSabor"];
                                 $cardapioBD = $row["cardapio"];
                                 $add = $row["precoAdd"];
@@ -186,7 +185,7 @@
                                 }
 
                                 
-                                $dispo = explode(",", $disponibilidade);
+                                
                                 //Transformando em REAL BRASILEIRO
                                 
                                 $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
@@ -230,23 +229,7 @@
                                                         <label> Adicional </label> <br> <input class='money' id='input' size='5' type='text' name='add' value='$brl'> <br>";
 
                                                     /*   
-                                                    
-                                                        for ($i=0; $i < $auxi; $i++){
-                                                        
-                                                            
-                                                            for ($j=0; $j < $auxi; $j++) { 
-                                                            
-                                                                if($dispo[$i]==$idPizza[$j]){
-                                                                    $check = "checked";
-                                                                    break;
-                                                                }else{
-                                                                    $check = "";
-                                                                    
-                                                                }
-                                                            }
-                                                            echo "<label> $tamanhos[$i] </label> <input type='checkbox' name='tamanho[]' $check value='$Pizzas[$i]'>";
-                                                        }   
-                                                        
+                                                    alterar a disponibilidade
 
                                                         */
                                                         echo" 

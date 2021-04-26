@@ -33,18 +33,11 @@
 
                 $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
                 $brl[$qtdeTamanhoCad] = $formatter->formatCurrency($preco[$qtdeTamanhoCad], 'BRL');
-
-                /*$desc = $row["descricao"];
-                $idPizza = $row["idPizza"];
-                $statusBD = $row["status"];*/
                 $qtdeTamanhoCad++; 
               }
           } 
           
-          include "php\conexaoBD.php";
-
-          $sql = "SELECT * FROM `sabor` WHERE status='on' and cardapio='on'order by nome";
-          
+         
           
     echo " <h1>Pizzas</h1> 
       <div class='accordion' id='accordionExample'>";
@@ -59,52 +52,58 @@
                   if($qtdeSabor[$auxTamanho]>1){
                     $es="es";
                   }
-                  echo"
-                  $pizza[$auxTamanho] - Até $qtdeSabor[$auxTamanho] sabor$es - Por $brl[$auxTamanho] reais.
+                  ?>
+
+                  <?= $pizza[$auxTamanho] ?> - Até <?= $qtdeSabor[$auxTamanho] ?> sabor<?php$es?> - Por <?= $brl[$auxTamanho] ?> reais.
                 </button>
               </h2>
+              <?php
+              echo"
               <div id='a$auxTamanho' class='accordion-collapse collapse' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
                 <div class='accordion-body'>";
 
+
+                $sql = "SELECT * FROM `sabor`,`sabor_pizza` WHERE `sabor`.`idSabor` = `sabor_pizza`.`idSabor` and `idPizza` = $idPizza[$auxTamanho]";
+  
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                   $qtdeSaborCad=0;
                   
                   while($row = $result->fetch_assoc()) {
+
                       $sabor[$qtdeSaborCad] = $row["nome"];
                       $idSabor[$qtdeSaborCad] = $row["idSabor"];
                       $desc[$qtdeSaborCad] = $row["descricao"];
-                      /*$qtdeSabor = $row["qtdeSabor"];
-                      $idPizza = $row["idPizza"];
-                      $statusBD = $row["status"];*/
-                      $disponibilidade[$qtdeSaborCad] = $row["disponibilidade"];
-                      
-                      $dispo = explode(",", $disponibilidade[$qtdeSaborCad]);
-                      //$dispo = explode(",", $disponibilidade);
-                      for ($i=0; $i < sizeof($dispo); $i++) { 
-                        if($idPizza[$auxTamanho]==$dispo[$i]){
-                          echo" <strong> $sabor[$qtdeSaborCad]  </strong> - $desc[$qtdeSaborCad] <br> <hr>";
-                          //echo"$sabor[$qtdeSaborCad] <br>";
-                        }
-                      }
+                     ?>
+                       <strong> <?= $sabor[$qtdeSaborCad] ?> </strong> - <?= $desc[$qtdeSaborCad] ?> <br> <hr>
+                          
+                          <?php
                       $qtdeSaborCad++;
                   }
                   
                 }
-              
-                echo "
+              ?>
+                
                 </div>
               </div>
             </div>
             
-            ";
+           
             
-          }
-      echo" </div>
+         <?php } ?>
+
+     </div>
       </div><!--div da class pizzas-->
-      ";
-    ?>
+      
+<?php
+      /*======================================================================================================================*/
+      /*======================================================================================================================*/
+      /*=====================================================   Bebidas   ====================================================*/
+      /*======================================================================================================================*/
+      /*======================================================================================================================*/
+   ?>
+   
     <div class="bebidas">
       <h1> Bebidas </h1>
       <?php

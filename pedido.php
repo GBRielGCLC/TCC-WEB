@@ -97,7 +97,7 @@
                                     $numSabor = $e+1;
                                     echo" Sabor $numSabor:
                                     <select class='form-select'>
-                                    <option selected disabled hidden>Clique Aqui Para Escolher Um Sabor</option>
+                                    <option selected disabled hidden>Clique aqui para escolher um sabor</option>
                                     <option>Nenhum</option>";
                                     for ($j=0; $j < sizeof($disponibilidade); $j++) { 
                                         $dispo = explode(",", $disponibilidade[$j]);  

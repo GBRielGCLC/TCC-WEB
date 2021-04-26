@@ -24,33 +24,38 @@
     <hr>
     <h1>Fazer Pedido</h1>
     <hr>
-          <?php
-            include "php\conexaoBD.php";
-
-            $sql = "SELECT * FROM `tamanho` WHERE status='on'  and `cardapio`='on' order by preco ASC";
-            
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-              $qtdeTamanhoCad=0;
-              while($row = $result->fetch_assoc()) {
-                  $pizza[$qtdeTamanhoCad] = $row["nome"];
-                  $idPizza[$qtdeTamanhoCad] = $row["idPizza"];
-                  $qtdeSabor[$qtdeTamanhoCad] = $row["qtdeSabor"];
-                  $preco[$qtdeTamanhoCad] = $row["preco"];
-
-                  $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
-                  $brl[$qtdeTamanhoCad] = $formatter->formatCurrency($preco[$qtdeTamanhoCad], 'BRL');
-                  $qtdeTamanhoCad++; 
-                }
-            } 
-          ?>
+           
         
             <div class="pizza">
                 
                     
                 
-          
+                    <?php
+
+                /* CHAMAR TABELA DE SABORES */
+                include "php\conexaoBD.php";
+
+                $sql = "SELECT * FROM `sabor` WHERE status='on' and cardapio='on' order by nome";
+                
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                $qtdeSaborCad=0;
+                
+                while($row = $result->fetch_assoc()) {
+
+                    $sabor[$qtdeSaborCad] = $row["nome"];
+                    $idSabor[$qtdeSaborCad] = $row["idSabor"];
+                    $desc[$qtdeSaborCad] = $row["descricao"];
+                    $disponibilidade[$qtdeSaborCad] = $row["disponibilidade"]; 
+                    
+                    $qtdeSaborCad++;
+                    
+                }
+                
+            }
+            /*-----------------------------------------------------------------------------------------------------------*/
+            ?>
 
             <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -67,80 +72,78 @@
             <?php
 
             
-            for ($auxTamanho=0; $auxTamanho < $qtdeTamanhoCad; $auxTamanho++) { 
-           
+            
+            include "php\conexaoBD.php";
+            $sql = "SELECT * FROM `tamanho` WHERE status='on' and `cardapio`='on' order by preco ASC";
+            $result = $conn->query($sql);
+            
+            if ($result->num_rows > 0) {
+                $qtdeTamanhoCad=-1;
+                    while($row = $result->fetch_assoc()) {
+                        $qtdeTamanhoCad++;
+                        $pizza[$qtdeTamanhoCad] = $row["nome"];
+                        $idPizza[$qtdeTamanhoCad] = $row["idPizza"];
+                        $qtdeSabor[$qtdeTamanhoCad] = $row["qtdeSabor"];
+                        $preco_pizza[$qtdeTamanhoCad] = $row["preco"];
                         
-                      ?>
+                        $formatter = new NumberFormatter('pt-BR', NumberFormatter:: CURRENCY);
+                        $brl = $formatter->formatCurrency($preco_pizza[$qtdeTamanhoCad], 'BRL');
+                        
+                      echo"
                         <!------------------------------------------------------------------------------------------------->
                         <!-- Button trigger modal -->
-                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e<?=$idPizza[$auxTamanho]?>'>
-                      <?=$pizza[$auxTamanho]?>
+                      <button type='button' class='opcoes' data-bs-toggle='modal' data-bs-target='#e$idPizza[$qtdeTamanhoCad]'>
+                      $pizza[$qtdeTamanhoCad]
                       </button>
                       <br>
                       <!-- Modal -->
 
                       <form method='post'>
 
-                      <div class='modal fade' id='e<?= $idPizza[$auxTamanho] ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal fade' id='e$idPizza[$qtdeTamanhoCad]' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                         <div class='modal-dialog'>
                           <div class='modal-content'>
                             <div class='modal-header'>
-                            <h5 class='modal-title' id='staticBackdropLabel'> Escolha até <?= $qtdeSabor[$auxTamanho] ?> Sabores </h5>
+                            <h5 class='modal-title' id='staticBackdropLabel'> Escolha até $qtdeSabor[$qtdeTamanhoCad] Sabores </h5>
                             <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                         </div>
-                        <div class='modal-body'>
-                        <?php
-                        
-                        for ($e=0; $e < $qtdeSabor[$auxTamanho]; $e++) { 
+                        <div class='modal-body'>";
+                        for ($e=0; $e < $qtdeSabor[$qtdeTamanhoCad]; $e++) { 
                             $numSabor = $e+1;
-                            ?>
-
-                             Sabor <?= $numSabor?> :
+                            echo" Sabor $numSabor:
                             <select name='opcao$numSabor' class='form-select'>
                             <option selected disabled hidden>Clique aqui para escolher um sabor</option>
                             <option>Nenhum</option>";
-                            <?php
-                            $sql = "SELECT * FROM `sabor`,`sabor_pizza` WHERE `sabor`.`idSabor` = `sabor_pizza`.`idSabor` and `idPizza` = $idPizza[$auxTamanho]";
-                              
-                                $result = $conn->query($sql);
 
-                                if ($result->num_rows > 0) {
-                                  while($row = $result->fetch_assoc()) {
-
-                                      $sabor = $row["nome"];
-                                      $idSabor = $row["idSabor"];
-                                      $desc = $row["descricao"];
-                                    ?>
-                                    <option> <?= $sabor ?> </option>
-                                      
-                                          
-                                          <?php
-                                      
-                                  }
-                                  
-                                }
-                              ?>
-                                     
+                            for ($j=0; $j < sizeof($disponibilidade); $j++) { 
+                                $dispo = explode(",", $disponibilidade[$j]);  
                             
-                            </select><br>
-                     <?php   } ?>
+                            for ($i=0; $i < sizeof($dispo); $i++) {   
+                                                                    
+                                if($idPizza[$qtdeTamanhoCad] == $dispo[$i]){
+
+                                    echo"<option> $sabor[$j] </option>";
+                                }}}            
+                            echo"
+                            </select><br>";
+                        }
                         
-                        <p class='saboresCarrinho'>*caso não queria a mesma quantidade de sabores do máximo, escolhar a opção nenhum </p>
+                        echo"<p class='saboresCarrinho'>*caso não queria a mesma quantidade de sabores do máximo, escolhar a opção nenhum </p>
                         </div>
-                        <input type='hidden' name='aux_pizza' value='<?php $auxTamanho ?>'>
+                        <input type='hidden' name='aux_pizza' value='$qtdeTamanhoCad'>
                             <div class='modal-footer'>
                               <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
-                              <button type='submit' name='pizza' class='btn btn-primary'>Adicionar <?= $brl[$auxTamanho] ?></button>
+                              <button type='submit' name='pizza' class='btn btn-primary'>Adicionar $brl</button>
                             </div>
                           </div>
                         </div>
                       </div>  
                     <!------------------------------------------------------------------------------------------------->
                     </form>
-                      
-<?php
+                      ";
+
                     
-                        }
+                    }
 
                     if(isset($_POST['aux_pizza'])){
                       if(isset($_SESSION["carrinho_pizza"][$_POST['aux_pizza']])){
@@ -151,15 +154,15 @@
                       }
                     }
                     
-                  
-                  ?> 
+                  }
+                  echo"    
                   </div>
                   </div>
                 </div>
                 
-                
+                ";
                          
-                            
+                            ?>
                             </div> <!-- Fim da div pizza -->
 
                   </div>
